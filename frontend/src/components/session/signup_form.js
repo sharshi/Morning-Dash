@@ -9,6 +9,10 @@ class SignupForm extends React.Component {
       handle: "",
       password: "",
       password2: "",
+      homeAddress: "",
+      workAddress: "",
+      arriveToWorkBy: "",
+      departWorkBy: "",
       errors: {}
     };
 
@@ -37,7 +41,11 @@ class SignupForm extends React.Component {
       email: this.state.email,
       handle: this.state.handle,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
+      homeAddress: this.state.homeAddress,
+      workAddress: this.state.workAddress,
+      arriveToWorkBy: this.state.arriveToWorkBy,
+      departWorkBy: this.state.departWorkBy
     };
 
     this.props.signup(user, this.props.history);
@@ -85,6 +93,20 @@ class SignupForm extends React.Component {
               value={this.state.password2}
               onChange={this.update("password2")}
               placeholder="Confirm Password"
+            />
+            <br />
+            <input
+              type="text"
+              value={this.state.homeAddress}
+              onChange={this.update("homeAddress")}
+              placeholder="Home Address"
+            />
+            <br />
+            <input
+              type="text"
+              value={this.state.workAddress}
+              onChange={this.update("workAddress")}
+              placeholder="Work Address"
             />
             <br />
             <input type="submit" value="Submit" />
