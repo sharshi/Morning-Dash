@@ -91,9 +91,9 @@ class MainPage extends React.Component {
             <div className="commute-summary-item">
               Leave for work at 8:22 AM
             </div>
-            <div className="commute-summary-item">Go home at 7:00 PM</div>
+            {/* <div className="commute-summary-item">Go home at 7:00 PM</div> */}
             <div className="commute-summary-item">
-              Movie with Billy at 8:30 PM
+              {/* Movie with Billy at 8:30 PM */}
             </div>
           </div>
           <div className="calendar-events-summary">
