@@ -9,7 +9,6 @@ class Transit extends React.Component {
     }
   }
 
-
   componentDidMount() {
     var directionsService = new google.maps.DirectionsService();
     var origin = '770 eastern parkway 11213';
@@ -22,9 +21,10 @@ class Transit extends React.Component {
     let res;
     directionsService.route(request, (response, status) => {
       if (status === 'OK') {
-        // debugger
+        debugger
         res = response.routes[0].legs[0].distance.text;
         this.setState({ test: res });
+        console.log(res)
       }
     })
   }
@@ -32,6 +32,7 @@ class Transit extends React.Component {
   render() {
     return (
       <div>
+        
         {this.state.test}
       </div>
     )

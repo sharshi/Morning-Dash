@@ -5,7 +5,6 @@ import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
-import { transit } from "./util/transit_util";
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -34,10 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // jwtToken not found 
     store = configureStore({});
   }
-
-  //DEV
-  window.transit = transit;
-  //DEV
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root)

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.scss";
+import Transit from "../transit/transit";
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +39,7 @@ class NavBar extends React.Component {
       <nav>
         <h1>Chirper</h1>
         {this.getLinks()}
+        <Transit />
       </nav>
     );
   }
