@@ -11,22 +11,35 @@ class Transit extends React.Component {
 
   componentDidMount() {
     var directionsService = new google.maps.DirectionsService();
-    // this.props.homeAddress
-    var origin = "21456 Holly Oak Dr Cupertino, CA 95014";
-    // this.props.workAddress
-    var destination = "4855 Atherton Ave San Jose, CA 95130";
+
+    const { homeAddress, workAddress } = this.props.settings;
+    var origin = homeAddress;
+    var destination = workAddress;
     var request = {
       origin,
       destination,
-      travelMode: "TRANSIT"
+      travelMode: "TRANSIT",
+      // transitOptions: {
+      //   arrivalTime: Date,
+      //   departureTime: Date
+      // }
     };
     let res;
     directionsService.route(request, (response, status) => {
       if (status === "OK") {
-        debugger;
-        res = response.routes[0].legs[0].steps.map(step => {
-          const { travel_mode } = step;
-          return <li>{travel_mode}</li>;
+        res = response.routes[0].legs[0].steps.map((step, idx) => {
+          const { travel_mode, duration, transit } = step;
+
+          debugger
+          return (
+            <li key={`${idx}-${travel_mode}`}>
+              {travel_mode} {duration.text}
+              <br />
+              {travel_mode === "TRANSIT" ? (
+                  transit.departure_time.text
+                ) : null }
+            </li>
+          );
         });
         this.setState({ test: res });
         console.log(res);

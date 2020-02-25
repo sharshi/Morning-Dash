@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Transit from '../transit/transit'
+import Transit from '../transit/transit_container'
 class MainPage extends React.Component {
   render() {
     return (
