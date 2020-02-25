@@ -1,4 +1,4 @@
-// TODO: import transit action types
+// TODO: import weather action types
 
 const initialState = {};
 

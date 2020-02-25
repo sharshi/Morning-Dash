@@ -1,4 +1,4 @@
-// TODO: import transit action types
+// TODO: import events action types
 
 const initialState = {};
 
