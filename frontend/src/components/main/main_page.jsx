@@ -2,23 +2,46 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class MainPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      settingsActive: false
+    };
+    this.toggleSettings = this.toggleSettings.bind(this);
+  }
+  toggleSettings() {
+    let currentState = this.state.settingsActive;
+    this.setState({ settingsActive: !currentState });
+  }
   render() {
     return (
       <div className="main-page-container">
         <div className="main-page-nav-bar">
           <Link to={`/`}>Morning Dash</Link>
-          <Link className="link-to-button-styling" to={"/login"}>
-            Login
-          </Link>
+          {this.props.loggedIn ? (
+            <div
+              className={
+                this.state.settingsActive
+                  ? "change"
+                  : "settings-button-container"
+              }
+              onClick={this.toggleSettings}
+            >
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </div>
+          ) : (
+            <Link className="link-to-button-styling" to={"/login"}>
+              Login
+            </Link>
+          )}
         </div>
         <div className="main-page-glance">
           <h1 className="welcome-message">Welcome Demo User!</h1>
 
-          <Link
-            className="link-to-button-styling main-signup-button"
-            to={`/signup`}
-          >
-            Signup
+          <Link className="main-signup-button" to={`/signup`}>
+            <img src="https://diskord-dev.s3.amazonaws.com/google-auth/btn_google_signin_light_normal_web.png" />
           </Link>
 
           <div className="glance-summary">
