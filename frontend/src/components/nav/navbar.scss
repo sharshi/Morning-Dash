@@ -65,6 +65,7 @@ html {
   display: flex;
   justify-content: space-between;
   padding: 0;
+  width: 98%;
 }
 
 .main-page-glance {
@@ -157,13 +158,57 @@ html {
   margin: 0 auto;
 }
 
+///////////////////////////////////////////
+// signup form
+
+.session-form-page {
+  align-items: center;
+  background-image: url("https://images.unsplash.com/photo-1527766833261-b09c3163a791?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  // justify-content: center;
+}
+
+.signup-form-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: auto 0;
+  width: 100%;
+}
+
+.session-form > input {
+  border-radius: 3px;
+  min-height: 2rem;
+  min-width: 17rem;
+  margin: 10px 0;
+  &:focus {
+    outline: none;
+  }
+}
+
+.form-submit-button {
+  width: 100%;
+}
+
+.form-error {
+  font-size: 0.8rem;
+  list-style-type: none;
+}
+
 @media (min-width: 600px) {
   .weather-timeline {
     justify-content: center;
   }
 
   .main-page-nav-bar {
-    padding: 10px;
+    padding: 1rem;
+  }
+
+  .main-page-nav-bar > * {
+    margin: 0px 1rem;
   }
 
   .welcome-message {

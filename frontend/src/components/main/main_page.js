@@ -5,6 +5,12 @@ class MainPage extends React.Component {
   render() {
     return (
       <div className="main-page-container">
+        <div className="main-page-nav-bar">
+          <Link to={`/`}>Morning Dash</Link>
+          <Link className="link-to-button-styling" to={"/login"}>
+            Login
+          </Link>
+        </div>
         <div className="main-page-glance">
           <h1 className="welcome-message">Welcome Demo User!</h1>
 
