@@ -1,4 +1,3 @@
-import axios from "axios";
 const Config = require("./apiGoogleconfig.json");
 const onLoadCallback = null;
 let sign = false;
@@ -7,8 +6,7 @@ const updateSigninStatus = (isSignedIn) => {
     sign = isSignedIn;
   }
 
-const initClient = () => {
-debugger
+export const initClient = () => {
 window.gapi.client
     .init(Config)
     .then(function() {
@@ -17,41 +15,40 @@ window.gapi.client
         .isSignedIn.listen(updateSigninStatus);
     updateSigninStatus(
         window.gapi.auth2.getAuthInstance().isSignedIn.get()
-    );
-    if (onLoadCallback) {
-        onLoadCallback();
+    )
+    if (window.gapi) {
+        // debugger
+    //   listUpcomingEvents();
     }
     })
     .catch(function(e) {
-    console.log(e);
+        console.log(e);
     });
 }
 
 export const handleClientLoad = () => {
-// var _this2 = this;
-// this.gapi = window["gapi"];
 debugger
 const script = document.createElement("script");
 script.src = "https://apis.google.com/js/api.js";
 document.body.appendChild(script);
 script.onload = function() {
-    debugger
     window["gapi"].load("client:auth2", initClient);
-    debugger
     };
 }
 
-
-export const events = () => {
-  return axios
-    .get("api/weather", coords)
-    .then(function(response) {
-      console.log(response);
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
-};
+export const listUpcomingEvents = () => {
+    debugger
+    const maxTime = new Date();
+    maxTime.setHours(23,59,59);
+          return window.gapi.client.calendar.events.list({
+            calendarId: "primary",
+            timeMin: new Date().toISOString(),
+            timeMax: maxTime.toISOString(),
+            showDeleted: false,
+            singleEvents: true,
+            orderBy: "startTime"
+          })
+    }
 
 // const listenSign = (callback) => {
 //     if (this.gapi) {

@@ -1,10 +1,11 @@
 import { RECEIVE_EVENTS, RECEIVE_EVENTS_ERRORS } from '../actions/events_actions';
 
-const weatherReducer = (state = {}, action) => {
+const eventsReducer = (state = [], action) => {
+  debugger
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_EVENTS:
-      return { events: action.events };
+      return action.events
     case RECEIVE_EVENTS_ERRORS:
       return { errors: action.errors };
     default:
@@ -12,4 +13,4 @@ const weatherReducer = (state = {}, action) => {
   }
 };
 
-export default weatherReducer;
+export default eventsReducer;

@@ -4,7 +4,6 @@ const port = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const users = require("./routes/api/users");
 const weather = require("./routes/api/weather");
-const events = require("./routes/api/events");
 const tweets = require("./routes/api/tweets");
 const bodyParser = require("body-parser");
 const passport = require('passport');
@@ -26,5 +25,4 @@ mongoose
 
   app.use("/api/users", users);
   app.use("/api/tweets", tweets);
-  app.use("/api/weather", weather);
-  app.use("/api/events", events);
+  app.use("/api/weather", weather)

@@ -3,7 +3,7 @@ import * as APIUtil from '../util/google_api_util';
 export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
 export const RECEIVE_EVENTS_ERRORS = "RECEIVE_EVENTS_ERRORS";
 
-const receive_events = (events) => ({
+export const receiveEvents = (events) => ({
     type: RECEIVE_EVENTS,
     events
 })
@@ -17,9 +17,9 @@ const receiveEventsErrors = errors => {
   };
 };
 
-export const fetchEvents = () => dispatch => {
-  return APIUtil.events().then(
-    events => dispatch(receive_events(events)),
-    errors => dispatch(receiveEventsErrors(errors))
-  );
-};
+// export const fetchEvents = () => dispatch => {
+//   return APIUtil.listUpcomingEvents().then(
+//     events => dispatch(receive_events(events)),
+//     errors => dispatch(receiveEventsErrors(errors))
+//   );
+// };
