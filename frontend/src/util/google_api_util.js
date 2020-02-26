@@ -17,7 +17,7 @@ window.gapi.client
         window.gapi.auth2.getAuthInstance().isSignedIn.get()
     )
     if (window.gapi) {
-        // debugger
+        //  
     //   listUpcomingEvents();
     }
     })
@@ -27,7 +27,7 @@ window.gapi.client
 }
 
 export const handleClientLoad = () => {
-debugger
+ 
 const script = document.createElement("script");
 script.src = "https://apis.google.com/js/api.js";
 document.body.appendChild(script);
@@ -37,7 +37,7 @@ script.onload = function() {
 }
 
 export const listUpcomingEvents = () => {
-    debugger
+     
     const maxTime = new Date();
     maxTime.setHours(23,59,59);
           return window.gapi.client.calendar.events.list({

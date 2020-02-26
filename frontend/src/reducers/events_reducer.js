@@ -1,7 +1,7 @@
 import { RECEIVE_EVENTS, RECEIVE_EVENTS_ERRORS } from '../actions/events_actions';
 
 const eventsReducer = (state = [], action) => {
-  debugger
+   
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_EVENTS:

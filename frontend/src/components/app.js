@@ -10,7 +10,6 @@ import Calendar from "./calendar/calendar_container";
 
 const App = () => (
   <section className="app-container">
-    <Calendar/>
     <Switch>
       <AuthRoute exact path="/" component={MainPageContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
