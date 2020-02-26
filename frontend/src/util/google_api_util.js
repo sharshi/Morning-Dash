@@ -7,9 +7,7 @@ const updateSigninStatus = (isSignedIn) => {
   }
 
 const initClient = () => {
-// let _this = this;
 debugger
-// this.gapi = window["gapi"];
 window.gapi.client
     .init(Config)
     .then(function() {
@@ -41,6 +39,19 @@ script.onload = function() {
     debugger
     };
 }
+
+export const listUpcomingEvents = () => {
+    const maxTime = new Date();
+    maxTime.setHours(23,59,59);
+          return window.gapi.client.calendar.events.list({
+            calendarId: "primary",
+            timeMin: new Date().toISOString(),
+            timeMax: maxTime.toISOString(),
+            showDeleted: false,
+            singleEvents: true,
+            orderBy: "startTime"
+          });
+    }
 
 // const listenSign = (callback) => {
 //     if (this.gapi) {
