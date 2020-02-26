@@ -18,8 +18,8 @@ const receiveEventsErrors = errors => {
 };
 
 export const fetchEvents = () => dispatch => {
-  return APIUtil.listUpcomingEvents().then(
-    events => dispatch(receiveWeather(weather)),
-    errors => dispatch(receiveWeatherErrors(errors))
+  return APIUtil.events().then(
+    events => dispatch(receive_events(events)),
+    errors => dispatch(receiveEventsErrors(errors))
   );
 };
