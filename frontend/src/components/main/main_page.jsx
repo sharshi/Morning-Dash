@@ -40,8 +40,11 @@ class MainPage extends React.Component {
         <div className="main-page-glance">
           <h1 className="welcome-message">Welcome Demo User!</h1>
 
-          <Link className="main-signup-button" to={`/signup`}>
-            <img src="https://diskord-dev.s3.amazonaws.com/google-auth/btn_google_signin_light_normal_web.png" />
+          <Link
+            className="link-to-button-styling main-signup-button"
+            to={`/signup`}
+          >
+            Sign Up
           </Link>
 
           <div className="glance-summary">

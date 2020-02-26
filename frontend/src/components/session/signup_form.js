@@ -118,6 +118,20 @@ class SignupForm extends React.Component {
               />
               <br />
               <input
+                type="text"
+                value={this.state.arriveToWorkBy}
+                onChange={this.update("arriveToWorkBy")}
+                placeholder="When do you need to get to work?"
+              />
+              <br />
+              <input
+                type="text"
+                value={this.state.departWorkBy}
+                onChange={this.update("departWorkBy")}
+                placeholder="When do you start commuting home?"
+              />
+              <br />
+              <input
                 className="submit-register-form-button"
                 type="submit"
                 value="Sign up!"
