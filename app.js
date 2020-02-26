@@ -25,7 +25,7 @@ require('./config/passport')(passport);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
-const db = key.mongoURI;
+const db = keys.mongoURI;
 
 mongoose
   .connect(db, { useNewUrlParser: true })
