@@ -57,11 +57,12 @@ class Calendar extends React.Component {
       const script = document.createElement("script");
       script.src = "https://apis.google.com/js/api.js";
       document.body.appendChild(script);
-    }
-    script.onload = () => {
-      debugger
+      script.onload = () => {
+        window["gapi"].load("client:auth2", this.initClient);
+      };
+    } else {
       window["gapi"].load("client:auth2", this.initClient);
-    };
+    }
   }
 
   listUpcomingEvents = () => {
