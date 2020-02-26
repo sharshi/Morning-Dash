@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.scss";
+import GoogleLogout from '../session/google_logout';
+
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
