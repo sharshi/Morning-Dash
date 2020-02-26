@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -48,7 +48,9 @@ class LoginForm extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          <li className="form-error" key={`error-${i}`}>
+            {this.state.errors[error]}
+          </li>
         ))}
       </ul>
     );
@@ -56,10 +58,15 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
-
-        <form onSubmit={this.handleSubmit}>
-          <div>
+      <div className="session-form-page">
+        <div className="main-page-nav-bar">
+          <Link to={`/`}>Morning Dash</Link>
+          <Link className="link-to-button-styling" to={"/signup"}>
+            Sign up
+          </Link>
+        </div>
+        <form className="signup-form-container" onSubmit={this.handleSubmit}>
+          <div className="session-form">
             <input
               type="text"
               value={this.state.email}
@@ -74,7 +81,7 @@ class LoginForm extends React.Component {
               placeholder="Password"
             />
             <br />
-            <input type="submit" value="Submit" />
+            <input className="form-submit-button" type="submit" value="Login" />
             {this.renderErrors()}
           </div>
         </form>
