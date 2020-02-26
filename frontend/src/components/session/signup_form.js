@@ -63,6 +63,7 @@ class SignupForm extends React.Component {
 
   render() {
     return (
+<<<<<<< Updated upstream
       <div className="signup-form-container">
         <form onSubmit={this.handleSubmit}>
           <div className="signup-form">
@@ -113,6 +114,84 @@ class SignupForm extends React.Component {
             {this.renderErrors()}
           </div>
         </form>
+=======
+      <div className="session-form-page">
+        <div className="main-page-nav-bar">
+          <Link to={`/`}>Morning Dash</Link>
+          <Link className="link-to-button-styling" to={"/login"}>
+            Login
+          </Link>
+        </div>
+        <div className="signup-form-container">
+          <form onSubmit={this.handleSubmit}>
+            <div className="session-form">
+              <br />
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={this.update("email")}
+                placeholder="Email"
+              />
+              <br />
+              <input
+                type="text"
+                value={this.state.handle}
+                onChange={this.update("handle")}
+                placeholder="Handle"
+              />
+              <br />
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                placeholder="Password"
+              />
+              <br />
+              <input
+                type="password"
+                value={this.state.password2}
+                onChange={this.update("password2")}
+                placeholder="Confirm Password"
+              />
+              <br />
+              <input
+                type="text"
+                value={this.state.homeAddress}
+                onChange={this.update("homeAddress")}
+                placeholder="Home Address"
+              />
+              <br />
+              <input
+                type="text"
+                value={this.state.workAddress}
+                onChange={this.update("workAddress")}
+                placeholder="Work Address"
+              />
+              <br />
+              <input
+                type="text"
+                value={this.state.arriveToWorkBy}
+                onChange={this.update("arriveToWorkBy")}
+                placeholder="When do you need to get to work?"
+              />
+              <br />
+              <input
+                type="text"
+                value={this.state.departWorkBy}
+                onChange={this.update("departWorkBy")}
+                placeholder="When do you start commuting home?"
+              />
+              <br />
+              <input
+                className="submit-register-form-button"
+                type="submit"
+                value="Sign up!"
+              />
+              {this.renderErrors()}
+            </div>
+          </form>
+        </div>
+>>>>>>> Stashed changes
       </div>
     );
   }

@@ -1,44 +1,73 @@
-const Validator = require('validator');
-const validText = require('./valid-text');
+const Validator = require("validator");
+const validText = require("./valid-text");
 
 module.exports = function validateRegisterInput(data) {
   let errors = {};
 
+<<<<<<< Updated upstream
   data.handle = validText(data.handle) ? data.handle : '';
   data.email = validText(data.email) ? data.email : '';
   data.password = validText(data.password) ? data.password : '';
   data.password2 = validText(data.password2) ? data.password2 : '';
+=======
+  data.handle = validText(data.handle) ? data.handle : "";
+  data.email = validText(data.email) ? data.email : "";
+  data.password = validText(data.password) ? data.password : "";
+  data.password2 = validText(data.password2) ? data.password2 : "";
+  data.homeAddress = validText(data.homeAddress) ? data.homeAddress : "";
+  data.workAddress = validText(data.workAddress) ? data.workAddress : "";
+  data.arriveToWorkBy = validText(data.arriveToWorkBy)
+    ? data.arriveToWorkBy
+    : "";
+  data.departWorkBy = validText(data.departWorkBy) ? data.departWorkBy : "";
+>>>>>>> Stashed changes
 
   if (!Validator.isLength(data.handle, { min: 2, max: 30 })) {
-    errors.handle = 'Handle must be between 2 and 30 characters';
+    errors.handle = "Handle must be between 2 and 30 characters";
   }
 
   if (Validator.isEmpty(data.handle)) {
-    errors.handle = 'Handle field is required';
+    errors.handle = "Handle field is required";
   }
 
   if (Validator.isEmpty(data.email)) {
-    errors.email = 'Email field is required';
+    errors.email = "Email field is required";
   }
 
   if (!Validator.isEmail(data.email)) {
-    errors.email = 'Email is invalid';
+    errors.email = "Email is invalid";
   }
 
   if (Validator.isEmpty(data.password)) {
-    errors.password = 'Password field is required';
+    errors.password = "Password field is required";
   }
 
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    errors.password = 'Password must be at least 6 characters';
+    errors.password = "Password must be at least 6 characters";
   }
 
   if (Validator.isEmpty(data.password2)) {
-    errors.password2 = 'Confirm Password field is required';
+    errors.password2 = "Confirm Password field is required";
   }
 
   if (!Validator.equals(data.password, data.password2)) {
-    errors.password2 = 'Passwords must match';
+    errors.password2 = "Passwords must match";
+  }
+
+  if (Validator.isEmpty(data.homeAddress)) {
+    errors.homeAddress = "Home address field is required";
+  }
+
+  if (Validator.isEmpty(data.workAddress)) {
+    errors.workAddress = "Work address field is required";
+  }
+
+  if (Validator.isEmpty(data.arriveToWorkBy)) {
+    errors.arriveToWorkBy = 'Arrive to work by field is required';
+  }
+
+  if (Validator.isEmpty(data.departWorkBy)) {
+    errors.departWorkBy = 'Depart work by field is required';
   }
 
   return {
