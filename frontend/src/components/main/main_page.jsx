@@ -118,7 +118,7 @@ class MainPage extends React.Component {
           </div>
           <div className="commute-summary">
             <div className="commute-summary-item">
-              Leave for work at 8:22 AM
+              Leave at 8:22 AM for work.
             </div>
             {/* <div className="commute-summary-item">Go home at 7:00 PM</div> */}
             <div className="commute-summary-item">
