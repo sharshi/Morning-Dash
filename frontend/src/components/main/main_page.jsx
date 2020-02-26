@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Transit from '../transit/transit_container'
+import Transit from "../transit/transit_container";
+import Modal, { ModalContext } from "../modal/modal";
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
@@ -18,24 +19,33 @@ class MainPage extends React.Component {
       <div className="main-page-container">
         <div className="main-page-nav-bar">
           <Link to={`/`}>Morning Dash</Link>
-          {this.props.loggedIn ? (
-            <div
-              className={
-                this.state.settingsActive
-                  ? "change"
-                  : "settings-button-container"
-              }
-              onClick={this.toggleSettings}
-            >
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
-            </div>
-          ) : (
-            <Link className="link-to-button-styling" to={"/login"}>
-              Login
-            </Link>
-          )}
+          <Modal>
+            <Modal.Content>
+              <ModalContext.Consumer>
+                {({ closeModal }) => (
+                  <EditUserFormContainer closeModal={closeModal} />
+                )}
+              </ModalContext.Consumer>
+            </Modal.Content>
+            {this.props.loggedIn ? (
+              <Modal.OpenButton
+                className={
+                  this.state.settingsActive
+                    ? "change"
+                    : "settings-button-container"
+                }
+                onClick={this.toggleSettings}
+              >
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+              </Modal.OpenButton>
+            ) : (
+              <Link className="link-to-button-styling" to={"/login"}>
+                Login
+              </Link>
+            )}
+          </Modal>
         </div>
         <div className="main-page-glance">
           <h1 className="welcome-message">Welcome Demo User!</h1>
