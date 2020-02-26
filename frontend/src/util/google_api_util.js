@@ -6,6 +6,7 @@ const updateSigninStatus = (isSignedIn) => {
     sign = isSignedIn;
   }
 
+
 export const initClient = () => {
 window.gapi.client
     .init(Config)
@@ -27,12 +28,12 @@ window.gapi.client
 }
 
 export const handleClientLoad = () => {
- 
 const script = document.createElement("script");
 script.src = "https://apis.google.com/js/api.js";
 document.body.appendChild(script);
 script.onload = function() {
     window["gapi"].load("client:auth2", initClient);
+
     };
 }
 
