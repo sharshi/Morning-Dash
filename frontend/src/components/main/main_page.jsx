@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Transit from '../transit/transit_container'
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
@@ -124,6 +124,7 @@ class MainPage extends React.Component {
               Leave for work at 8:22 AM
             </div>
             {/* <div className="commute-summary-item">Go home at 7:00 PM</div> */}
+            <Transit />
             <div className="commute-summary-item">
               {/* Movie with Billy at 8:30 PM */}
             </div>
