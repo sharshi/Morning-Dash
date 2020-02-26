@@ -4,7 +4,6 @@ import * as APIUtil from "../../util/google_api_util";
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
-    // this.sign = false;
     this.updateSigninStatus = this.updateSigninStatus.bind(this);
     this.initClient = this.initClient.bind(this);
     this.handleClientLoad = this.handleClientLoad.bind(this);
@@ -54,9 +53,11 @@ class Calendar extends React.Component {
 
   handleClientLoad() {
     debugger
-    const script = document.createElement("script");
-    script.src = "https://apis.google.com/js/api.js";
-    document.body.appendChild(script);
+    if (!window.gapi) {
+      const script = document.createElement("script");
+      script.src = "https://apis.google.com/js/api.js";
+      document.body.appendChild(script);
+    }
     script.onload = () => {
       debugger
       window["gapi"].load("client:auth2", this.initClient);
