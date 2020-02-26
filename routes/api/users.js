@@ -7,7 +7,7 @@ const router = express.Router();
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
-
+const keys = require('../../config/keys');
 const User = require('../../models/User');
 
 router.post('/register', (req, res) => {
@@ -45,7 +45,7 @@ router.post('/register', (req, res) => {
 
               jwt.sign(
                 payload,
-                process.env.secretOrKey,
+                keys.secretOrKey,
                 { expiresIn: 3600 },
                 (err, token) => {
                   res.json({
@@ -86,7 +86,7 @@ router.post('/login', (req, res) => {
 
             jwt.sign(
               payload,
-              process.env.secretOrKey,
+              keys.secretOrKey,
               { expiresIn: 3600 },
               (err, token) => {
                 res.json({
