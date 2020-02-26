@@ -8,9 +8,10 @@ const mapStateToProps = state => ({
   events: state.entities.events
 });
 
-const mapDispatchToProps = dispatch => ({
-  receiveEvents: (events) => dispatch(receiveEvents(events))
-});
+const mapDispatchToProps = dispatch => {
+  debugger
+  return { receiveEvents: (events) => dispatch(receiveEvents(events)) }
+};
 
 
 
