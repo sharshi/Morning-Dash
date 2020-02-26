@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
+import Calendar from "../calendar/calendar_container";
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -35,6 +36,7 @@ class SignupForm extends React.Component {
   }
 
   handleSubmit(e) {
+    
     e.preventDefault();
     let user = {
       email: this.state.email,
@@ -63,6 +65,7 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    
     return (
       <div className="session-form-page">
         <div className="main-page-nav-bar">
@@ -118,6 +121,20 @@ class SignupForm extends React.Component {
               />
               <br />
               <input
+                type="text"
+                value={this.state.arriveToWorkBy}
+                onChange={this.update("arriveToWorkBy")}
+                placeholder="When do you need to get to work?"
+              />
+              <br />
+              <input
+                type="text"
+                value={this.state.departWorkBy}
+                onChange={this.update("departWorkBy")}
+                placeholder="When do you start commuting home?"
+              />
+              <br />
+              <input
                 className="submit-register-form-button"
                 type="submit"
                 value="Sign up!"
@@ -126,6 +143,7 @@ class SignupForm extends React.Component {
             </div>
           </form>
         </div>
+        <Calendar/>
       </div>
     );
   }
