@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Transit from "./transit";
+import { transit } from "../../actions/transit_actions";
 
 const mapStateToProps = ({entities : { settings } }) => {
   return {
@@ -11,7 +12,9 @@ const mapStateToProps = ({entities : { settings } }) => {
 };
 
 const mapdispatchToProps = dispatch => {
-  return {};
+  return {
+    transit: timeOfDay => dispatch(transit(timeOfDay))
+  };
 };
 
 export default connect(
