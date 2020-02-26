@@ -8,7 +8,7 @@ const tweets = require("./routes/api/tweets");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 const path = require("path");
-const keys = require("./config/keys")
+const keys = require("./config/keys");
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
