@@ -9,11 +9,10 @@ module.exports = function validateRegisterInput(data) {
   data.password2 = validText(data.password2) ? data.password2 : "";
   data.homeAddress = validText(data.homeAddress) ? data.homeAddress : "";
   data.workAddress = validText(data.workAddress) ? data.workAddress : "";
+  data.arriveToWorkBy = validText(data.arriveToWorkBy)
+    ? data.arriveToWorkBy
+    : "";
   data.departWorkBy = validText(data.departWorkBy) ? data.departWorkBy : "";
-  data.homeAddress = validText(data.homeAddress) ? data.homeAddress : '';
-  data.workAddress = validText(data.workAddress) ? data.workAddress : '';
-  data.arriveToWorkBy = validText(data.arriveToWorkBy) ? data.arriveToWorkBy : '';
-  data.departWorkBy = validText(data.departWorkBy) ? data.departWorkBy : '';
 
   if (!Validator.isLength(data.handle, { min: 2, max: 30 })) {
     errors.handle = "Handle must be between 2 and 30 characters";
@@ -47,36 +46,20 @@ module.exports = function validateRegisterInput(data) {
     errors.password2 = "Passwords must match";
   }
 
-  if (Validator.isEmpty(data.homeAddress)) {
-    errors.homeAddress = "Home address field is required";
-  }
-
   if (Validator.isEmpty(data.workAddress)) {
     errors.workAddress = "Work address field is required";
   }
 
   if (Validator.isEmpty(data.arriveToWorkBy)) {
-    errors.arriveToWorkBy = 'Arrive to work by field is required';
+    errors.arriveToWorkBy = "Arrive to work by field is required";
   }
 
   if (Validator.isEmpty(data.departWorkBy)) {
-    errors.departWorkBy = 'Depart work by field is required';
+    errors.departWorkBy = "Depart work by field is required";
   }
 
   if (Validator.isEmpty(data.homeAddress)) {
-    errors.homeAddress = 'Home Address field is required';
-  }
-
-  if (Validator.isEmpty(data.workAddress)) {
-    errors.workAddress = 'Home Address field is required';
-  }
-
-  if (Validator.isEmpty(data.arriveToWorkBy)) {
-    errors.arriveToWorkBy = 'Home Address field is required';
-  }
-
-  if (Validator.isEmpty(data.departWorkBy)) {
-    errors.departWorkBy = 'Home Address field is required';
+    errors.homeAddress = "Home Address field is required";
   }
 
   return {
