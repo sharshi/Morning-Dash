@@ -1,6 +1,6 @@
 module.exports = {
   mongoURI: process.env.MONGO_URI,
   secretOrKey: process.env.SECRET_OR_KEY,
-  darkSkyAPI: process.env.DARK_SKY,
+  darkSkyAPI: process.env.DARK_SKY_API,
   googleMaps: process.env.GOOGLE_MAPS
 };
