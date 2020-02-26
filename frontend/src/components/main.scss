@@ -1,0 +1,251 @@
+// colors //
+// main background-color: #1e2023
+// font-color: white;
+// on button hover: gray;
+// default font-size: 1rem;
+
+///////////////////////////////
+
+// weather logos //
+// https://peter.build/weather-underground-icons/
+
+//defaults
+a,
+h1,
+.main-page-glance,
+.api-container,
+ul {
+  color: white;
+  outline: none;
+  font-family: Whitney, Helvetica Neue, Helvetica, Arial;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+html {
+  background-color: #1e2023;
+  max-width: 100vw;
+  min-height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.api-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 15rem;
+}
+
+.glance-summary-item {
+  margin-top: 5px;
+}
+
+.link-to-button-styling {
+  font-size: 1rem;
+  border: 1px solid white;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 5px;
+  transition: 2s;
+  &:hover {
+    background-color: gray;
+    transition: 0.5s;
+  }
+}
+
+.main-page-nav-bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  width: 98%;
+}
+
+.main-page-glance {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-signup-button {
+  font-size: 1.5rem;
+  margin: 0.8rem;
+  &:hover {
+    filter: brightness(90%);
+  }
+}
+
+.welcome-message {
+  color: white;
+  font-size: 1.2rem;
+  font-family: Whitney, Helvetica Neue, Helvetica, Arial;
+  margin: 0.8rem 0;
+  text-align: center;
+}
+
+.weather-slider {
+  max-width: 100vw;
+}
+
+.weather-block {
+  display: flex;
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.weather-timeline {
+  display: flex;
+  list-style-type: none;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.weather-timeblock {
+  display: flex;
+  flex-direction: column;
+  min-width: 3rem;
+}
+
+.weather-time-text {
+  font-size: 0.5rem;
+}
+
+.weather-logo {
+  max-height: 10rem;
+  max-width: 10rem;
+}
+
+.weather-cloudy {
+  background-color: grey;
+  color: grey;
+  height: 100%;
+  width: 100%;
+}
+
+.weather-raining {
+  background-color: lightblue;
+  color: lightblue;
+  height: 100%;
+  width: 100%;
+}
+
+.commute-summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.commute-summary-item {
+  margin: 0 auto;
+}
+
+.calendar-event-items {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.calendar-event-items > li {
+  list-style-type: none;
+  margin: 0 auto;
+}
+
+///////////////////////////////////////////
+// signup form
+
+.session-form-page {
+  align-items: center;
+  background-image: url("https://images.unsplash.com/photo-1527766833261-b09c3163a791?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  // justify-content: center;
+}
+
+.signup-form-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: auto 0;
+  width: 100%;
+}
+
+.session-form > input {
+  border-radius: 3px;
+  min-height: 2rem;
+  min-width: 17rem;
+  margin: 10px 0;
+  &:focus {
+    outline: none;
+  }
+}
+
+.form-submit-button {
+  width: 100%;
+}
+
+.form-error {
+  font-size: 0.8rem;
+  list-style-type: none;
+}
+
+// settings menu button and animations
+
+.settings-button-container {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+@media (min-width: 600px) {
+  .weather-timeline {
+    justify-content: center;
+  }
+
+  .main-page-nav-bar {
+    padding: 1rem;
+  }
+
+  .main-page-nav-bar > * {
+    margin: 0px 1rem;
+  }
+
+  .welcome-message {
+    font-size: 1.8rem;
+  }
+}
