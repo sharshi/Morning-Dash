@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Transit from '../transit/transit_container'
+import Transit from "../transit/transit_container";
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
@@ -53,13 +53,12 @@ class MainPage extends React.Component {
             </div>
             <div className="glance-summary-item"> 3 events today.</div>
           </div>
-
+        </div>
+        <div className="api-container">
           <img
             className="weather-logo"
             src="https://peter.build/weather-underground-icons/dist/icons/white/svg/mostlysunny.svg"
           />
-        </div>
-        <div className="api-container">
           <div className="weather-slider">
             <ul className="weather-timeline">
               <li className="weather-timeblock">
