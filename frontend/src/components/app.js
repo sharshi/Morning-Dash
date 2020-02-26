@@ -6,9 +6,11 @@ import SignupFormContainer from "./session/signup_form_container";
 import GoogleLogin from "./session/google_login";
 import MainPageContainer from "./main/main_page_container";
 import "./main.scss";
+import Calendar from "./calendar/calendar_container";
 
 const App = () => (
   <section className="app-container">
+    <Calendar/>
     <Switch>
       <AuthRoute exact path="/" component={MainPageContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />

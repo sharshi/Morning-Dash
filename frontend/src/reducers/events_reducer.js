@@ -5,7 +5,15 @@ const eventsReducer = (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_EVENTS:
-      return action.events
+      const newState = action.events.map(event => ({
+        htmlLink: event.htmlLink,
+        summary: event.summary,
+        description: event.description,
+        location: event.location,
+        start: event.start,
+        end: event.end
+      }));
+      return newState;
     case RECEIVE_EVENTS_ERRORS:
       return { errors: action.errors };
     default:
