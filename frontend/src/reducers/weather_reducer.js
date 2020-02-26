@@ -1,6 +1,6 @@
 import { RECEIVE_WEATHER, RECEIVE_WEATHER_ERRORS } from "../actions/weather_actions";
 
-weatherReducer = (state = {}, action) => {
+const weatherReducer = (state = {}, action) => {
   Object.freeze(state);
     switch (action.type) {
       case RECEIVE_WEATHER:
@@ -12,4 +12,4 @@ weatherReducer = (state = {}, action) => {
     }
 };
 
-export const weatherReducer;
+export default weatherReducer;
