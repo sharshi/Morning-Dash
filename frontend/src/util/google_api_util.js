@@ -8,7 +8,7 @@ const updateSigninStatus = (isSignedIn) => {
 
 const initClient = () => {
 // let _this = this;
-debugger
+// debugger
 // this.gapi = window["gapi"];
 window.gapi.client
     .init(Config)
@@ -31,14 +31,14 @@ window.gapi.client
 export const handleClientLoad = () => {
 // var _this2 = this;
 // this.gapi = window["gapi"];
-debugger
+// debugger
 const script = document.createElement("script");
 script.src = "https://apis.google.com/js/api.js";
 document.body.appendChild(script);
 script.onload = function() {
-    debugger
+    // debugger
     window["gapi"].load("client:auth2", initClient);
-    debugger
+    // debugger
     };
 }
 
