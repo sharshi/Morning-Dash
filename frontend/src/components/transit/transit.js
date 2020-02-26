@@ -51,10 +51,7 @@ class Transit extends React.Component {
     });
   }
 
-
-
   render() {
-    debugger
     return (
       <div>
         <ul>
