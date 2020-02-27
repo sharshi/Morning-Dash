@@ -78,15 +78,18 @@ class Weather extends React.Component {
     } else {
       return <div></div>;
     }
-
-    let i = 0
-    while (hourly.length < 12) {
-      const hour = weatherInfo.hourly.data[i];
-      hourly.push(hour);
-
-      i += 2;
+    if (weatherInfo.hourly) {
+      
+      let i = 0
+      while (hourly.length < 12) {
+        debugger
+        const hour = weatherInfo.hourly.data[i];
+        hourly.push(hour);
+        
+        i += 2;
+      }
+      
     }
-
 
     return (
       <>
