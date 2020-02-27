@@ -9,7 +9,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  debugger
   return { receiveEvents: (events) => dispatch(receiveEvents(events)) }
 };
 
