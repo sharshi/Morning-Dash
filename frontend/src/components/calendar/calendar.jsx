@@ -89,6 +89,7 @@ class Calendar extends React.Component {
             window.gapi.auth2.getAuthInstance().isSignedIn.get()
           );
         })
+        .then(() => this.listUpcomingEvents())
         .catch(function(e) {
           console.log(e);
         });
