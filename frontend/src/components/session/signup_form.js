@@ -49,7 +49,8 @@ class SignupForm extends React.Component {
       workAddress: this.state.workAddress,
       coords: this.state.coords,
       arriveToWorkBy: this.state.arriveToWorkBy.split(":").map(num => parseInt(num, 10)),
-      departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10)),
+      departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10))
+
     };
     
     this.props.signup(user, this.props.history);
