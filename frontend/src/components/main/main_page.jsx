@@ -1,36 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Transit from "../transit/transit_container";
+import Modal, { ModalContext } from "../modal/modal";
+import SignUpFormContainer from "../session/signup_form_container";
+
+function ToggleModalButton() {
+  return (
+    <ModalContext.Consumer>
+      {({ isOpen }) => (
+        <Modal.ToggleButton
+          className={isOpen ? "change" : "settings-button-container"}
+        >
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </Modal.ToggleButton>
+      )}
+    </ModalContext.Consumer>
+  );
+}
+
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      settingsActive: false
-    };
-    this.toggleSettings = this.toggleSettings.bind(this);
   }
-  toggleSettings() {
-    let currentState = this.state.settingsActive;
-    this.setState({ settingsActive: !currentState });
-  }
+
   render() {
     return (
       <div className="main-page-container">
         <div className="main-page-nav-bar">
           <Link to={`/`}>Morning Dash</Link>
-          {this.props.loggedIn ? (
-            <div
-              className={
-                this.state.settingsActive
-                  ? "change"
-                  : "settings-button-container"
-              }
-              onClick={this.toggleSettings}
-            >
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
-            </div>
+          {!this.props.loggedIn ? (
+            <Modal>
+              <Modal.Content>
+                <SignUpFormContainer />
+              </Modal.Content>
+              <ToggleModalButton />
+            </Modal>
           ) : (
             <Link className="link-to-button-styling" to={"/login"}>
               Login
