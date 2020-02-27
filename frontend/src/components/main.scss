@@ -218,6 +218,10 @@ html {
   transition: 0.4s;
 }
 
+.change {
+  z-index: 5;
+}
+
 .change .bar1 {
   -webkit-transform: rotate(-45deg) translate(-9px, 6px);
   transform: rotate(-45deg) translate(-9px, 6px);

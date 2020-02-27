@@ -4,18 +4,27 @@ import Transit from "../transit/transit_container";
 import Modal, { ModalContext } from "../modal/modal";
 import SignUpFormContainer from "../session/signup_form_container";
 
+function ToggleModalButton() {
+  return (
+    <ModalContext.Consumer>
+      {({ isOpen }) => (
+        <Modal.ToggleButton
+          className={isOpen ? "change" : "settings-button-container"}
+        >
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </Modal.ToggleButton>
+      )}
+    </ModalContext.Consumer>
+  );
+}
+
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      settingsActive: false
-    };
-    this.toggleSettings = this.toggleSettings.bind(this);
   }
-  toggleSettings() {
-    let currentState = this.state.settingsActive;
-    this.setState({ settingsActive: !currentState });
-  }
+
   render() {
     return (
       <div className="main-page-container">
@@ -24,26 +33,9 @@ class MainPage extends React.Component {
           {!this.props.loggedIn ? (
             <Modal>
               <Modal.Content>
-                <ModalContext.Consumer>
-                  {({ closeModal }) => (
-                    // <EditUserFormContainer closeModal={closeModal} />
-                    <SignUpFormContainer closeModal={closeModal} />
-                  )}
-                </ModalContext.Consumer>
+                <SignUpFormContainer />
               </Modal.Content>
-
-              <Modal.OpenButton
-                className={
-                  this.state.settingsActive
-                    ? "change"
-                    : "settings-button-container"
-                }
-                // onClick={this.toggleSettings}
-              >
-                <div className="bar1"></div>
-                <div className="bar2"></div>
-                <div className="bar3"></div>
-              </Modal.OpenButton>
+              <ToggleModalButton />
             </Modal>
           ) : (
             <Link className="link-to-button-styling" to={"/login"}>
