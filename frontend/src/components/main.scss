@@ -232,6 +232,31 @@ html {
   transform: rotate(45deg) translate(-8px, -8px);
 }
 
+.time-input-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.time-input-label {
+  color: white;
+  display: inline;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  text-shadow: 0.07em 0 black, 0 0.07em black, -0.07em 0 black, 0 -0.07em black;
+}
+
+.time-input {
+  border-radius: 3px;
+  color: gray;
+  min-height: 2rem;
+  margin: 10px 0;
+  &:focus {
+    outline: none;
+  }
+}
+
 @media (min-width: 600px) {
   .weather-timeline {
     justify-content: center;

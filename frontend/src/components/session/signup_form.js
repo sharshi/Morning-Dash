@@ -36,7 +36,6 @@ class SignupForm extends React.Component {
   }
 
   handleSubmit(e) {
-    
     e.preventDefault();
     let user = {
       email: this.state.email,
@@ -65,7 +64,6 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    
     return (
       <div className="session-form-page">
         <div className="main-page-nav-bar">
@@ -120,19 +118,34 @@ class SignupForm extends React.Component {
                 placeholder="Work Address"
               />
               <br />
-              <input
-                type="text"
-                value={this.state.arriveToWorkBy}
-                onChange={this.update("arriveToWorkBy")}
-                placeholder="When do you need to get to work?"
-              />
-              <br />
-              <input
-                type="text"
+              <div className="time-input-container">
+                <input
+                  type="time"
+                  class="time-input"
+                  required
+                  value={this.state.arriveToWorkBy}
+                  onChange={this.update("arriveToWorkBy")}
+                />
+                <div className="time-input-label">Time of arrival to work</div>
+              </div>
+              {/* <input
+                type="time"
+                className="time-input"
+                required
                 value={this.state.departWorkBy}
                 onChange={this.update("departWorkBy")}
                 placeholder="When do you start commuting home?"
-              />
+              /> */}
+              <div className="time-input-container">
+                <input
+                  type="time"
+                  class="time-input"
+                  required
+                  value={this.state.departWorkBy}
+                  onChange={this.update("departWorkBy")}
+                />
+                <div className="time-input-label">When to leave work</div>
+              </div>
               <br />
               <input
                 className="submit-register-form-button"
@@ -143,7 +156,7 @@ class SignupForm extends React.Component {
             </div>
           </form>
         </div>
-        <Calendar/>
+        <Calendar />
       </div>
     );
   }
