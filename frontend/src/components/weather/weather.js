@@ -104,7 +104,7 @@ class Weather extends React.Component {
         <ul className="weather-timeline">
           {hourly.map( hour => (
             <li className="weather-timeblock" key={hour.time}>
-              <div className="weather-raining">.</div>
+              <div className={`weather-${icon}`}>.</div>
           <div className="weather-time-text">{this.convertTime(hour.time)}</div>
               {Math.round(hour.temperature)+degrees}
             </li>

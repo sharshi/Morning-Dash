@@ -81,11 +81,11 @@ class MainPage extends React.Component {
                 <div className="weather-time-text">9am</div>
               </li>
               <li className="weather-timeblock">
-                <div className="weather-raining"></div>
+                <div className="weather-rain"></div>
                 <div className="weather-time-text">11am</div>
               </li>
               <li className="weather-timeblock">
-                <div className="weather-raining"></div>
+                <div className="weather-rain"></div>
                 <div className="weather-time-text">1pm</div>
               </li>
               <li className="weather-timeblock">
