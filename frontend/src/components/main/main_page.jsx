@@ -39,7 +39,7 @@ class MainPage extends React.Component {
                     ? "change"
                     : "settings-button-container"
                 }
-                onClick={this.toggleSettings}
+                // onClick={this.toggleSettings}
               >
                 <div class="bar1"></div>
                 <div class="bar2"></div>
