@@ -2,6 +2,7 @@ const Validator = require("validator");
 const validText = require("./valid-text");
 
 module.exports = function validateRegisterInput(data) {
+
   let errors = {};
   data.handle = validText(data.handle) ? data.handle : "";
   data.email = validText(data.email) ? data.email : "";
@@ -9,10 +10,10 @@ module.exports = function validateRegisterInput(data) {
   data.password2 = validText(data.password2) ? data.password2 : "";
   data.homeAddress = validText(data.homeAddress) ? data.homeAddress : "";
   data.workAddress = validText(data.workAddress) ? data.workAddress : "";
-  data.arriveToWorkBy = validText(data.arriveToWorkBy)
-    ? data.arriveToWorkBy
-    : "";
-  data.departWorkBy = validText(data.departWorkBy) ? data.departWorkBy : "";
+  // data.arriveToWorkBy = validText(data.arriveToWorkBy)
+  //   ? data.arriveToWorkBy
+  //   : "";
+  // data.departWorkBy = validText(data.departWorkBy) ? data.departWorkBy : "";
 
   if (!Validator.isLength(data.handle, { min: 2, max: 30 })) {
     errors.handle = "Handle must be between 2 and 30 characters";
@@ -50,11 +51,12 @@ module.exports = function validateRegisterInput(data) {
     errors.workAddress = "Work address field is required";
   }
 
-  if (Validator.isEmpty(data.arriveToWorkBy)) {
+  if (Validator.isEmpty(data.arriveToWorkBy.toString())) {
+    // console.log(data)
     errors.arriveToWorkBy = "Arrive to work by field is required";
   }
 
-  if (Validator.isEmpty(data.departWorkBy)) {
+  if (Validator.isEmpty(data.departWorkBy.toString())) {
     errors.departWorkBy = "Depart work by field is required";
   }
 

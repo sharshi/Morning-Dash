@@ -25,28 +25,38 @@ export const logoutUser = () => ({
 });
 
 export const signup = user => dispatch => {
-  
   return APIUtil.signup(user).then(
-    () => dispatch(receiveUserSignIn()),
+    res => dispatch(receiveCurrentUser(res.data.user)),
     err => dispatch(receiveErrors(err.response.data))
-  )
-  };
+  );
+};
 
-export const login = user => dispatch => (
-    APIUtil.login(user).then(res => {
-        const { token } = res.data;
-        localStorage.setItem('jwtToken', token);
-        APIUtil.setAuthToken(token);
-        const decoded = jwt_decode(token);
-        dispatch(receiveCurrentUser(decoded))
+export const login = user => dispatch =>
+  APIUtil.login(user)
+    .then(res => {
+      const { token } = res.data;
+      localStorage.setItem("jwtToken", token);
+      APIUtil.setAuthToken(token);
+      const decoded = jwt_decode(token);
+      dispatch(receiveCurrentUser(decoded));
     })
     .catch(err => {
-        dispatch(receiveErrors(err.response.data));
-    })
-);
+      dispatch(receiveErrors(err.response.data));
+    });
 
 export const logout = () => dispatch => {
   localStorage.removeItem("jwtToken");
   APIUtil.setAuthToken(false);
   dispatch(logoutUser());
+};
+
+// export const update = user => dispatch => {
+//   return APIUtil.update(user).then(res)
+// }
+
+export const update = user => dispatch => {
+  return APIUtil.update(user).then(
+    res => dispatch(receiveCurrentUser(res.data)),
+    err => dispatch(receiveErrors(err.response.data))
+  );
 };

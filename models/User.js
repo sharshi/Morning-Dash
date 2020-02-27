@@ -22,14 +22,18 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  arriveToWorkBy: {
-    type: Date,
+  arriveToWorkBy:[ {
+    type: Number,
     required: true
-  },
-  departWorkBy: {
-    type: Date,
+  }],
+  departWorkBy: [{
+    type: Number,
     required: true
-  },
+  }],
+  coords: [{
+    type: Number,
+    required: true
+  }],
   date: {
     type: Date,
     default: Date.now
