@@ -47,7 +47,8 @@ html {
   margin-top: 5px;
 }
 
-.link-to-button-styling {
+.link-to-button-styling,
+button {
   font-size: 1rem;
   border: 1px solid white;
   border-radius: 3px;
@@ -58,6 +59,10 @@ html {
     background-color: gray;
     transition: 0.5s;
   }
+}
+
+button {
+  margin: 1rem;
 }
 
 .main-page-nav-bar {
@@ -139,8 +144,8 @@ html {
 }
 
 .weather-clear {
-  background-color: #EEEEF5;
-  color: #EEEEF5;
+  background-color: #eeeef5;
+  color: #eeeef5;
   height: 100%;
   width: 100%;
 }
@@ -153,8 +158,8 @@ html {
 }
 
 .weather-partlycloudy {
-  background-color: #D5DAE2;
-  color: #D5DAE2;
+  background-color: #d5dae2;
+  color: #d5dae2;
   height: 100%;
   width: 100%;
 }
@@ -174,22 +179,22 @@ html {
 }
 
 .weather-snow {
-  background-color: #ABA4DB;
-  color: #ABA4DB;
+  background-color: #aba4db;
+  color: #aba4db;
   height: 100%;
   width: 100%;
 }
 
 .weather-unknown {
-  background-color: #EEEEF5;
-  color: #EEEEF5;
+  background-color: #eeeef5;
+  color: #eeeef5;
   height: 100%;
   width: 100%;
 }
 
 .weather-fog {
-  background-color: #D5DAE2;
-  color: #D5DAE2;
+  background-color: #d5dae2;
+  color: #d5dae2;
   height: 100%;
   width: 100%;
 }
