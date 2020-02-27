@@ -70,26 +70,13 @@ class Weather extends React.Component {
     let weatherInfo = weather.data;
 
     const hourly = [];
-<<<<<<< HEAD
-    const degrees = "\u00B0";
-=======
     const degrees = 	"\u00B0"
->>>>>>> master
 
     if (weatherInfo) {
       weatherInfo = weatherInfo.data;
     } else {
       return <div></div>;
     }
-<<<<<<< HEAD
-
-    let i = 0;
-    while (hourly.length < 12) {
-      const hour = weatherInfo.hourly.data[i];
-      hourly.push(hour);
-
-      i += 2;
-=======
     if (weatherInfo.hourly) {
       
       let i = 0
@@ -101,7 +88,6 @@ class Weather extends React.Component {
         i += 2;
       }
       
->>>>>>> master
     }
 
     return (
