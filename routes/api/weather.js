@@ -3,9 +3,11 @@ const app = express();
 const router = express.Router();
 const keys = require("../../config/keys")
 const fetch = require("node-fetch");
-
+debugger
 router.get('/', (req, res) => {
-    fetch(`https://api.darksky.net/forecast/${keys.darkSkyAPI}/${40.7362862},${-73.9959809}`)
+    console.log(req);
+    debugger;
+    fetch(`https://api.darksky.net/forecast/${keys.darkSkyAPI}/${40.6875777},${-73.981098}`)
     .then(res => res.json())
     .then(data => {
         res.send({ data })
