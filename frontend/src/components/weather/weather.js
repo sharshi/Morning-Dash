@@ -71,7 +71,7 @@ class Weather extends React.Component {
 
     const hourly = [];
     const degrees = 	"\u00B0"
-    
+
     if (weatherInfo) {
       weatherInfo = weatherInfo.data;
     } else {
