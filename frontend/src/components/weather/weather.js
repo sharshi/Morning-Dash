@@ -5,9 +5,21 @@ class Weather extends React.Component {
     super(props);
     // this.state = this.props
   }
+
+  componentWillMount() {
+    this.props.fetchWeather(this.props.coords)
+  }
   
   render(){
     const { fetchWeather, weather } = this.props;
+    let weatherInfo = weather.data;
+
+    if (weatherInfo) {
+      weatherInfo = weatherInfo.data
+    }
+    
+    debugger
+
     return(
       <div>
         <img 
