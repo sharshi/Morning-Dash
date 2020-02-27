@@ -21,7 +21,6 @@ class Calendar extends React.Component {
   };
 
   initClient() {
-    debugger
     window.gapi.client
       .init({
         clientId:
@@ -33,7 +32,6 @@ class Calendar extends React.Component {
         ]
       })
       .then(() => {
-        debugger
         window.gapi.auth2
           .getAuthInstance()
           .isSignedIn.listen(this.updateSigninStatus);
@@ -46,13 +44,11 @@ class Calendar extends React.Component {
         }
       })
       .catch(function(e) {
-        debugger
         console.log(e);
       });
   }
 
   handleClientLoad() {
-    debugger
     if (!window.gapi) {
       const script = document.createElement("script");
       script.src = "https://apis.google.com/js/api.js";
@@ -66,7 +62,6 @@ class Calendar extends React.Component {
   }
 
   listUpcomingEvents = () => {
-    debugger
     const maxTime = new Date();
     maxTime.setHours(23, 59, 59);
     return window.gapi.client.calendar.events
@@ -79,7 +74,6 @@ class Calendar extends React.Component {
         orderBy: "startTime"
       })
       .then(res => {
-        debugger
         this.props.receiveEvents(res.result.items);
       });
   };
@@ -104,7 +98,6 @@ class Calendar extends React.Component {
   }
 
   createEvent() {
-    debugger
     if (this.props.events.length > 0) {
       return this.props.events.map(event => (
         <li>
@@ -136,7 +129,6 @@ class Calendar extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <>
         {this.state.sign ? (
