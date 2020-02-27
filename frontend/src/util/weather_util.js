@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export const weather = coords => {
-  return axios.get('api/weather', coords);
+  debugger
+  return axios.post('api/weather', coords[0]);
     // .then(function(response) {
     //   debugger
     //   console.log(response);

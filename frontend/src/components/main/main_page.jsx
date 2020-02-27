@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Transit from "../transit/transit_container";
 import Modal, { ModalContext } from "../modal/modal";
-import WeatherContainer from "../weather/weather_container";
+import SignUpFormContainer from "../session/signup_form_container";
 import EditFormContainer from "../session/edit_form_container";
+import WeatherContainer from "../weather/weather_container";
 
 function ToggleModalButton() {
   return (
