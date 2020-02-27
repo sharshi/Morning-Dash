@@ -6,7 +6,7 @@ class EditForm extends React.Component {
     super(props);
     this.state = this.props.user
 
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
   }
 
@@ -38,15 +38,16 @@ class EditForm extends React.Component {
       departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10))
     };
 
-    this.props.login(user, this.props.history); 
+    this.props.update(user); 
   }
 
   renderErrors() {
+    const { errors = {} } = this.props;
     return (
       <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
+        {Object.keys( errors ).map((error, i) => (
           <li className="form-error" key={`error-${i}`}>
-            {this.state.errors[error]}
+            {errors[error]}
           </li>
         ))}
       </ul>
@@ -168,7 +169,7 @@ class EditForm extends React.Component {
               <input
                 className="submit-register-form-button"
                 type="submit"
-                value="Sign up!"
+                value="Edit!"
               />
               {this.renderErrors()}
             </div>

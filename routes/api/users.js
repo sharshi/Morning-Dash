@@ -44,9 +44,6 @@ router.post('/register', (req, res) => {
             .save()
             .then(user => {
               const payload = { id: user.id, handle: user.handle };
-              
-              debugger
-
               jwt.sign(
                 payload,
                 keys.secretOrKey,
@@ -96,7 +93,16 @@ router.post('/login', (req, res) => {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            const payload = { id: user.id, handle: user.handle };
+            const payload = {
+              id: user._id,
+              handle: user.handle,
+              email: user.email,
+              homeAddress: user.homeAddress,
+              workAddress: user.workAddress,
+              arriveToWorkBy: user.arriveToWorkBy,
+              departWorkBy: user.departWorkBy,
+              coords: user.coords
+            };
 
             jwt.sign(
               payload,
@@ -166,7 +172,9 @@ router.route("/edit").post((req, res) => {
       arriveToWorkBy: req.body.arriveToWorkBy,
       departWorkBy: req.body.departWorkBy
     },
+    { new: true, projection: {password: 0}},
     function(err, result) {
+      
       if (err) {
         res.send(err);
       } else {

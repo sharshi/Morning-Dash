@@ -11,6 +11,7 @@ import Calendar from "./calendar/calendar_container";
 const App = () => (
   <section className="app-container">
     <Switch>
+      <ProtectedRoute exact path="/" component={MainPageContainer} />
       <AuthRoute exact path="/" component={MainPageContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
