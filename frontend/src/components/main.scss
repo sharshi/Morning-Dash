@@ -110,20 +110,32 @@ html {
   overflow-x: scroll;
   overflow-y: hidden;
 }
+.weather-current {
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.weather-current-temp {
+  font-size: 3rem;
+}
 
 .weather-timeblock {
   display: flex;
   flex-direction: column;
   min-width: 3rem;
+  text-align: center;
 }
 
 .weather-time-text {
-  font-size: 0.5rem;
+  font-size: 1rem;
 }
 
 .weather-logo {
   max-height: 10rem;
   max-width: 10rem;
+  min-height: 10rem;
+  min-width: 10rem;
 }
 
 .weather-clear {
