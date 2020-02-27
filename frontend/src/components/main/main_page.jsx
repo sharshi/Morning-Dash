@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+<<<<<<< Updated upstream
 import Transit from '../transit/transit_container'
+=======
+import Transit from "../transit/transit_container";
+import Modal, { ModalContext } from "../modal/modal";
+import SignUpFormContainer from "../session/signup_form_container";
+>>>>>>> Stashed changes
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +24,7 @@ class MainPage extends React.Component {
       <div className="main-page-container">
         <div className="main-page-nav-bar">
           <Link to={`/`}>Morning Dash</Link>
+<<<<<<< Updated upstream
           {this.props.loggedIn ? (
             <div
               className={
@@ -36,6 +43,36 @@ class MainPage extends React.Component {
               Login
             </Link>
           )}
+=======
+          <Modal>
+            <Modal.Content>
+              <ModalContext.Consumer>
+                {({ closeModal }) => (
+                  // <EditUserFormContainer closeModal={closeModal} />
+                  <SignUpFormContainer closeModal={closeModal} />
+                )}
+              </ModalContext.Consumer>
+            </Modal.Content>
+            {!this.props.loggedIn ? (
+              <Modal.OpenButton
+                className={
+                  this.state.settingsActive
+                    ? "change"
+                    : "settings-button-container"
+                }
+                onClick={this.toggleSettings}
+              >
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+              </Modal.OpenButton>
+            ) : (
+              <Link className="link-to-button-styling" to={"/login"}>
+                Login
+              </Link>
+            )}
+          </Modal>
+>>>>>>> Stashed changes
         </div>
         <div className="main-page-glance">
           <h1 className="welcome-message">Welcome Demo User!</h1>
