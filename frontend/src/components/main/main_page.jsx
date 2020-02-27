@@ -30,7 +30,7 @@ class MainPage extends React.Component {
   }
 
   render() {
-    const { loggedIn } = this.props;
+    const { loggedIn, user } = this.props;
     return (
       <div className="main-page-container">
         <div className="main-page-nav-bar">
@@ -49,18 +49,26 @@ class MainPage extends React.Component {
           )}
         </div>
         <div className="main-page-glance">
-          <h1 className="welcome-message">Welcome Demo User!</h1>
+          {loggedIn ? (
+            <h1 className="welcome-message">Welcome {user.handle}</h1>
+          ) : (
+            <h1 className="welcome-message">Welcome Demo User!</h1>
+          )}
 
-          <Link
-            className="link-to-button-styling main-signup-button"
-            to={`/signup`}
-          >
-            Sign Up
-          </Link>
+            {loggedIn ? (
+              null
+            ) : (
+            <Link
+              className="link-to-button-styling main-signup-button"
+              to={`/signup`}
+            >
+              Sign Up
+            </Link>
+            )}
 
             {loggedIn ? (
               <SummaryContainer/>
-            ):( 
+            ) : ( 
               <Fragment>
                 <div className="glance-summary">
                   <div className="glance-summary-item">
