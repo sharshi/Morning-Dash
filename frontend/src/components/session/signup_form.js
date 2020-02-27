@@ -195,8 +195,6 @@ class SignupForm extends React.Component {
             </div>
           </form>
         </div>
-
-        <GoogleLogin/>
       </div>
     );
   }

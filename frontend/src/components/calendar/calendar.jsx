@@ -117,7 +117,7 @@ class Calendar extends React.Component {
             </ul>
           </div>
         ) : (
-          <div></div>
+          <button onClick={this.handleAuthClick}>Connect your Google calendar</button>
         )}
       </>
     );

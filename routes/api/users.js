@@ -140,7 +140,7 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 //   }
 // );
 
-router.route("/:id").post(function(req, res) {
+router.route("/edit").post(function(req, res) {
   User.findByIdAndUpdate(
     { _id: req.params.id },
     {

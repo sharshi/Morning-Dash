@@ -4,21 +4,19 @@ import GoogleLogin from "./google_login";
 class EditForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-        user: this.props.user
-    };
+    this.state = this.props.user
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.signedIn === true) {
-      this.props.history.push("/login");
-    }
+//   componentWillReceiveProps(nextProps) {
+//     if (nextProps.signedIn === true) {
+//       this.props.history.push("/login");
+//     }
 
-    this.setState({ errors: nextProps.errors });
-  }
+//     this.setState({ errors: nextProps.errors });
+//   }
 
   update(field) {
     return e =>
@@ -40,7 +38,7 @@ class EditForm extends React.Component {
       departWorkBy: this.state.departWorkBy
     };
 
-    this.props.signup(user, this.props.history);
+    // this.props.signup(user, this.props.history); change the method to edit
   }
 
   renderErrors() {
@@ -82,13 +80,13 @@ class EditForm extends React.Component {
     let ac2 = new google.maps.places.Autocomplete(inputWork, {
       types: ["geocode"]
     });
-    google.maps.event.addListener(ac, "home_changed", () => {
+    google.maps.event.addListener(ac, "place_changed", () => {
       let home = ac.getPlace();
       if (home) {
         this.setState({ homeAddress: home.formatted_address });
       }
     });
-    google.maps.event.addListener(ac2, "work_changed", () => {
+    google.maps.event.addListener(ac2, "place_changed", () => {
       let work = ac2.getPlace();
       if (work) {
         this.setState({ workAddress: work.formatted_address });
@@ -183,8 +181,6 @@ class EditForm extends React.Component {
             </div>
           </form>
         </div>
-
-        <GoogleLogin />
       </div>
     );
   }
