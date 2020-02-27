@@ -110,20 +110,39 @@ html {
   overflow-x: scroll;
   overflow-y: hidden;
 }
+.weather-current {
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.weather-current-temp {
+  font-size: 3rem;
+}
 
 .weather-timeblock {
   display: flex;
   flex-direction: column;
   min-width: 3rem;
+  text-align: center;
 }
 
 .weather-time-text {
-  font-size: 0.5rem;
+  font-size: 1rem;
 }
 
 .weather-logo {
   max-height: 10rem;
   max-width: 10rem;
+  min-height: 10rem;
+  min-width: 10rem;
+}
+
+.weather-clear {
+  background-color: #EEEEF5;
+  color: #EEEEF5;
+  height: 100%;
+  width: 100%;
 }
 
 .weather-cloudy {
@@ -133,9 +152,44 @@ html {
   width: 100%;
 }
 
-.weather-raining {
+.weather-partlycloudy {
+  background-color: #D5DAE2;
+  color: #D5DAE2;
+  height: 100%;
+  width: 100%;
+}
+
+.weather-rain {
   background-color: lightblue;
   color: lightblue;
+  height: 100%;
+  width: 100%;
+}
+
+.weather-sleet {
+  background-color: rgb(155, 150, 190);
+  color: rgb(155, 150, 190);
+  height: 100%;
+  width: 100%;
+}
+
+.weather-snow {
+  background-color: #ABA4DB;
+  color: #ABA4DB;
+  height: 100%;
+  width: 100%;
+}
+
+.weather-unknown {
+  background-color: #EEEEF5;
+  color: #EEEEF5;
+  height: 100%;
+  width: 100%;
+}
+
+.weather-fog {
+  background-color: #D5DAE2;
+  color: #D5DAE2;
   height: 100%;
   width: 100%;
 }

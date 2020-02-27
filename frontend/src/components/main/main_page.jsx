@@ -4,6 +4,7 @@ import Transit from "../transit/transit_container";
 import Modal, { ModalContext } from "../modal/modal";
 import SignUpFormContainer from "../session/signup_form_container";
 import EditFormContainer from "../session/edit_form_container";
+import WeatherContainer from "../weather/weather_container";
 
 function ToggleModalButton() {
   return (
@@ -63,13 +64,13 @@ class MainPage extends React.Component {
             </div>
             <div className="glance-summary-item"> 3 events today.</div>
           </div>
-
+        </div>
+        <div className="api-container">
+            <WeatherContainer/>
           <img
             className="weather-logo"
             src="https://peter.build/weather-underground-icons/dist/icons/white/svg/mostlysunny.svg"
           />
-        </div>
-        <div className="api-container">
           <div className="weather-slider">
             <ul className="weather-timeline">
               <li className="weather-timeblock">
@@ -81,11 +82,11 @@ class MainPage extends React.Component {
                 <div className="weather-time-text">9am</div>
               </li>
               <li className="weather-timeblock">
-                <div className="weather-raining"></div>
+                <div className="weather-rain"></div>
                 <div className="weather-time-text">11am</div>
               </li>
               <li className="weather-timeblock">
-                <div className="weather-raining"></div>
+                <div className="weather-rain"></div>
                 <div className="weather-time-text">1pm</div>
               </li>
               <li className="weather-timeblock">
