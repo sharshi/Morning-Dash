@@ -49,3 +49,14 @@ export const logout = () => dispatch => {
   APIUtil.setAuthToken(false);
   dispatch(logoutUser());
 };
+
+// export const update = user => dispatch => {
+//   return APIUtil.update(user).then(res)
+// }
+
+export const update = user => dispatch => {
+  return APIUtil.update(user).then(
+    res => dispatch(receiveCurrentUser(res.data)),
+    err => dispatch(receiveErrors(err.response.data))
+  );
+};
