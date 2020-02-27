@@ -196,7 +196,7 @@ class SignupForm extends React.Component {
           </form>
         </div>
 
-        <Calendar/>
+        <GoogleLogin/>
       </div>
     );
   }
