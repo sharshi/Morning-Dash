@@ -50,7 +50,7 @@ class EditForm extends React.Component {
       departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10))
     };
 
-    this.props.update(user); 
+    // this.props.update(user); 
   }
 
   renderErrors() {
