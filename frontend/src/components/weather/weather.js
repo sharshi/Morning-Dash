@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class Weather extends React.Component {
   constructor(props) {
@@ -7,23 +7,28 @@ class Weather extends React.Component {
   }
 
   componentWillMount() {
-    this.props.fetchWeather(this.props.coords)
+    this.props.fetchWeather(this.props.coords);
   }
-  
-  render(){
+
+  render() {
     const { fetchWeather, weather } = this.props;
     let weatherInfo = weather.data;
 
     if (weatherInfo) {
-      weatherInfo = weatherInfo.data
+      weatherInfo = weatherInfo.data;
+    } else {
+      return <div></div>;
     }
 
-
-    return(
+    return (
       <div>
-      
-        <img 
-          
+        <div>{weatherInfo.currently.temperature}</div>
+        <img
+          src={
+            `https://peter.build/weather-underground-icons/dist/icons/white/svg/` +
+            weatherInfo.currently.icon +
+            `.svg`
+          }
         />
         <ul>
           <ul>1</ul>
@@ -41,9 +46,8 @@ class Weather extends React.Component {
           <ul>13</ul>
         </ul>
       </div>
-    )
+    );
   }
-
 }
 
 export default Weather;
