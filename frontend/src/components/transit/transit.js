@@ -46,7 +46,7 @@ class Transit extends React.Component {
           };
         });
         const departureTime = response.routes[0].legs[0].departure_time.text;
-        this.props.transit({ morning: { departureTime, res } });
+        this.props.transit({ morning: { departureTime, response } });
       }
     });
   }
