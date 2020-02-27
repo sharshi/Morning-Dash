@@ -1,5 +1,5 @@
 import React from 'react';
-import * as APIUtil from "../../util/google_api_util";
+import { Link } from "react-router-dom";
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -100,28 +100,7 @@ class Calendar extends React.Component {
   createEvent() {
     if (this.props.events.length > 0) {
       return this.props.events.map(event => (
-        <li>
-          <ul>
-            <li>
-              <p>{event.summary}</p>
-            </li>
-            <li>
-              <a href={event.htmlLink}></a>
-            </li>
-            <li>
-              <p>{event.description}</p>
-            </li>
-            <li>
-              <p>{event.location}</p>
-            </li>
-            <li>
-              <p>{event.start.dateTime}</p>
-            </li>
-            <li>
-              <p>{event.end.dateTime}</p>
-            </li>
-          </ul>
-        </li>
+        <Link to={event.htmlLink}>{`${event.start.dateTime.slice(11, 16) || event.start.date} - ${event.summary}`}</Link>
       ));
     } else {
       return "";
@@ -132,9 +111,13 @@ class Calendar extends React.Component {
     return (
       <>
         {this.state.sign ? (
-          <ul>{this.createEvent()}</ul>
+          <div className="calendar-events-summary">
+            <ul className="calendar-event-items">
+              {this.createEvent()}
+            </ul>
+          </div>
         ) : (
-          <button onClick={this.handleAuthClick}>sign in with google</button>
+          <div></div>
         )}
       </>
     );

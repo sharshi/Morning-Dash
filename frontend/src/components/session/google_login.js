@@ -1,16 +1,20 @@
 import React from "react";
+import * as APIUtil from '../../util/google_api_util';
 
 class GoogleLogin extends React.Component {
   constructor(props) {
     super(props);
     this.handleAuthClick = this.handleAuthClick.bind(this);
+    this.buttonRender = this.buttonRender.bind(this);
+
+    this.state = { isSigned: false }
   }
 
-// for fetching loggedIn status in session I think we can use - 
-
-// window.gapi.auth2
-//         .getAuthInstance()
-//         .isSignedIn.G3.value
+componentDidMount() {
+  if (!window.gapi) {
+    APIUtil.handleClientLoad();
+  }
+}
 
 
 handleAuthClick() {
@@ -18,8 +22,8 @@ handleAuthClick() {
     window.gapi.auth2
       .getAuthInstance()
       .signIn()
-      .then(function() {
-        console.log("User signed in.");
+      .then(() => {
+        this.setState({ isSigned: window.gapi.auth2.getAuthInstance().isSignedIn.get() } )
       })
       .catch(function(e) {
         console.log(e);
@@ -29,12 +33,20 @@ handleAuthClick() {
   }
 }
 
+buttonRender() {
+  if (window.gapi && this.state.isSigned) {
+    return(
+      <div>
+        singed in successfully
+      </div>
+    )
+  } else {
+    return <button onClick={this.handleAuthClick}>sign in to google</button>;
+  }
+}
+
   render() {
-    return (
-      <>
-        <button onClick={this.handleAuthClick}>sign in</button>
-      </>
-    );
+    return <>{this.buttonRender()}</>;
   }
 }
 

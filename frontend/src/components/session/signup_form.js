@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import Calendar from "../calendar/calendar_container";
+import GoogleLogin from "./google_login";
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -195,7 +196,7 @@ class SignupForm extends React.Component {
           </form>
         </div>
 
-        <Calendar />
+        <Calendar/>
       </div>
     );
   }
