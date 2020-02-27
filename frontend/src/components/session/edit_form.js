@@ -35,6 +35,7 @@ class EditForm extends React.Component {
       password2: this.state.password2,
       homeAddress: this.state.homeAddress,
       workAddress: this.state.workAddress,
+      coords: this.state.coords,
       arriveToWorkBy: this.state.arriveToWorkBy.split(":").map(num => parseInt(num, 10)),
       departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10))
     };
@@ -83,13 +84,20 @@ class EditForm extends React.Component {
     });
     google.maps.event.addListener(ac, "place_changed", () => {
       let home = ac.getPlace();
+      
       if (home) {
+        const lat = home.geometry.location.lat()
+        const lng = home.geometry.location.lng()
         this.setState({ homeAddress: home.formatted_address });
+        this.setState({ coords: [lat, lng] });
       }
     });
     google.maps.event.addListener(ac2, "place_changed", () => {
       let work = ac2.getPlace();
+      
       if (work) {
+        const lat = work.geometry.location.lat()
+        const lng = work.geometry.location.lng()
         this.setState({ workAddress: work.formatted_address });
       }
     });
