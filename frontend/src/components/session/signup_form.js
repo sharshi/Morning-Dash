@@ -12,8 +12,8 @@ class SignupForm extends React.Component {
       password2: "",
       homeAddress: "",
       workAddress: "",
-      arriveToWorkBy: "",
-      departWorkBy: "",
+      arriveToWorkBy: "09:00",
+      departWorkBy: "17:00",
       errors: {}
     };
 
@@ -37,6 +37,7 @@ class SignupForm extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     let user = {
       email: this.state.email,
@@ -45,10 +46,10 @@ class SignupForm extends React.Component {
       password2: this.state.password2,
       homeAddress: this.state.homeAddress,
       workAddress: this.state.workAddress,
-      arriveToWorkBy: this.state.arriveToWorkBy,
-      departWorkBy: this.state.departWorkBy
+      arriveToWorkBy: this.state.arriveToWorkBy.split(":").map(num => parseInt(num, 10)),
+      departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10)),
     };
-
+    debugger
     this.props.signup(user, this.props.history);
   }
 
@@ -94,13 +95,13 @@ class SignupForm extends React.Component {
     let ac2 = new google.maps.places.Autocomplete(inputWork, {
       types: ["geocode"]
     });
-    google.maps.event.addListener(ac, "home_changed", () => {
+    google.maps.event.addListener(ac, "place_changed", () => {
       let home = ac.getPlace();
       if (home) {
         this.setState({ homeAddress: home.formatted_address });
       }
     });
-    google.maps.event.addListener(ac2, "work_changed", () => {
+    google.maps.event.addListener(ac2, "place_changed", () => {
       let work = ac2.getPlace();
       if (work) {
         this.setState({ workAddress: work.formatted_address });
