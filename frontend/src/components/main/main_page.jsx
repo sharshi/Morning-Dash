@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Transit from "../transit/transit_container";
 import Modal, { ModalContext } from "../modal/modal";
-import WeatherContainer from "../weather/weather_container";
 import EditFormContainer from "../session/edit_form_container";
 import { Fragment } from "react";
 import CalendarContainer from "../calendar/calendar_container";
+import WeatherContainer from "../weather/weather_container";
+
 function ToggleModalButton() {
   return (
     <ModalContext.Consumer>

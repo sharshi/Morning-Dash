@@ -5,7 +5,7 @@ import { fetchWeather } from "../../actions/weather_actions";
 const mapStateToProps = state => {
   return {
     weather: state.entities.weather,
-    coords: [state.session.user.homeAddress] // reverse geocode address into lat/long
+    coords: [state.session.user.coords] // reverse geocode address into lat/long
   };
 };
 
