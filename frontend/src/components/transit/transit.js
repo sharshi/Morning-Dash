@@ -66,7 +66,6 @@ class Transit extends React.Component {
 
   render() {
     const { transitInfo } = this.props;
-    debugger;
     let result = [];
     if (transitInfo.morning) {
       if (

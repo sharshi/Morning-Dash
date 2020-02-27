@@ -6,6 +6,7 @@ import EditFormContainer from "../session/edit_form_container";
 import { Fragment } from "react";
 import CalendarContainer from "../calendar/calendar_container";
 import WeatherContainer from "../weather/weather_container";
+import SummaryContainer from "../summary/summary_container";
 
 function ToggleModalButton() {
   return (
@@ -29,7 +30,7 @@ class MainPage extends React.Component {
   }
 
   render() {
-    const { loggedIn } = this.props;
+    const { loggedIn, user } = this.props;
     return (
       <div className="main-page-container">
         <div className="main-page-nav-bar">
@@ -48,24 +49,38 @@ class MainPage extends React.Component {
           )}
         </div>
         <div className="main-page-glance">
-          <h1 className="welcome-message">Welcome Demo User!</h1>
+          {loggedIn ? (
+            <h1 className="welcome-message">Welcome {user.handle}</h1>
+          ) : (
+            <h1 className="welcome-message">Welcome Demo User!</h1>
+          )}
 
-          <Link
-            className="link-to-button-styling main-signup-button"
-            to={`/signup`}
-          >
-            Sign Up
-          </Link>
+            {loggedIn ? (
+              null
+            ) : (
+            <Link
+              className="link-to-button-styling main-signup-button"
+              to={`/signup`}
+            >
+              Sign Up
+            </Link>
+            )}
 
-          <div className="glance-summary">
-            <div className="glance-summary-item">
-              Mostly sunny. No rain today.
-            </div>
-            <div className="glance-summary-item">
-              Leave at 8:22 AM for work.
-            </div>
-            <div className="glance-summary-item"> 3 events today.</div>
-          </div>
+            {loggedIn ? (
+              <SummaryContainer/>
+            ) : ( 
+              <Fragment>
+                <div className="glance-summary">
+                  <div className="glance-summary-item">
+                    Mostly sunny. No rain today.
+                  </div>
+                  <div className="glance-summary-item">
+                    Leave at 8:22 AM for work.
+                  </div>
+                  <div className="glance-summary-item"> 3 events today.</div>
+                </div>
+              </Fragment>
+            )}
         </div>
         <div className="api-container">
           {loggedIn ? (
