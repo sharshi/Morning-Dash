@@ -17,11 +17,11 @@ class Weather extends React.Component {
     if (weatherInfo) {
       weatherInfo = weatherInfo.data
     }
-    
-    debugger
+
 
     return(
       <div>
+      
         <img 
           
         />
