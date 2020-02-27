@@ -11,7 +11,6 @@ const keys = require('../../config/keys');
 const User = require('../../models/User');
 
 router.post('/register', (req, res) => {
-  debugger
   const { errors, isValid } = validateRegisterInput(req.body);
   console.log(req.body);
   if (!isValid) {
@@ -33,9 +32,10 @@ router.post('/register', (req, res) => {
         homeAddress: req.body.homeAddress,
         workAddress: req.body.workAddress,
         arriveToWorkBy: req.body.arriveToWorkBy,
-        departWorkBy: req.body.departWorkBy
+        departWorkBy: req.body.departWorkBy,
+        coords: req.body.coords
       })
-      debugger
+
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;

@@ -30,6 +30,10 @@ const UserSchema = new Schema({
     type: Number,
     required: true
   }],
+  coords: [{
+    type: Number,
+    required: true
+  }],
   date: {
     type: Date,
     default: Date.now
