@@ -44,6 +44,8 @@ router.post('/register', (req, res) => {
             .save()
             .then(user => {
               const payload = { id: user.id, handle: user.handle };
+              
+              debugger
 
               jwt.sign(
                 payload,
@@ -52,7 +54,17 @@ router.post('/register', (req, res) => {
                 (err, token) => {
                   res.json({
                     success: true,
-                    token: "Bearer " + token
+                    token: "Bearer " + token,
+                    user: {
+                      id: user._id,
+                      handle: user.handle,
+                      email: user.email,
+                      homeAddress: user.homeAddress,
+                      workAddress: user.workAddress,
+                      arriveToWorkBy: user.arriveToWorkBy,
+                      departWorkBy: user.departWorkBy,
+                      coords: user.coords 
+                    }
                   });
                 }
               );
