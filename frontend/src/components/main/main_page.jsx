@@ -6,6 +6,7 @@ import EditFormContainer from "../session/edit_form_container";
 import { Fragment } from "react";
 import CalendarContainer from "../calendar/calendar_container";
 import WeatherContainer from "../weather/weather_container";
+import SummaryContainer from "../summary/summary_container";
 
 function ToggleModalButton() {
   return (
@@ -57,15 +58,21 @@ class MainPage extends React.Component {
             Sign Up
           </Link>
 
-          <div className="glance-summary">
-            <div className="glance-summary-item">
-              Mostly sunny. No rain today.
-            </div>
-            <div className="glance-summary-item">
-              Leave at 8:22 AM for work.
-            </div>
-            <div className="glance-summary-item"> 3 events today.</div>
-          </div>
+            {loggedIn ? (
+              <SummaryContainer/>
+            ):( 
+              <Fragment>
+                <div className="glance-summary">
+                  <div className="glance-summary-item">
+                    Mostly sunny. No rain today.
+                  </div>
+                  <div className="glance-summary-item">
+                    Leave at 8:22 AM for work.
+                  </div>
+                  <div className="glance-summary-item"> 3 events today.</div>
+                </div>
+              </Fragment>
+            )}
         </div>
         <div className="api-container">
           {loggedIn ? (

@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import Summary from "./summary";
 
-mapStateToProps = ({ entities }) => {
+const mapStateToProps = ({ entities }) => {
     return {
-        weather: state.entities,
-        transit: state.transit,
-        events: state.events
+        weather: entities.weather,
+        transit: entities.transit,
+        events: entities.events
     };
 };
 
