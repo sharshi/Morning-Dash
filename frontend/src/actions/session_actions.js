@@ -52,6 +52,10 @@ export const logout = () => dispatch => {
 };
 
 // export const update = user => dispatch => {
+//   return APIUtil.update(user).then(res)
+// }
+
+// export const update = user => dispatch => {
 //   return APIUtil.update(user).then(
 //     () => dispatch(receiveCurrentUser()),
 //     err => dispatch(receiveErrors(err.response.data))

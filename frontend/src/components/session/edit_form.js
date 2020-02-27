@@ -31,8 +31,6 @@ class EditForm extends React.Component {
       id: this.state.id,
       email: this.state.email,
       handle: this.state.handle,
-      password: this.state.password,
-      password2: this.state.password2,
       homeAddress: this.state.homeAddress,
       workAddress: this.state.workAddress,
       coords: this.state.coords,
@@ -128,20 +126,6 @@ class EditForm extends React.Component {
                 value={this.state.handle}
                 onChange={this.update("handle")}
                 placeholder="Handle"
-              />
-              <br />
-              <input
-                type="password"
-                value={this.state.password}
-                onChange={this.update("password")}
-                placeholder="Password"
-              />
-              <br />
-              <input
-                type="password"
-                value={this.state.password2}
-                onChange={this.update("password2")}
-                placeholder="Confirm Password"
               />
               <br />
               <input

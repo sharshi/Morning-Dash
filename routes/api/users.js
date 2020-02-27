@@ -154,18 +154,18 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 //   }
 // );
 
-router.route("/edit").post(function(req, res) {
+router.route("/edit").post((req, res) => {
   User.findByIdAndUpdate(
     { _id: req.body.id },
     {
-        handle: req.body.handle,
-        email: req.body.email,
-        password: req.body.password,
-        homeAddress: req.body.homeAddress,
-        workAddress: req.body.workAddress,
-        arriveToWorkBy: req.body.arriveToWorkBy,
-        departWorkBy: req.body.departWorkBy
-      },
+      handle: req.body.handle,
+      email: req.body.email,
+      homeAddress: req.body.homeAddress,
+      workAddress: req.body.workAddress,
+      coords: req.body.coords,
+      arriveToWorkBy: req.body.arriveToWorkBy,
+      departWorkBy: req.body.departWorkBy
+    },
     function(err, result) {
       if (err) {
         res.send(err);
