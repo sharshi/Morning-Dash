@@ -4,16 +4,37 @@ class Weather extends React.Component {
   constructor(props) {
     super(props);
     // this.state = this.props
+
+    this.convertTime = this.convertTime.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchWeather(this.props.coords);
   }
 
+  convertTime(time) {
+    const date = new Date(time * 1000);
+    const hours = date.getHours();
+    debugger
+
+    if (hours === 0) {
+      return "12am";
+    } else if (hours < 12) {
+      return hours + "am";
+    } else if (hours === 12) {
+      return "12pm"
+    } else {
+      return (hours - 12) + "pm";
+    }
+  }
+
   render() {
-    const { fetchWeather, weather } = this.props;
+    const { weather } = this.props;
     let weatherInfo = weather.data;
     let icon;
+    const hourly = [];
+    const degrees = 	" \u00B0F"
+    
     if (weatherInfo) {
       weatherInfo = weatherInfo.data;
     } else {
@@ -55,32 +76,42 @@ class Weather extends React.Component {
         break;
     }
 
+    // for (let i = 0; i < weatherInfo.hourly.data.length; i += 2) {
+    //   const hour = weatherInfo.hourly.data[i];
+    //   hourly.push(hour);
+    // }
+    let i = 0
+    while (hourly.length < 12) {
+      const hour = weatherInfo.hourly.data[i];
+      hourly.push(hour);
+
+      i += 2;
+    }
+
+    debugger
     return (
-      <div>
-        <div>{weatherInfo.currently.temperature}</div>
-        <img
+      <>
+        <div>{Math.round(weatherInfo.currently.temperature)}{degrees}</div>
+        <img className="weather-logo"
+          alt={icon}
           src={
             `https://peter.build/weather-underground-icons/dist/icons/white/svg/` +
             icon +
             `.svg`
           }
         />
-        <ul>
-          <ul>1</ul>
-          <ul>2</ul>
-          <ul>3</ul>
-          <ul>4</ul>
-          <ul>5</ul>
-          <ul>6</ul>
-          <ul>7</ul>
-          <ul>8</ul>
-          <ul>9</ul>
-          <ul>10</ul>
-          <ul>11</ul>
-          <ul>12</ul>
-          <ul>13</ul>
+        <div className="weather-slider">
+        <ul className="weather-timeline">
+          {hourly.map( hour => (
+            <li className="weather-timeblock" key={hour.time}>
+              <div className="weather-raining">.</div>
+          <div className="weather-time-text">{this.convertTime(hour.time)}</div>
+              {Math.round(hour.temperature)+degrees}
+            </li>
+          ))}
         </ul>
-      </div>
+        </div>
+      </>
     );
   }
 }
