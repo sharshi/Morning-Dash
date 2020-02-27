@@ -151,9 +151,9 @@ class MainPage extends React.Component {
           )}
           <div className="commute-summary">
             <div className="commute-summary-item">
-              Leave at 8:22 AM for work.
+              {loggedIn ? <Transit /> : "Leave at 8:22 AM for work."}
             </div>
-            <Transit />
+
             <div className="commute-summary-item"></div>
           </div>
           {loggedIn ? (
