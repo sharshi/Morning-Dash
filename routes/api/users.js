@@ -11,12 +11,13 @@ const keys = require('../../config/keys');
 const User = require('../../models/User');
 
 router.post('/register', (req, res) => {
+  debugger
   const { errors, isValid } = validateRegisterInput(req.body);
-  
+  console.log(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  
+  // console.log(req.body);
   User.findOne({ email: req.body.email })
   .then(user => {
     if (user) {
@@ -24,6 +25,7 @@ router.post('/register', (req, res) => {
       errors.email = 'Email already exists';
       return res.status(400).json(errors);
     } else {
+      // console.log(req.body)
       const newUser = new User({
         handle: req.body.handle,
         email: req.body.email,
@@ -33,7 +35,7 @@ router.post('/register', (req, res) => {
         arriveToWorkBy: req.body.arriveToWorkBy,
         departWorkBy: req.body.departWorkBy
       })
-
+      debugger
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
