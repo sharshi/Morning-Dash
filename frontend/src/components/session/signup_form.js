@@ -12,6 +12,7 @@ class SignupForm extends React.Component {
       password2: "",
       homeAddress: "",
       workAddress: "",
+      coords: [],
       arriveToWorkBy: "09:00",
       departWorkBy: "17:00",
       errors: {}
@@ -30,10 +31,11 @@ class SignupForm extends React.Component {
   }
 
   update(field) {
-    return e =>
+    return e => {
       this.setState({
         [field]: e.currentTarget.value
       });
+    }
   }
 
   handleSubmit(e) {
@@ -45,10 +47,11 @@ class SignupForm extends React.Component {
       password2: this.state.password2,
       homeAddress: this.state.homeAddress,
       workAddress: this.state.workAddress,
+      coords: this.state.coords,
       arriveToWorkBy: this.state.arriveToWorkBy.split(":").map(num => parseInt(num, 10)),
-      departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10))
+      departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10)),
     };
-
+    
     this.props.signup(user, this.props.history);
   }
 
@@ -65,7 +68,7 @@ class SignupForm extends React.Component {
   }
 
   componentDidMount() {
-      if (!window.google) {
+    if (!window.google) {
 
         let script = document.createElement("script");
         script.src =
@@ -94,15 +97,22 @@ class SignupForm extends React.Component {
     let ac2 = new google.maps.places.Autocomplete(inputWork, {
       types: ["geocode"]
     });
-    google.maps.event.addListener(ac, "home_changed", () => {
+    google.maps.event.addListener(ac, "place_changed", () => {
       let home = ac.getPlace();
+      
       if (home) {
+        const lat = home.geometry.location.lat()
+        const lng = home.geometry.location.lng()
         this.setState({ homeAddress: home.formatted_address });
+        this.setState({ coords: [lat, lng] });
       }
     });
-    google.maps.event.addListener(ac2, "work_changed", () => {
+    google.maps.event.addListener(ac2, "place_changed", () => {
       let work = ac2.getPlace();
+      
       if (work) {
+        const lat = work.geometry.location.lat()
+        const lng = work.geometry.location.lng()
         this.setState({ workAddress: work.formatted_address });
       }
     });
