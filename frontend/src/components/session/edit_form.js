@@ -34,8 +34,8 @@ class EditForm extends React.Component {
       password2: this.state.password2,
       homeAddress: this.state.homeAddress,
       workAddress: this.state.workAddress,
-      arriveToWorkBy: this.state.arriveToWorkBy,
-      departWorkBy: this.state.departWorkBy
+      arriveToWorkBy: this.state.arriveToWorkBy.split(":").map(num => parseInt(num, 10)),
+      departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10))
     };
 
     // this.props.signup(user, this.props.history); change the method to edit
