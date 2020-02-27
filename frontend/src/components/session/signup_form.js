@@ -35,7 +35,7 @@ class SignupForm extends React.Component {
       this.setState({
         [field]: e.currentTarget.value
       });
-    }
+    };
   }
 
   handleSubmit(e) {
@@ -48,10 +48,14 @@ class SignupForm extends React.Component {
       homeAddress: this.state.homeAddress,
       workAddress: this.state.workAddress,
       coords: this.state.coords,
-      arriveToWorkBy: this.state.arriveToWorkBy.split(":").map(num => parseInt(num, 10)),
-      departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10)),
+      arriveToWorkBy: this.state.arriveToWorkBy
+        .split(":")
+        .map(num => parseInt(num, 10)),
+      departWorkBy: this.state.departWorkBy
+        .split(":")
+        .map(num => parseInt(num, 10))
     };
-    
+
     this.props.signup(user, this.props.history);
   }
 
@@ -69,26 +73,23 @@ class SignupForm extends React.Component {
 
   componentDidMount() {
     if (!window.google) {
-
-        let script = document.createElement("script");
-        script.src =
-          "https://maps.googleapis.com/maps/api/js?key=AIzaSyBP6IoBy5dAgF1Y5Tx2c0otAHiDxdPtBlc&libraries=places";
-        document.body.appendChild(script);
-        script.onload = () => {
-          this.handleScriptLoad();
-        };
-      } else {
+      let script = document.createElement("script");
+      script.src =
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyBP6IoBy5dAgF1Y5Tx2c0otAHiDxdPtBlc&libraries=places";
+      document.body.appendChild(script);
+      script.onload = () => {
         this.handleScriptLoad();
-      }
-
+      };
+    } else {
+      this.handleScriptLoad();
+    }
   }
 
   handleScriptLoad() {
     /* global google */
-    
+
     let inputHome = document.getElementById("autocompleteHome");
     let inputWork = document.getElementById("autocompleteWork");
-
 
     let ac = new google.maps.places.Autocomplete(inputHome, {
       types: ["geocode"]
@@ -99,20 +100,20 @@ class SignupForm extends React.Component {
     });
     google.maps.event.addListener(ac, "place_changed", () => {
       let home = ac.getPlace();
-      
+
       if (home) {
-        const lat = home.geometry.location.lat()
-        const lng = home.geometry.location.lng()
+        const lat = home.geometry.location.lat();
+        const lng = home.geometry.location.lng();
         this.setState({ homeAddress: home.formatted_address });
         this.setState({ coords: [lat, lng] });
       }
     });
     google.maps.event.addListener(ac2, "place_changed", () => {
       let work = ac2.getPlace();
-      
+
       if (work) {
-        const lat = work.geometry.location.lat()
-        const lng = work.geometry.location.lng()
+        const lat = work.geometry.location.lat();
+        const lng = work.geometry.location.lng();
         this.setState({ workAddress: work.formatted_address });
       }
     });
@@ -132,6 +133,7 @@ class SignupForm extends React.Component {
             <div className="session-form">
               <br />
               <input
+                required
                 type="text"
                 value={this.state.email}
                 onChange={this.update("email")}
@@ -139,6 +141,7 @@ class SignupForm extends React.Component {
               />
               <br />
               <input
+                required
                 type="text"
                 value={this.state.handle}
                 onChange={this.update("handle")}
@@ -146,6 +149,7 @@ class SignupForm extends React.Component {
               />
               <br />
               <input
+                required
                 type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
@@ -153,6 +157,7 @@ class SignupForm extends React.Component {
               />
               <br />
               <input
+                required
                 type="password"
                 value={this.state.password2}
                 onChange={this.update("password2")}
@@ -160,6 +165,7 @@ class SignupForm extends React.Component {
               />
               <br />
               <input
+                required
                 type="text"
                 value={this.state.homeAddress}
                 id="autocompleteHome"
@@ -169,6 +175,7 @@ class SignupForm extends React.Component {
               <br />
               <input
                 type="text"
+                required
                 id="autocompleteWork"
                 value={this.state.workAddress}
                 onChange={this.update("workAddress")}
@@ -206,7 +213,7 @@ class SignupForm extends React.Component {
           </form>
         </div>
 
-        <GoogleLogin/>
+        <GoogleLogin />
       </div>
     );
   }
