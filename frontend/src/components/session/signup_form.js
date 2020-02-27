@@ -98,6 +98,7 @@ class SignupForm extends React.Component {
     });
     google.maps.event.addListener(ac, "place_changed", () => {
       let home = ac.getPlace();
+      debugger
       if (home) {
         this.setState({ homeAddress: home.formatted_address });
       }

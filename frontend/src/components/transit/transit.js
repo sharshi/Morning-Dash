@@ -8,15 +8,22 @@ class Transit extends React.Component {
   }
 
   componentDidMount() {
-    const { homeAddress, workAddress } = this.props.settings;
-    let script = document.createElement("script");
-    script.src =
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyBP6IoBy5dAgF1Y5Tx2c0otAHiDxdPtBlc";
-    document.body.appendChild(script);
-    script.onload = () => {
-      
-        this.fetchRoute();
-      }
+    // grab settings 
+    const { homeAddress, workAddress, arriveToWorkBy, departWorkBy } = this.props.settings;
+
+    if (!window.google) {
+      let script = document.createElement("script");
+      script.src =
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyBP6IoBy5dAgF1Y5Tx2c0otAHiDxdPtBlc";
+      document.body.appendChild(script);
+      script.onload = () => {
+        
+          this.fetchRoute();
+        }
+    } else {
+      this.fetchRoute();
+    }
+
   }
 
   fetchRoute() {
