@@ -12,8 +12,8 @@ class SignupForm extends React.Component {
       password2: "",
       homeAddress: "",
       workAddress: "",
-      arriveToWorkBy: "",
-      departWorkBy: "",
+      arriveToWorkBy: "09:00",
+      departWorkBy: "17:00",
       errors: {}
     };
 
@@ -38,6 +38,7 @@ class SignupForm extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     let user = {
       email: this.state.email,
@@ -46,10 +47,10 @@ class SignupForm extends React.Component {
       password2: this.state.password2,
       homeAddress: this.state.homeAddress,
       workAddress: this.state.workAddress,
-      arriveToWorkBy: this.state.arriveToWorkBy,
-      departWorkBy: this.state.departWorkBy
+      arriveToWorkBy: this.state.arriveToWorkBy.split(":").map(num => parseInt(num, 10)),
+      departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10)),
     };
-
+    debugger
     this.props.signup(user, this.props.history);
   }
 
