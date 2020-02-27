@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ModalPortal from "./modal_portal";
 
 export const ModalContext = React.createContext();
@@ -26,6 +26,20 @@ const Content = ({ children, ...otherProps }) => (
     }}
   </ModalContext.Consumer>
 );
+
+const ToggleButton = ({ children, ...otherProps }) => {
+  return (
+    <ModalContext.Consumer>
+      {({ toggleModal }) => {
+        return (
+          <div onClick={toggleModal} {...otherProps}>
+            {children}
+          </div>
+        );
+      }}
+    </ModalContext.Consumer>
+  );
+};
 
 const CloseButton = ({ children, ...otherProps }) => (
   <ModalContext.Consumer>
@@ -72,7 +86,8 @@ class Modal extends React.Component {
         value={{
           isOpen: this.state.modalIsOpen,
           openModal: () => this.toggleModal(true),
-          closeModal: () => this.toggleModal(false)
+          closeModal: () => this.toggleModal(false),
+          toggleModal: () => this.toggleModal(!this.state.modalIsOpen)
         }}
       >
         {children}
@@ -83,6 +98,7 @@ class Modal extends React.Component {
 
 Modal.OpenButton = OpenButton;
 Modal.CloseButton = CloseButton;
+Modal.ToggleButton = ToggleButton;
 Modal.Content = Content;
 
 export default Modal;

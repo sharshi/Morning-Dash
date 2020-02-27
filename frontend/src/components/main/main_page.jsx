@@ -4,6 +4,22 @@ import Transit from "../transit/transit_container";
 import Modal, { ModalContext } from "../modal/modal";
 import SignUpFormContainer from "../session/signup_form_container";
 
+function ToggleModalButton() {
+  return (
+    <ModalContext.Consumer>
+      {({ isOpen }) => (
+        <Modal.ToggleButton
+          className={isOpen ? "change" : "settings-button-container"}
+        >
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </Modal.ToggleButton>
+      )}
+    </ModalContext.Consumer>
+  );
+}
+
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
@@ -19,23 +35,7 @@ class MainPage extends React.Component {
               <Modal.Content>
                 <SignUpFormContainer />
               </Modal.Content>
-              <ModalContext.Consumer>
-                {({ isOpen }) =>
-                  isOpen ? (
-                    <Modal.CloseButton className="change">
-                      <div class="bar1"></div>
-                      <div class="bar2"></div>
-                      <div class="bar3"></div>
-                    </Modal.CloseButton>
-                  ) : (
-                    <Modal.OpenButton className="settings-button-container">
-                      <div class="bar1"></div>
-                      <div class="bar2"></div>
-                      <div class="bar3"></div>
-                    </Modal.OpenButton>
-                  )
-                }
-              </ModalContext.Consumer>
+              <ToggleModalButton />
             </Modal>
           ) : (
             <Link className="link-to-button-styling" to={"/login"}>
