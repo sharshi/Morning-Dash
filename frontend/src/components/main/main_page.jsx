@@ -5,7 +5,7 @@ import Modal, { ModalContext } from "../modal/modal";
 import WeatherContainer from "../weather/weather_container";
 import EditFormContainer from "../session/edit_form_container";
 import { Fragment } from "react";
-
+import CalendarContainer from "../calendar/calendar_container";
 function ToggleModalButton() {
   return (
     <ModalContext.Consumer>
@@ -137,19 +137,20 @@ class MainPage extends React.Component {
             <div className="commute-summary-item">
               Leave at 8:22 AM for work.
             </div>
-            {/* <div className="commute-summary-item">Go home at 7:00 PM</div> */}
             <Transit />
-            <div className="commute-summary-item">
-              {/* Movie with Billy at 8:30 PM */}
+            <div className="commute-summary-item"></div>
+          </div>
+          {loggedIn ? (
+            <CalendarContainer className="link-to-button-styling" />
+          ) : (
+            <div className="calendar-events-summary">
+              <ul className="calendar-event-items">
+                <li>9:00 AM - Check in</li>
+                <li>1:30 PM - Check in</li>
+                <li>5:00 PM - Check in</li>
+              </ul>
             </div>
-          </div>
-          <div className="calendar-events-summary">
-            <ul className="calendar-event-items">
-              <li>9:00 AM - Check in</li>
-              <li>1:30 PM - Check in</li>
-              <li>5:00 PM - Check in</li>
-            </ul>
-          </div>
+          )}
         </div>
       </div>
     );
