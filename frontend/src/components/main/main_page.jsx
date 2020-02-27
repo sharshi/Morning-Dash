@@ -21,7 +21,6 @@ class MainPage extends React.Component {
       <div className="main-page-container">
         <div className="main-page-nav-bar">
           <Link to={`/`}>Morning Dash</Link>
-
           {!this.props.loggedIn ? (
             <Modal>
               <Modal.Content>
