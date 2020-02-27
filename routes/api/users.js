@@ -12,11 +12,11 @@ const User = require('../../models/User');
 
 router.post('/register', (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
-  
+  console.log(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  
+  // console.log(req.body);
   User.findOne({ email: req.body.email })
   .then(user => {
     if (user) {
@@ -24,6 +24,7 @@ router.post('/register', (req, res) => {
       errors.email = 'Email already exists';
       return res.status(400).json(errors);
     } else {
+      // console.log(req.body)
       const newUser = new User({
         handle: req.body.handle,
         email: req.body.email,
@@ -31,7 +32,8 @@ router.post('/register', (req, res) => {
         homeAddress: req.body.homeAddress,
         workAddress: req.body.workAddress,
         arriveToWorkBy: req.body.arriveToWorkBy,
-        departWorkBy: req.body.departWorkBy
+        departWorkBy: req.body.departWorkBy,
+        coords: req.body.coords
       })
 
       bcrypt.genSalt(10, (err, salt) => {
@@ -42,7 +44,6 @@ router.post('/register', (req, res) => {
             .save()
             .then(user => {
               const payload = { id: user.id, handle: user.handle };
-
               jwt.sign(
                 payload,
                 keys.secretOrKey,
@@ -50,7 +51,17 @@ router.post('/register', (req, res) => {
                 (err, token) => {
                   res.json({
                     success: true,
-                    token: "Bearer " + token
+                    token: "Bearer " + token,
+                    user: {
+                      id: user._id,
+                      handle: user.handle,
+                      email: user.email,
+                      homeAddress: user.homeAddress,
+                      workAddress: user.workAddress,
+                      arriveToWorkBy: user.arriveToWorkBy,
+                      departWorkBy: user.departWorkBy,
+                      coords: user.coords 
+                    }
                   });
                 }
               );
@@ -82,7 +93,16 @@ router.post('/login', (req, res) => {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            const payload = { id: user.id, handle: user.handle };
+            const payload = {
+              id: user._id,
+              handle: user.handle,
+              email: user.email,
+              homeAddress: user.homeAddress,
+              workAddress: user.workAddress,
+              arriveToWorkBy: user.arriveToWorkBy,
+              departWorkBy: user.departWorkBy,
+              coords: user.coords
+            };
 
             jwt.sign(
               payload,
@@ -140,19 +160,21 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 //   }
 // );
 
-router.route("/:id").post(function(req, res) {
+router.route("/edit").post((req, res) => {
   User.findByIdAndUpdate(
-    { _id: req.params.id },
+    { _id: req.body.id },
     {
-        handle: req.body.handle,
-        email: req.body.email,
-        password: req.body.password,
-        homeAddress: req.body.homeAddress,
-        workAddress: req.body.workAddress,
-        arriveToWorkBy: req.body.arriveToWorkBy,
-        departWorkBy: req.body.departWorkBy
-      },
+      handle: req.body.handle,
+      email: req.body.email,
+      homeAddress: req.body.homeAddress,
+      workAddress: req.body.workAddress,
+      coords: req.body.coords,
+      arriveToWorkBy: req.body.arriveToWorkBy,
+      departWorkBy: req.body.departWorkBy
+    },
+    { new: true, projection: {password: 0}},
     function(err, result) {
+      
       if (err) {
         res.send(err);
       } else {

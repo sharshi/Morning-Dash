@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Transit from "../transit/transit_container";
 import Modal, { ModalContext } from "../modal/modal";
-import SignUpFormContainer from "../session/signup_form_container";
 import WeatherContainer from "../weather/weather_container";
+import EditFormContainer from "../session/edit_form_container";
 
 function ToggleModalButton() {
   return (
@@ -34,7 +34,7 @@ class MainPage extends React.Component {
           {this.props.loggedIn ? (
             <Modal>
               <Modal.Content>
-                <SignUpFormContainer />
+                <EditFormContainer />
               </Modal.Content>
               <ToggleModalButton />
             </Modal>
