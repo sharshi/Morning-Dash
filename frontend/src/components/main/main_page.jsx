@@ -21,16 +21,18 @@ class MainPage extends React.Component {
       <div className="main-page-container">
         <div className="main-page-nav-bar">
           <Link to={`/`}>Morning Dash</Link>
-          <Modal>
-            <Modal.Content>
-              <ModalContext.Consumer>
-                {({ closeModal }) => (
-                  // <EditUserFormContainer closeModal={closeModal} />
-                  <SignUpFormContainer closeModal={closeModal} />
-                )}
-              </ModalContext.Consumer>
-            </Modal.Content>
-            {!this.props.loggedIn ? (
+
+          {!this.props.loggedIn ? (
+            <Modal>
+              <Modal.Content>
+                <ModalContext.Consumer>
+                  {({ closeModal }) => (
+                    // <EditUserFormContainer closeModal={closeModal} />
+                    <SignUpFormContainer closeModal={closeModal} />
+                  )}
+                </ModalContext.Consumer>
+              </Modal.Content>
+
               <Modal.OpenButton
                 className={
                   this.state.settingsActive
@@ -43,12 +45,12 @@ class MainPage extends React.Component {
                 <div class="bar2"></div>
                 <div class="bar3"></div>
               </Modal.OpenButton>
-            ) : (
-              <Link className="link-to-button-styling" to={"/login"}>
-                Login
-              </Link>
-            )}
-          </Modal>
+            </Modal>
+          ) : (
+            <Link className="link-to-button-styling" to={"/login"}>
+              Login
+            </Link>
+          )}
         </div>
         <div className="main-page-glance">
           <h1 className="welcome-message">Welcome Demo User!</h1>
