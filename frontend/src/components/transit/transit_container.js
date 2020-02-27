@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   const departWorkTime = new Date();
   const arriveAtWork = Object.entries(state.session.user).length !== 0 ? state.session.user.arriveToWorkBy : [9, 0]; // defaults to 9 AM
   const departWorkAt = Object.entries(state.session.user).length !== 0  ? state.session.user.departWorkBy : [17, 0]; // defaults to 5 PM
-  arriveToWorkTime.setHours(...arriveAtWork);
+  arrkTime.setHours(...arriveAtWork);
   departWorkTime.setHours(...departWorkAt);
   return {
     settings: {
