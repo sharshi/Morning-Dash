@@ -9,7 +9,6 @@ class Weather extends React.Component {
   }
 
   componentWillMount() {
-    debugger
     this.props.fetchWeather(this.props.coords);
   }
 
