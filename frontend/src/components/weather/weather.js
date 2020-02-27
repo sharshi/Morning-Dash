@@ -13,11 +13,46 @@ class Weather extends React.Component {
   render() {
     const { fetchWeather, weather } = this.props;
     let weatherInfo = weather.data;
-
+    let icon;
     if (weatherInfo) {
       weatherInfo = weatherInfo.data;
     } else {
       return <div></div>;
+    }
+
+    switch (weatherInfo.currently.icon) {
+      case "clear-day":
+        icon = "clear";
+        break;
+      case "clear-night":
+        icon = "clear";
+        break;
+      case "partly-cloudy-day":
+        icon = "partlycloudy";
+        break;
+      case "partly-cloudy-night":
+        icon = "partlycloudy";
+        break;
+      case "cloudy":
+        icon = "cloudy";
+        break;
+      case "rain":
+        icon = "rain";
+        break;
+      case "sleet":
+        icon = "sleet";
+        break;
+      case "snow":
+        icon = "snow";
+        break;
+      case "wind":
+        icon = "unknown";
+        break;
+      case "fog":
+        icon = "fog";
+        break;
+      default:
+        break;
     }
 
     return (
@@ -26,7 +61,7 @@ class Weather extends React.Component {
         <img
           src={
             `https://peter.build/weather-underground-icons/dist/icons/white/svg/` +
-            weatherInfo.currently.icon +
+            icon +
             `.svg`
           }
         />
