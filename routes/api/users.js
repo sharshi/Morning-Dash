@@ -142,7 +142,7 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 
 router.route("/edit").post(function(req, res) {
   User.findByIdAndUpdate(
-    { _id: req.params.id },
+    { _id: req.body.id },
     {
         handle: req.body.handle,
         email: req.body.email,

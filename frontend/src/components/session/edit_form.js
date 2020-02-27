@@ -28,6 +28,7 @@ class EditForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let user = {
+      id: this.state.id,
       email: this.state.email,
       handle: this.state.handle,
       password: this.state.password,
@@ -38,7 +39,7 @@ class EditForm extends React.Component {
       departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10))
     };
 
-    // this.props.signup(user, this.props.history); change the method to edit
+    this.props.login(user, this.props.history); 
   }
 
   renderErrors() {
