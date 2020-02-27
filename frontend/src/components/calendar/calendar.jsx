@@ -100,7 +100,7 @@ class Calendar extends React.Component {
   createEvent() {
     if (this.props.events.length > 0) {
       return this.props.events.map(event => (
-        <a key={event.htmlLink} target='_blank' href={event.htmlLink}>{`${event.start.dateTime ? event.start.dateTime.slice(11, 16) : `All Day`} - ${event.summary}`}</a>
+        <Link to={event.htmlLink}>{`${event.start.dateTime.slice(11, 16) || `All Day`} - ${event.summary}`}</Link>
       ));
     } else {
       return "";
