@@ -1,5 +1,5 @@
 import React from 'react';
-import * as APIUtil from "../../util/google_api_util";
+import { Link } from "react-router-dom";
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -21,7 +21,6 @@ class Calendar extends React.Component {
   };
 
   initClient() {
-    debugger
     window.gapi.client
       .init({
         clientId:
@@ -33,7 +32,6 @@ class Calendar extends React.Component {
         ]
       })
       .then(() => {
-        debugger
         window.gapi.auth2
           .getAuthInstance()
           .isSignedIn.listen(this.updateSigninStatus);
@@ -46,26 +44,24 @@ class Calendar extends React.Component {
         }
       })
       .catch(function(e) {
-        debugger
         console.log(e);
       });
   }
 
   handleClientLoad() {
-    debugger
     if (!window.gapi) {
       const script = document.createElement("script");
       script.src = "https://apis.google.com/js/api.js";
       document.body.appendChild(script);
       script.onload = () => {
-        debugger
         window["gapi"].load("client:auth2", this.initClient);
-      }
-    };
+      };
+    } else {
+      window["gapi"].load("client:auth2", this.initClient);
+    }
   }
 
   listUpcomingEvents = () => {
-    debugger
     const maxTime = new Date();
     maxTime.setHours(23, 59, 59);
     return window.gapi.client.calendar.events
@@ -78,7 +74,6 @@ class Calendar extends React.Component {
         orderBy: "startTime"
       })
       .then(res => {
-        debugger
         this.props.receiveEvents(res.result.items);
       });
   };
@@ -103,31 +98,9 @@ class Calendar extends React.Component {
   }
 
   createEvent() {
-    debugger
     if (this.props.events.length > 0) {
       return this.props.events.map(event => (
-        <li>
-          <ul>
-            <li>
-              <p>{event.summary}</p>
-            </li>
-            <li>
-              <a href={event.htmlLink}></a>
-            </li>
-            <li>
-              <p>{event.description}</p>
-            </li>
-            <li>
-              <p>{event.location}</p>
-            </li>
-            <li>
-              <p>{event.start.dateTime}</p>
-            </li>
-            <li>
-              <p>{event.end.dateTime}</p>
-            </li>
-          </ul>
-        </li>
+        <Link to={event.htmlLink}>{`${event.start.dateTime.slice(11, 16) || `All Day`} - ${event.summary}`}</Link>
       ));
     } else {
       return "";
@@ -135,13 +108,16 @@ class Calendar extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <>
         {this.state.sign ? (
-          <ul>{this.createEvent()}</ul>
+          <div className="calendar-events-summary">
+            <ul className="calendar-event-items">
+              {this.createEvent()}
+            </ul>
+          </div>
         ) : (
-          <button onClick={this.handleAuthClick}>sign in with google</button>
+          <button onClick={this.handleAuthClick}>Connect your Google calendar</button>
         )}
       </>
     );

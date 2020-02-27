@@ -47,7 +47,8 @@ html {
   margin-top: 5px;
 }
 
-.link-to-button-styling {
+.link-to-button-styling,
+button {
   font-size: 1rem;
   border: 1px solid white;
   border-radius: 3px;
@@ -58,6 +59,10 @@ html {
     background-color: gray;
     transition: 0.5s;
   }
+}
+
+button {
+  margin: 1rem;
 }
 
 .main-page-nav-bar {
@@ -110,20 +115,39 @@ html {
   overflow-x: scroll;
   overflow-y: hidden;
 }
+.weather-current {
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.weather-current-temp {
+  font-size: 3rem;
+}
 
 .weather-timeblock {
   display: flex;
   flex-direction: column;
   min-width: 3rem;
+  text-align: center;
 }
 
 .weather-time-text {
-  font-size: 0.5rem;
+  font-size: 1rem;
 }
 
 .weather-logo {
   max-height: 10rem;
   max-width: 10rem;
+  min-height: 10rem;
+  min-width: 10rem;
+}
+
+.weather-clear {
+  background-color: #eeeef5;
+  color: #eeeef5;
+  height: 100%;
+  width: 100%;
 }
 
 .weather-cloudy {
@@ -133,9 +157,44 @@ html {
   width: 100%;
 }
 
-.weather-raining {
+.weather-partlycloudy {
+  background-color: #d5dae2;
+  color: #d5dae2;
+  height: 100%;
+  width: 100%;
+}
+
+.weather-rain {
   background-color: lightblue;
   color: lightblue;
+  height: 100%;
+  width: 100%;
+}
+
+.weather-sleet {
+  background-color: rgb(155, 150, 190);
+  color: rgb(155, 150, 190);
+  height: 100%;
+  width: 100%;
+}
+
+.weather-snow {
+  background-color: #aba4db;
+  color: #aba4db;
+  height: 100%;
+  width: 100%;
+}
+
+.weather-unknown {
+  background-color: #eeeef5;
+  color: #eeeef5;
+  height: 100%;
+  width: 100%;
+}
+
+.weather-fog {
+  background-color: #d5dae2;
+  color: #d5dae2;
   height: 100%;
   width: 100%;
 }
@@ -218,6 +277,10 @@ html {
   transition: 0.4s;
 }
 
+.change {
+  z-index: 5;
+}
+
 .change .bar1 {
   -webkit-transform: rotate(-45deg) translate(-9px, 6px);
   transform: rotate(-45deg) translate(-9px, 6px);
@@ -230,6 +293,51 @@ html {
 .change .bar3 {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-8px, -8px);
+}
+
+// modal stuff
+.modal-content-container {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.modal-content {
+  align-items: center;
+  justify-content: center;
+  width: 65%;
+  background-color: white;
+}
+
+.time-input-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.time-input-label {
+  color: white;
+  display: inline;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  text-shadow: 0.07em 0 black, 0 0.07em black, -0.07em 0 black, 0 -0.07em black;
+}
+
+.time-input {
+  border-radius: 3px;
+  color: gray;
+  min-height: 2rem;
+  margin: 10px 0;
+  &:focus {
+    outline: none;
+  }
 }
 
 @media (min-width: 600px) {
