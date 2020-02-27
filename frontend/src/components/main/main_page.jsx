@@ -23,7 +23,8 @@ class MainPage extends React.Component {
             <Modal.Content>
               <ModalContext.Consumer>
                 {({ closeModal }) => (
-                  <EditUserFormContainer closeModal={closeModal} />
+                  // <EditUserFormContainer closeModal={closeModal} />
+                  <SignUpFormContainer closeModal={closeModal} />
                 )}
               </ModalContext.Consumer>
             </Modal.Content>
