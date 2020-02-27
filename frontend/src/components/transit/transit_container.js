@@ -5,8 +5,8 @@ import { transit } from "../../actions/transit_actions";
 const mapStateToProps = (state) => {
   const arriveToWorkTime = new Date();
   const departWorkTime = new Date();
-  const arriveAtWork = state.session.user ? state.session.user.arriveToWorkBy : [9, 0] // defaults to 9 AM
-  const departWorkAt = state.session.user ? state.session.user.departWorkBy : [17, 0] // defaults to 5 PM
+  const arriveAtWork = Object.entries(state.session.user).length !== 0 ? state.session.user.arriveToWorkBy : [9, 0] // defaults to 9 AM
+  const departWorkAt = Object.entries(state.session.user).length !== 0  ? state.session.user.departWorkBy : [17, 0] // defaults to 5 PM
   arriveToWorkTime.setHours(...arriveAtWork)
   departWorkTime.setHours(...departWorkAt)
   return {
