@@ -63,6 +63,50 @@ class SignupForm extends React.Component {
     );
   }
 
+  componentDidMount() {
+      if (!window.google) {
+
+        let script = document.createElement("script");
+        script.src =
+          "https://maps.googleapis.com/maps/api/js?key=AIzaSyBP6IoBy5dAgF1Y5Tx2c0otAHiDxdPtBlc&libraries=places";
+        document.body.appendChild(script);
+        script.onload = () => {
+          this.handleScriptLoad();
+        };
+      } else {
+        this.handleScriptLoad();
+      }
+
+  }
+
+  handleScriptLoad() {
+    /* global google */
+    
+    let inputHome = document.getElementById("autocompleteHome");
+    let inputWork = document.getElementById("autocompleteWork");
+
+
+    let ac = new google.maps.places.Autocomplete(inputHome, {
+      types: ["geocode"]
+    });
+
+    let ac2 = new google.maps.places.Autocomplete(inputWork, {
+      types: ["geocode"]
+    });
+    google.maps.event.addListener(ac, "home_changed", () => {
+      let home = ac.getPlace();
+      if (home) {
+        this.setState({ homeAddress: home.formatted_address });
+      }
+    });
+    google.maps.event.addListener(ac2, "work_changed", () => {
+      let work = ac2.getPlace();
+      if (work) {
+        this.setState({ workAddress: work.formatted_address });
+      }
+    });
+  }
+
   render() {
     return (
       <div className="session-form-page">
@@ -107,12 +151,14 @@ class SignupForm extends React.Component {
               <input
                 type="text"
                 value={this.state.homeAddress}
+                id="autocompleteHome"
                 onChange={this.update("homeAddress")}
                 placeholder="Home Address"
               />
               <br />
               <input
                 type="text"
+                id="autocompleteWork"
                 value={this.state.workAddress}
                 onChange={this.update("workAddress")}
                 placeholder="Work Address"
@@ -121,7 +167,7 @@ class SignupForm extends React.Component {
               <div className="time-input-container">
                 <input
                   type="time"
-                  class="time-input"
+                  className="time-input"
                   required
                   value={this.state.arriveToWorkBy}
                   onChange={this.update("arriveToWorkBy")}
@@ -131,7 +177,7 @@ class SignupForm extends React.Component {
               <div className="time-input-container">
                 <input
                   type="time"
-                  class="time-input"
+                  className="time-input"
                   required
                   value={this.state.departWorkBy}
                   onChange={this.update("departWorkBy")}
@@ -148,6 +194,7 @@ class SignupForm extends React.Component {
             </div>
           </form>
         </div>
+
         <Calendar />
       </div>
     );
