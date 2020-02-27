@@ -81,7 +81,7 @@ class Weather extends React.Component {
       
       let i = 0
       while (hourly.length < 12) {
-        debugger
+        
         const hour = weatherInfo.hourly.data[i];
         hourly.push(hour);
         

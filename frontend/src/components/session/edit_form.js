@@ -4,7 +4,7 @@ import GoogleLogin from "./google_login";
 class EditForm extends React.Component {
   constructor(props) {
     super(props);
-    debugger
+    
     const [ hoursArrive, minutesArrive ] = this.props.user.arriveToWorkBy;
     const [ hoursDepart, minutesDepart ] = this.props.user.departWorkBy;
     this.state = {
@@ -115,7 +115,7 @@ class EditForm extends React.Component {
   }
 
   render() {
-    debugger
+    
     return (
       <div className="session-form-page">
         <div className="main-page-nav-bar">
