@@ -128,14 +128,6 @@ class SignupForm extends React.Component {
                 />
                 <div className="time-input-label">Time of arrival to work</div>
               </div>
-              {/* <input
-                type="time"
-                className="time-input"
-                required
-                value={this.state.departWorkBy}
-                onChange={this.update("departWorkBy")}
-                placeholder="When do you start commuting home?"
-              /> */}
               <div className="time-input-container">
                 <input
                   type="time"
