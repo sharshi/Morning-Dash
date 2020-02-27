@@ -7,15 +7,8 @@ import SignUpFormContainer from "../session/signup_form_container";
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      settingsActive: false
-    };
-    this.toggleSettings = this.toggleSettings.bind(this);
   }
-  toggleSettings() {
-    let currentState = this.state.settingsActive;
-    this.setState({ settingsActive: !currentState });
-  }
+
   render() {
     return (
       <div className="main-page-container">
@@ -24,26 +17,25 @@ class MainPage extends React.Component {
           {!this.props.loggedIn ? (
             <Modal>
               <Modal.Content>
-                <ModalContext.Consumer>
-                  {({ closeModal }) => (
-                    // <EditUserFormContainer closeModal={closeModal} />
-                    <SignUpFormContainer closeModal={closeModal} />
-                  )}
-                </ModalContext.Consumer>
+                <SignUpFormContainer />
               </Modal.Content>
-
-              <Modal.OpenButton
-                className={
-                  this.state.settingsActive
-                    ? "change"
-                    : "settings-button-container"
+              <ModalContext.Consumer>
+                {({ isOpen }) =>
+                  isOpen ? (
+                    <Modal.CloseButton className="change">
+                      <div class="bar1"></div>
+                      <div class="bar2"></div>
+                      <div class="bar3"></div>
+                    </Modal.CloseButton>
+                  ) : (
+                    <Modal.OpenButton className="settings-button-container">
+                      <div class="bar1"></div>
+                      <div class="bar2"></div>
+                      <div class="bar3"></div>
+                    </Modal.OpenButton>
+                  )
                 }
-                // onClick={this.toggleSettings}
-              >
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-              </Modal.OpenButton>
+              </ModalContext.Consumer>
             </Modal>
           ) : (
             <Link className="link-to-button-styling" to={"/login"}>
