@@ -9,7 +9,6 @@ class Weather extends React.Component {
   }
 
   componentWillMount() {
-    debugger
     this.props.fetchWeather(this.props.coords);
   }
 
@@ -72,7 +71,7 @@ class Weather extends React.Component {
 
     const hourly = [];
     const degrees = 	"\u00B0"
-    
+    debugger
     if (weatherInfo) {
       weatherInfo = weatherInfo.data;
     } else {
