@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Transit from "../transit/transit_container";
 import Modal, { ModalContext } from "../modal/modal";
+import SignUpFormContainer from "../session/signup_form_container";
+
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ class MainPage extends React.Component {
                 )}
               </ModalContext.Consumer>
             </Modal.Content>
-            {this.props.loggedIn ? (
+            {!this.props.loggedIn ? (
               <Modal.OpenButton
                 className={
                   this.state.settingsActive
