@@ -15,11 +15,11 @@ const UserSchema = new Schema({
     required: true
   },
   homeAddress: {
-    type: String, // might need to refractor into sub string, depends on the api requirements
+    type: String,
     required: true
   },
   workAddress: {
-    type: String, // might need to refractor into sub string, depends on the api requirements
+    type: String,
     required: true
   },
   arriveToWorkBy: {
