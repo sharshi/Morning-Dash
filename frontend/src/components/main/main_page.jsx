@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Transit from "../transit/transit_container";
 import Modal, { ModalContext } from "../modal/modal";
 import SignUpFormContainer from "../session/signup_form_container";
+import WeatherContainer from "../weather/weather_container";
 
 function ToggleModalButton() {
   return (
@@ -64,6 +65,7 @@ class MainPage extends React.Component {
           </div>
         </div>
         <div className="api-container">
+            <WeatherContainer/>
           <img
             className="weather-logo"
             src="https://peter.build/weather-underground-icons/dist/icons/white/svg/mostlysunny.svg"
