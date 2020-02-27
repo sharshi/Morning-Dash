@@ -85,10 +85,11 @@ class Calendar extends React.Component {
         .signIn()
         .then(() => {
           console.log("User signed in.");
-          this.updateSigninStatus(
+          return this.updateSigninStatus(
             window.gapi.auth2.getAuthInstance().isSignedIn.get()
           );
         })
+        .then(() => this.listUpcomingEvents())
         .catch(function(e) {
           console.log(e);
         });
