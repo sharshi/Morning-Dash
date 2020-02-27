@@ -4,7 +4,19 @@ import GoogleLogin from "./google_login";
 class EditForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.user
+    debugger
+    const [ hoursArrive, minutesArrive ] = this.props.user.arriveToWorkBy;
+    const [ hoursDepart, minutesDepart ] = this.props.user.departWorkBy;
+    this.state = {
+      id: this.props.user.id,
+      email: this.props.user.email,
+      handle: this.props.user.handle,
+      homeAddress: this.props.user.homeAddress,
+      workAddress: this.props.user.workAddress,
+      coords: this.props.user.coords,
+      arriveToWorkBy: `${(hoursArrive + '').padStart(2, '0')}:${(minutesArrive + '').padStart(2, '0')}`,
+      departWorkBy: `${(hoursDepart + '').padStart(2, '0')}:${(minutesDepart + '').padStart(2, '0')}`
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
@@ -38,7 +50,7 @@ class EditForm extends React.Component {
       departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10))
     };
 
-    this.props.update(user); 
+    // this.props.update(user); 
   }
 
   renderErrors() {
@@ -103,6 +115,7 @@ class EditForm extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className="session-form-page">
         <div className="main-page-nav-bar">
