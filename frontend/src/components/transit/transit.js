@@ -58,6 +58,7 @@ class Transit extends React.Component {
     let res; 
     directionsService.route(request, (response, status) => {
       if (status === "OK") {
+        debugger
         res = response.routes[0].legs[0].steps.map((step, idx) => {
           const { travel_mode, duration, transit } = step;
           const departure_time = transit ? transit.departure_time.text : 'whenever you want';
