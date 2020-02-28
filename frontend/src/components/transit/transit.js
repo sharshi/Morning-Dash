@@ -1,5 +1,5 @@
 /*global google*/
-import React from 'react';
+import React from "react";
 
 class Transit extends React.Component {
   constructor(props) {
@@ -8,8 +8,13 @@ class Transit extends React.Component {
   }
 
   componentDidMount() {
-    // grab settings 
-    const { homeAddress, workAddress, arriveToWorkBy, departWorkBy } = this.props.settings;
+    // grab settings
+    const {
+      homeAddress,
+      workAddress,
+      arriveToWorkBy,
+      departWorkBy
+    } = this.props.settings;
 
     if (!window.google) {
       let script = document.createElement("script");
@@ -17,13 +22,11 @@ class Transit extends React.Component {
         "https://maps.googleapis.com/maps/api/js?key=AIzaSyBP6IoBy5dAgF1Y5Tx2c0otAHiDxdPtBlc";
       document.body.appendChild(script);
       script.onload = () => {
-        
-          this.fetchRoute();
-        }
+        this.fetchRoute();
+      };
     } else {
       this.fetchRoute();
     }
-
   }
 
   fetchRoute() {
@@ -52,23 +55,39 @@ class Transit extends React.Component {
             departure_time
           };
         });
-        const departureTime = response.routes[0].legs[0].departure_time.text;
+        let departureTime;
+        if (response.routes[0].legs[0].departure_time) {
+          departureTime = response.routes[0].legs[0].departure_time.text;
+        }
         this.props.transit({ morning: { departureTime, response } });
       }
     });
   }
 
-
-
   render() {
-    
+    const { transitInfo } = this.props;
+    let result = [];
+    if (transitInfo.morning) {
+      if (
+        transitInfo.morning.response.request.origin.query ===
+        transitInfo.morning.response.request.destination.query
+      ) {
+        return <div></div>;
+      }
+      if (
+        transitInfo.morning.response.routes[0].warnings[0] ===
+        "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+      ) {
+        result.push("Walk to some location");
+      } else if (transitInfo.morning.departureTime) {
+        result.push(`Leave at ${transitInfo.morning.departureTime} for work`);
+      }
+    }
     return (
       <div>
-        <ul>
-         {this.state ? this.state.transit : null}
-        </ul>
+        <ul>{result}</ul>
       </div>
-    )
+    );
   }
 }
 
