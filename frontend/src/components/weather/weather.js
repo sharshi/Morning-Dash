@@ -34,13 +34,13 @@ class Weather extends React.Component {
         icon = "clear";
         return icon;
       case "clear-night":
-        icon = "clear";
+        icon = "nt_clear";
         return icon;
       case "partly-cloudy-day":
         icon = "partlycloudy";
         return icon;
       case "partly-cloudy-night":
-        icon = "partlycloudy";
+        icon = "nt_partlycloudy";
         return icon;
       case "cloudy":
         icon = "cloudy";
@@ -111,7 +111,7 @@ class Weather extends React.Component {
           <ul className="weather-timeline">
             {hourly.map(hour => (
               <li className="weather-timeblock" key={hour.time}>
-                <div className={`weather-${this.convertIcon(hour.icon)}`}>
+                <div className={`weather-${this.convertIcon(hour.icon)} transparent`}>
                   .
                 </div>
                 <div className="weather-time-text">
