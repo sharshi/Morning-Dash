@@ -109,17 +109,27 @@ class Weather extends React.Component {
         </div>
         <div className="weather-slider">
           <ul className="weather-timeline">
-            {hourly.map(hour => (
+            {hourly.map(hour => {
+              const icon = this.convertIcon(hour.icon);
+              return (
               <li className="weather-timeblock" key={hour.time}>
-                <div className={`weather-${this.convertIcon(hour.icon)} transparent`}>
-                  .
+                <div className={`weather-${icon} transparent`}>
+                  <img
+                    className="weather-block-image"
+                    alt={icon}
+                    src={
+                      `https://peter.build/weather-underground-icons/dist/icons/white/svg/` +
+                      icon +
+                      `.svg`
+                    }
+                  />
                 </div>
                 <div className="weather-time-text">
                   {this.convertTime(hour.time)}
                 </div>
                 {Math.round(hour.temperature) + degrees}
               </li>
-            ))}
+            )})}
           </ul>
         </div>
       </>
