@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { login, update } from "../../actions/session_actions";
+import { login, update, logout } from "../../actions/session_actions";
 import EditForm from "./edit_form";
 
 const mapStateToProps = state => {
@@ -12,7 +12,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    update: user => dispatch(update(user))
+    update: user => dispatch(update(user)),
+    logout: () => dispatch(logout())
   };
 };
 
