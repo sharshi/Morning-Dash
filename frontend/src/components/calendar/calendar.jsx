@@ -114,6 +114,7 @@ class Calendar extends React.Component {
         {this.state.sign ? (
           <div className="calendar-events-summary">
             <ul className="calendar-event-items">
+              <h1>Calendar</h1>
               {this.createEvent()}
             </ul>
           </div>
