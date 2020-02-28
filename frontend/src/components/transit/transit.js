@@ -77,11 +77,9 @@ class Transit extends React.Component {
   render() {
 
     const { transitInfo } = this.props;
-    debugger
     const transitKeys = Object.keys(transitInfo).length > 0 ? Object.keys(transitInfo).sort().reverse() : [];
     const transitSummary = transitKeys.map(key => {
       const route = transitInfo[key].response.routes[0].legs[0];
-      debugger
       const distance = route.distance.text;
       const departure_time = route.departure_time.text;
       const arrival_time = route.arrival_time.text;
