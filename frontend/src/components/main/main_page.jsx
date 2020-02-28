@@ -146,14 +146,17 @@ class MainPage extends React.Component {
             </div>
           </Fragment>
         )}
-
-        <div className="commute-summary">
-          <div className="commute-summary-item">
-            {loggedIn ? <Transit /> : "Leave at 8:22 AM for work."}
+        {loggedIn ? (
+          <Transit />
+        ) : (
+          <div className="commute-summary">
+            <div className="commute-summary-item">
+              Leave at 8:22 AM for work.
+            </div>
+            <div className="commute-summary-item">commute summary item</div>
           </div>
+        )}
 
-          <div className="commute-summary-item">commute summary item</div>
-        </div>
         {loggedIn ? (
           <CalendarContainer className="link-to-button-styling" />
         ) : (
