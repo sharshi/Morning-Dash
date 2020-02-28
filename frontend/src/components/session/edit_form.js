@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
-import GoogleLogin from "./google_login";
+// import GoogleLogin from "./google_login";
 class EditForm extends React.Component {
   constructor(props) {
     super(props);
@@ -113,8 +113,6 @@ class EditForm extends React.Component {
       let work = ac2.getPlace();
       
       if (work) {
-        const lat = work.geometry.location.lat()
-        const lng = work.geometry.location.lng()
         this.setState({ workAddress: work.formatted_address });
       }
     });

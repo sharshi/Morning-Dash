@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
-import Calendar from "../calendar/calendar_container";
-import GoogleLogin from "./google_login";
+// import Calendar from "../calendar/calendar_container";
+// import GoogleLogin from "./google_login";
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -109,8 +109,6 @@ class SignupForm extends React.Component {
       let work = ac2.getPlace();
 
       if (work) {
-        const lat = work.geometry.location.lat();
-        const lng = work.geometry.location.lng();
         this.setState({ workAddress: work.formatted_address });
       }
     });
