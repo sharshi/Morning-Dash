@@ -15,6 +15,8 @@ const Summary = ({weather, transit, events }) => {
     
     if (events.length === 0) {
       eventsSummary = "No events today"  
+    } else if (events.length === 1) {
+        eventsSummary = "1 event today"
     } else {
         eventsSummary = `${events.length} events today`
     };
