@@ -75,12 +75,13 @@ class Transit extends React.Component {
   }
 
   render() {
-    
+
     const { transitInfo } = this.props;
-
-    const transitSummary = Object.keys(transitInfo).map(key => {
+    debugger
+    const transitKeys = Object.keys(transitInfo).length > 0 ? Object.keys(transitInfo).sort().reverse() : [];
+    const transitSummary = transitKeys.map(key => {
       const route = transitInfo[key].response.routes[0].legs[0];
-
+      debugger
       const distance = route.distance.text;
       const departure_time = route.departure_time.text;
       const arrival_time = route.arrival_time.text;
@@ -88,31 +89,41 @@ class Transit extends React.Component {
 
       const steps = route.steps.map(step => {
         if (step.travel_mode === "WALKING") {
-          
+
           return (
             <li key={step.instructions}>
-              <p>
-                {step.instructions} ({step.duration.text})
+              <p className="transit-icon-and-description">
+                <img
+                  className="transit-icon"
+                  src="https://findicons.com/files/icons/2711/free_icons_for_windows8_metro/256/walking.png"
+                />
+                <div className="step-instructions-and-duration">
+                  {step.instructions} ({step.duration.text})
+                </div>
               </p>
             </li>
           );
         } else {
-          
+
           return (
             <li key={step.transit.headsign}>
-              <p>
+              <p className="transit-icon-and-description">
                 <img
+                  className="transit-icon"
                   src={
                     step.transit.line.icon
                       ? step.transit.line.icon
                       : step.transit.line.vehicle.icon
                   }
                 />
-                {step.transit.line.vehicle.name === "Bus"
-                  ? step.transit.line.short_name
-                  : null}{" "}
-                {step.transit.line.vehicle.name} towards {step.transit.headsign}{" "}
-                to {step.transit.arrival_stop.name} ({step.duration.text}).
+                <div className="step-instructions-and-duration">
+                  {step.transit.line.vehicle.name === "Bus"
+                    ? step.transit.line.short_name
+                    : null}{" "}
+                  {step.transit.line.vehicle.name} towards{" "}
+                  {step.transit.headsign} to {step.transit.arrival_stop.name} (
+                  {step.duration.text}).
+                </div>
               </p>
             </li>
           );
@@ -121,8 +132,9 @@ class Transit extends React.Component {
 
       return (
         <li key={arrival_time}>
-          distance: {distance} departure_time: {departure_time} arrival_time:{" "}
-          {arrival_time} duration: {duration}
+          <h1>{key}</h1>
+          {distance} depart: {departure_time} arrive:{" "}
+          {arrival_time}  ({duration})
           <ul>{steps}</ul>
         </li>
       );
