@@ -4,7 +4,7 @@ import React from "react";
 class Transit extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.transitInfo;
+    this.state = {};
   }
 
   componentDidMount() {
@@ -21,6 +21,8 @@ class Transit extends React.Component {
       this.fetchRoutes();
     }
   }
+
+
 
   fetchRoutes() {
     var directionsService = new google.maps.DirectionsService();
@@ -71,12 +73,14 @@ class Transit extends React.Component {
         if (response.routes[0].legs[0].departure_time) {
           departureTime = response.routes[0].legs[0].departure_time.text;
         }
-        this.props.transit({ departureTime, response, timeofday });
+        this.props.transit({ departureTime, response, timeofday })
+        this.setState(this.props.transitInfo);
       }
     });
   }
 
   render() {
+    
     const { transitInfo } = this.props;
 
     const transitSummary = Object.keys(transitInfo).map(key => {
@@ -89,12 +93,14 @@ class Transit extends React.Component {
 
       const steps = route.steps.map(step => {
         if (step.travel_mode === "WALKING") {
+          
           return (
             <li key={step.instructions}>
               <p>{step.instructions} ({step.duration.text})</p>
             </li>
           )
         } else {
+          
           return (
             <li key={step.transit.headsign}>
               <p><img src={step.transit.line.icon ? step.transit.line.icon : step.transit.line.vehicle.icon} />{step.transit.line.vehicle.name === 'Bus' ? step.transit.line.short_name : null} {step.transit.line.vehicle.name} towards {step.transit.headsign} to {step.transit.arrival_stop.name} ({step.duration.text}).</p>
@@ -102,7 +108,6 @@ class Transit extends React.Component {
           )
         }
       })
-
       return (
         <li key={arrival_time}>distance: {distance} departure_time: {departure_time} arrival_time: {arrival_time} duration: {duration} 
         <ul>
@@ -110,7 +115,8 @@ class Transit extends React.Component {
         </ul>
       </li>);
     }) 
-
+    
+    
     return (
       <div>
         <ul>{transitSummary}</ul>
