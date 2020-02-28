@@ -8,13 +8,6 @@ class Transit extends React.Component {
   }
 
   componentDidMount() {
-    // grab settings
-    const {
-      homeAddress,
-      workAddress,
-      arriveToWorkBy,
-      departWorkBy
-    } = this.props.settings;
 
     if (!window.google) {
       let script = document.createElement("script");
@@ -22,33 +15,52 @@ class Transit extends React.Component {
         "https://maps.googleapis.com/maps/api/js?key=AIzaSyBP6IoBy5dAgF1Y5Tx2c0otAHiDxdPtBlc";
       document.body.appendChild(script);
       script.onload = () => {
-        this.fetchRoute();
+        this.fetchRoutes();
       };
     } else {
-      this.fetchRoute();
+      this.fetchRoutes();
     }
   }
 
-  fetchRoute() {
+  fetchRoutes() {
     var directionsService = new google.maps.DirectionsService();
-    const { homeAddress, workAddress } = this.props.settings;
-    var origin = homeAddress;
-    var destination = workAddress;
+
+    // grab settings
+    const {
+      homeAddress,
+      workAddress
+    } = this.props.settings;
+    this.fetchRoute(homeAddress, workAddress, directionsService, 'morning');
+    this.fetchRoute(workAddress, homeAddress, directionsService, 'afternoon');
+  }
+
+  fetchRoute(origin, destination, directionsService, timeofday) {
     var request = {
       origin,
       destination,
       travelMode: "TRANSIT"
-      // transitOptions: {
-      //   arrivalTime: Date,
-      //   departureTime: Date
-      // }
     };
-    let res;
+    const {
+      arriveToWorkBy,
+      departWorkBy
+    } = this.props.settings;
+
+    if (timeofday === 'morning') {
+      request.transitOptions = {
+        arrivalTime: arriveToWorkBy
+      }
+    } else {
+      request.transitOptions = {
+        departureTime: departWorkBy
+      }
+    }
+
+    let res; 
     directionsService.route(request, (response, status) => {
       if (status === "OK") {
         res = response.routes[0].legs[0].steps.map((step, idx) => {
           const { travel_mode, duration, transit } = step;
-          const departure_time = transit ? transit.departure_time.text : null;
+          const departure_time = transit ? transit.departure_time.text : 'whenever you want';
           return {
             travel_mode,
             duration: duration.text,
@@ -59,7 +71,7 @@ class Transit extends React.Component {
         if (response.routes[0].legs[0].departure_time) {
           departureTime = response.routes[0].legs[0].departure_time.text;
         }
-        this.props.transit({ morning: { departureTime, response } });
+        this.props.transit({ departureTime, response, timeofday });
       }
     });
   }
@@ -81,6 +93,21 @@ class Transit extends React.Component {
         result.push("Walk to some location");
       } else if (transitInfo.morning.departureTime) {
         result.push(`Leave at ${transitInfo.morning.departureTime} for work`);
+      }
+    } else if (transitInfo.afternoon) {
+      if (
+        transitInfo.afternoon.response.request.origin.query ===
+        transitInfo.afternoon.response.request.destination.query
+      ) {
+        return <div></div>;
+      }
+      if (
+        transitInfo.afternoon.response.routes[0].warnings[0] ===
+        "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+      ) {
+        result.push("Walk to some location");
+      } else if (transitInfo.afternoon.departureTime) {
+        result.push(`Leave at ${transitInfo.afternoon.departureTime} for home`);
       }
     }
     return (

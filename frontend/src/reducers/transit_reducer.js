@@ -5,7 +5,12 @@ const initialState = {};
 export default function (state = initialState, action) {
   switch (action.type) {
     case TRANSIT_UPDATE:
-      return action.transitInfo;
+      return Object.assign(state, {}, {
+        [action.transitInfo.timeofday]: { 
+          departureTime: action.transitInfo.departureTime,
+          response: action.transitInfo.response 
+        }
+      });
     default:
       return state;
   }
