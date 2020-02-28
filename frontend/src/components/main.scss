@@ -107,8 +107,11 @@ html {
 .weather-timeline {
   display: flex;
   list-style-type: none;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
+  &:hover {
+    overflow-x: scroll;
+  }
 }
 .weather-current {
   padding-top: 1rem;
