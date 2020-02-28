@@ -14,7 +14,9 @@ a,
 h1,
 .main-page-glance,
 .api-container,
-ul {
+ul,
+.commute-summary,
+.weather-current-temp {
   color: white;
   outline: none;
   font-family: Whitney, Helvetica Neue, Helvetica, Arial;
@@ -27,6 +29,15 @@ html {
   background-color: #1e2023;
   max-width: 100vw;
   min-height: 100vh;
+}
+.main-page-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: auto;
 }
 
 .app-container {
@@ -43,7 +54,8 @@ html {
   min-height: 15rem;
 }
 
-.glance-summary {
+.glance-summary,
+.calendar-event-items {
   list-style: none;
   text-align: center;
 }
@@ -130,7 +142,7 @@ button {
 }
 
 .weather-current-temp {
-  font-size: 3rem;
+  font-size: 5rem;
 }
 
 .weather-timeblock {
@@ -384,5 +396,11 @@ button {
 
   .welcome-message {
     font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .welcome-message {
+    font-size: 3rem;
   }
 }
