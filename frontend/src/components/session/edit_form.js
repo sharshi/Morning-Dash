@@ -19,6 +19,7 @@ class EditForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
     this.clearedErrors = false;
   }
 
@@ -51,6 +52,11 @@ class EditForm extends React.Component {
     };
 
     // this.props.update(user); 
+  }
+
+  handleLogout(e) {
+    e.preventDefault();
+    this.props.logout();
   }
 
   renderErrors() {
@@ -120,8 +126,8 @@ class EditForm extends React.Component {
       <div className="session-form-page">
         <div className="main-page-nav-bar">
           <Link to={`/`}>Morning Dash</Link>
-          <Link className="link-to-button-styling" to={"/login"}>
-            Login
+          <Link className="link-to-button-styling" onClick={this.handleLogout}>
+            Logout
           </Link>
         </div>
         <div className="signup-form-container">
