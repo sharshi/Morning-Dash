@@ -104,7 +104,7 @@ class Calendar extends React.Component {
         <a key={event.htmlLink} target='_blank' href={event.htmlLink}>{`${event.start.dateTime ? event.start.dateTime.slice(11, 16) : `All Day`} - ${event.summary}`}</a>
       ));
     } else {
-      return "";
+      return <div>No events today</div>;
     }
   }
 
