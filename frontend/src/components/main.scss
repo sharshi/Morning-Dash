@@ -162,6 +162,13 @@ button {
   width: 100%;
 }
 
+.weather-nt_clear {
+  background-color: rgb(59, 59, 59);
+  color: rgb(59, 59, 59);
+  height: 100%;
+  width: 100%;
+}
+
 .weather-cloudy {
   background-color: grey;
   color: grey;
@@ -172,6 +179,13 @@ button {
 .weather-partlycloudy {
   background-color: #d5dae2;
   color: #d5dae2;
+  height: 100%;
+  width: 100%;
+}
+
+.weather-nt_partlycloudy {
+  background-color: rgb(94, 94, 94);
+  color: rgb(94, 94, 94);
   height: 100%;
   width: 100%;
 }
