@@ -52,7 +52,9 @@ class MainPage extends React.Component {
           {loggedIn ? (
             <h1 className="welcome-message">Welcome {user.handle}</h1>
           ) : (
-            <h1 className="welcome-message">Welcome Demo User!</h1>
+            <Fragment>
+              <h1 className="welcome-message">Welcome. This is a demo!</h1>
+            </Fragment>
           )}
 
           {loggedIn ? null : (
