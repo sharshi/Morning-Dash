@@ -4,7 +4,7 @@ import React from "react";
 class Transit extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.transitInfo;
+    this.state = {};
   }
 
   componentDidMount() {
@@ -20,6 +20,8 @@ class Transit extends React.Component {
       this.fetchRoutes();
     }
   }
+
+
 
   fetchRoutes() {
     var directionsService = new google.maps.DirectionsService();
@@ -66,12 +68,14 @@ class Transit extends React.Component {
         if (response.routes[0].legs[0].departure_time) {
           departureTime = response.routes[0].legs[0].departure_time.text;
         }
-        this.props.transit({ departureTime, response, timeofday });
+        this.props.transit({ departureTime, response, timeofday })
+        this.setState(this.props.transitInfo);
       }
     });
   }
 
   render() {
+    
     const { transitInfo } = this.props;
 
     const transitSummary = Object.keys(transitInfo).map(key => {
@@ -84,6 +88,7 @@ class Transit extends React.Component {
 
       const steps = route.steps.map(step => {
         if (step.travel_mode === "WALKING") {
+          
           return (
             <li key={step.instructions}>
               <p>
@@ -92,6 +97,7 @@ class Transit extends React.Component {
             </li>
           );
         } else {
+          
           return (
             <li key={step.transit.headsign}>
               <p>
@@ -121,7 +127,6 @@ class Transit extends React.Component {
         </li>
       );
     });
-
     return (
       <div className="transit-container">
         <ul>{transitSummary}</ul>
