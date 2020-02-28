@@ -91,8 +91,14 @@ class Transit extends React.Component {
           
           return (
             <li key={step.instructions}>
-              <p>
-                {step.instructions} ({step.duration.text})
+              <p className="transit-icon-and-description">
+                <img
+                  className="transit-icon"
+                  src="https://findicons.com/files/icons/2711/free_icons_for_windows8_metro/256/walking.png"
+                />
+                <div className="step-instructions-and-duration">
+                  {step.instructions} ({step.duration.text})
+                </div>
               </p>
             </li>
           );
@@ -100,19 +106,23 @@ class Transit extends React.Component {
           
           return (
             <li key={step.transit.headsign}>
-              <p>
+              <p className="transit-icon-and-description">
                 <img
+                  className="transit-icon"
                   src={
                     step.transit.line.icon
                       ? step.transit.line.icon
                       : step.transit.line.vehicle.icon
                   }
                 />
-                {step.transit.line.vehicle.name === "Bus"
-                  ? step.transit.line.short_name
-                  : null}{" "}
-                {step.transit.line.vehicle.name} towards {step.transit.headsign}{" "}
-                to {step.transit.arrival_stop.name} ({step.duration.text}).
+                <div className="step-instructions-and-duration">
+                  {step.transit.line.vehicle.name === "Bus"
+                    ? step.transit.line.short_name
+                    : null}{" "}
+                  {step.transit.line.vehicle.name} towards{" "}
+                  {step.transit.headsign} to {step.transit.arrival_stop.name} (
+                  {step.duration.text}).
+                </div>
               </p>
             </li>
           );
