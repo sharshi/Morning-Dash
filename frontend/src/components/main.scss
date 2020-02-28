@@ -137,6 +137,11 @@ button {
   flex-direction: column;
   min-width: 3rem;
   text-align: center;
+
+  // makes the dot invisible
+  .transparent {
+    color: transparent;
+  }
 }
 
 .weather-time-text {

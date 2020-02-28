@@ -111,7 +111,7 @@ class Weather extends React.Component {
           <ul className="weather-timeline">
             {hourly.map(hour => (
               <li className="weather-timeblock" key={hour.time}>
-                <div className={`weather-${this.convertIcon(hour.icon)}`}>
+                <div className={`weather-${this.convertIcon(hour.icon)} transparent`}>
                   .
                 </div>
                 <div className="weather-time-text">
