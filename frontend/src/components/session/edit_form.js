@@ -124,7 +124,7 @@ class EditForm extends React.Component {
       <div className="session-form-page">
         <div className="main-page-nav-bar">
           <Link to={`/`}>Morning Dash</Link>
-          <Link className="link-to-button-styling" onClick={this.handleLogout}>
+          <Link className="link-to-button-styling logout-button" onClick={this.handleLogout}>
             Logout
           </Link>
         </div>

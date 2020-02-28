@@ -271,7 +271,6 @@ button {
   background-size: cover;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   // justify-content: center;
 }
 
@@ -281,6 +280,15 @@ button {
   justify-content: center;
   margin: auto 0;
   width: 100%;
+  min-height: 93vh;
+}
+
+.session-form {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .session-form > input {
@@ -288,6 +296,7 @@ button {
   min-height: 2rem;
   min-width: 17rem;
   margin: 10px 0;
+  width: 80%;
   &:focus {
     outline: none;
   }
@@ -353,8 +362,8 @@ button {
 .modal-content {
   align-items: center;
   justify-content: center;
-  width: 65%;
   background-color: white;
+  min-width: 80%;
 }
 
 .time-input-container {
@@ -384,7 +393,24 @@ button {
 
 .transit-container {
   margin: 0 2rem;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
+}
+
+.transit-icon {
+  max-height: 1.2rem;
+  min-height: 1.2rem;
+  margin-right: 1rem;
+  filter: brightness(150%);
+}
+
+.transit-icon-and-description {
+  align-items: center;
+  display: flex;
+  margin: 1rem 0;
+}
+
+.step-instructions-and-duration {
+  font-size: 0.8rem;
 }
 
 @media (min-width: 600px) {
@@ -405,6 +431,12 @@ button {
   }
 }
 
+@media (max-width: 850px) {
+  .logout-button {
+    margin-right: 3rem;
+  }
+}
+
 @media (min-width: 1000px) {
   .welcome-message {
     font-size: 3rem;
@@ -412,5 +444,9 @@ button {
 
   .transit-container {
     font-size: 1.5rem;
+  }
+
+  .transit-icon-and-description {
+    justify-content: start;
   }
 }
