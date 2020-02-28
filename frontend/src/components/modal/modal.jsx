@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import ModalPortal from "./modal_portal";
 
 export const ModalContext = React.createContext();
