@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { login, update, logout } from "../../actions/session_actions";
+import { update, logout } from "../../actions/session_actions";
 import EditForm from "./edit_form";
 
 const mapStateToProps = state => {

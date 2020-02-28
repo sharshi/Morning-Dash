@@ -88,60 +88,61 @@ class MainPage extends React.Component {
           ) : (
             <Fragment>
               <img
-                className="weather-logo"
+                className="weather-logo" 
+                alt="weather logo"
                 src="https://peter.build/weather-underground-icons/dist/icons/white/svg/mostlysunny.svg"
               />
               <div className="weather-slider">
                 <ul className="weather-timeline">
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-Now">
                     <div className="weather-cloudy"></div>
                     <div className="weather-time-text">Now</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-9am">
                     <div className="weather-cloudy"></div>
                     <div className="weather-time-text">9am</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-11am">
                     <div className="weather-rain"></div>
                     <div className="weather-time-text">11am</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-1pm">
                     <div className="weather-rain"></div>
                     <div className="weather-time-text">1pm</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-3pm">
                     <div className="weather-cloudy"></div>
                     <div className="weather-time-text">3pm</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-5pm">
                     <div className="weather-cloudy"></div>
                     <div className="weather-time-text">5pm</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-7pm">
                     <div className="weather-cloudy"></div>
                     <div className="weather-time-text">7pm</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-9pm">
                     <div className="weather-cloudy"></div>
                     <div className="weather-time-text">9pm</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-11pm">
                     <div className="weather-cloudy">x</div>
                     <div className="weather-time-text">11pm</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-1am">
                     <div className="weather-cloudy"></div>
                     <div className="weather-time-text">1am</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-3am">
                     <div className="weather-cloudy"></div>
                     <div className="weather-time-text">3am</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-5am">
                     <div className="weather-cloudy"></div>
                     <div className="weather-time-text">5am</div>
                   </li>
-                  <li className="weather-timeblock">
+                  <li className="weather-timeblock" key="sample-7am">
                     <div className="weather-cloudy"></div>
                     <div className="weather-time-text">7am</div>
                   </li>
