@@ -8,7 +8,6 @@ class Transit extends React.Component {
   }
 
   componentDidMount() {
-
     if (!window.google) {
       let script = document.createElement("script");
       script.src =
@@ -26,12 +25,9 @@ class Transit extends React.Component {
     var directionsService = new google.maps.DirectionsService();
 
     // grab settings
-    const {
-      homeAddress,
-      workAddress
-    } = this.props.settings;
-    this.fetchRoute(homeAddress, workAddress, directionsService, 'morning');
-    this.fetchRoute(workAddress, homeAddress, directionsService, 'afternoon');
+    const { homeAddress, workAddress } = this.props.settings;
+    this.fetchRoute(homeAddress, workAddress, directionsService, "morning");
+    this.fetchRoute(workAddress, homeAddress, directionsService, "afternoon");
   }
 
   fetchRoute(origin, destination, directionsService, timeofday) {
@@ -40,27 +36,26 @@ class Transit extends React.Component {
       destination,
       travelMode: "TRANSIT"
     };
-    const {
-      arriveToWorkBy,
-      departWorkBy
-    } = this.props.settings;
+    const { arriveToWorkBy, departWorkBy } = this.props.settings;
 
-    if (timeofday === 'morning') {
+    if (timeofday === "morning") {
       request.transitOptions = {
         arrivalTime: arriveToWorkBy
-      }
+      };
     } else {
       request.transitOptions = {
         departureTime: departWorkBy
-      }
+      };
     }
 
-    let res; 
+    let res;
     directionsService.route(request, (response, status) => {
       if (status === "OK") {
         res = response.routes[0].legs[0].steps.map((step, idx) => {
           const { travel_mode, duration, transit } = step;
-          const departure_time = transit ? transit.departure_time.text : 'whenever you want';
+          const departure_time = transit
+            ? transit.departure_time.text
+            : "whenever you want";
           return {
             travel_mode,
             duration: duration.text,
@@ -91,28 +86,44 @@ class Transit extends React.Component {
         if (step.travel_mode === "WALKING") {
           return (
             <li key={step.instructions}>
-              <p>{step.instructions} ({step.duration.text})</p>
+              <p>
+                {step.instructions} ({step.duration.text})
+              </p>
             </li>
-          )
+          );
         } else {
           return (
             <li key={step.transit.headsign}>
-              <p><img src={step.transit.line.icon ? step.transit.line.icon : step.transit.line.vehicle.icon} />{step.transit.line.vehicle.name === 'Bus' ? step.transit.line.short_name : null} {step.transit.line.vehicle.name} towards {step.transit.headsign} to {step.transit.arrival_stop.name} ({step.duration.text}).</p>
+              <p>
+                <img
+                  src={
+                    step.transit.line.icon
+                      ? step.transit.line.icon
+                      : step.transit.line.vehicle.icon
+                  }
+                />
+                {step.transit.line.vehicle.name === "Bus"
+                  ? step.transit.line.short_name
+                  : null}{" "}
+                {step.transit.line.vehicle.name} towards {step.transit.headsign}{" "}
+                to {step.transit.arrival_stop.name} ({step.duration.text}).
+              </p>
             </li>
-          )
+          );
         }
-      })
+      });
 
       return (
-        <li key={arrival_time}>distance: {distance} departure_time: {departure_time} arrival_time: {arrival_time} duration: {duration} 
-        <ul>
-          {steps}
-        </ul>
-      </li>);
-    }) 
+        <li key={arrival_time}>
+          distance: {distance} departure_time: {departure_time} arrival_time:{" "}
+          {arrival_time} duration: {duration}
+          <ul>{steps}</ul>
+        </li>
+      );
+    });
 
     return (
-      <div>
+      <div className="transit-container">
         <ul>{transitSummary}</ul>
       </div>
     );
