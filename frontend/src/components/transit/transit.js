@@ -78,41 +78,42 @@ class Transit extends React.Component {
 
   render() {
     const { transitInfo } = this.props;
-    let result = [];
-    if (transitInfo.morning) {
-      if (
-        transitInfo.morning.response.request.origin.query ===
-        transitInfo.morning.response.request.destination.query
-      ) {
-        return <div></div>;
-      }
-      if (
-        transitInfo.morning.response.routes[0].warnings[0] ===
-        "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
-      ) {
-        result.push("Walk to some location");
-      } else if (transitInfo.morning.departureTime) {
-        result.push(`Leave at ${transitInfo.morning.departureTime} for work`);
-      }
-    } else if (transitInfo.afternoon) {
-      if (
-        transitInfo.afternoon.response.request.origin.query ===
-        transitInfo.afternoon.response.request.destination.query
-      ) {
-        return <div></div>;
-      }
-      if (
-        transitInfo.afternoon.response.routes[0].warnings[0] ===
-        "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
-      ) {
-        result.push("Walk to some location");
-      } else if (transitInfo.afternoon.departureTime) {
-        result.push(`Leave at ${transitInfo.afternoon.departureTime} for home`);
-      }
-    }
+
+    const transitSummary = Object.keys(transitInfo).map(key => {
+      const route = transitInfo[key].response.routes[0].legs[0];
+
+      const distance = route.distance.text;
+      const departure_time = route.departure_time.text;
+      const arrival_time = route.arrival_time.text;
+      const duration = route.duration.text;
+
+      const steps = route.steps.map(step => {
+        if (step.travel_mode === "WALKING") {
+          return (
+            <li key={step.instructions}>
+              <p>{step.instructions} ({step.duration.text})</p>
+            </li>
+          )
+        } else {
+          return (
+            <li key={step.transit.headsign}>
+              <p><img src={step.transit.line.icon ? step.transit.line.icon : step.transit.line.vehicle.icon} />{step.transit.line.vehicle.name === 'Bus' ? step.transit.line.short_name : null} {step.transit.line.vehicle.name} towards {step.transit.headsign} to {step.transit.arrival_stop.name} ({step.duration.text}).</p>
+            </li>
+          )
+        }
+      })
+
+      return (
+        <li key={arrival_time}>distance: {distance} departure_time: {departure_time} arrival_time: {arrival_time} duration: {duration} 
+        <ul>
+          {steps}
+        </ul>
+      </li>);
+    }) 
+
     return (
       <div>
-        <ul>{result}</ul>
+        <ul>{transitSummary}</ul>
       </div>
     );
   }
