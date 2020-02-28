@@ -12,14 +12,17 @@
 //defaults
 a,
 h1,
+ul,
+li,
+p,
 .main-page-glance,
 .api-container,
-ul,
 .commute-summary,
 .weather-current-temp {
   color: white;
   outline: none;
   font-family: Whitney, Helvetica Neue, Helvetica, Arial;
+  list-style-type: none;
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -115,6 +118,7 @@ button {
 
 .weather-slider {
   max-width: 100vw;
+  padding-bottom: 2rem;
 }
 
 .weather-block {
@@ -129,14 +133,11 @@ button {
 .weather-timeline {
   display: flex;
   list-style-type: none;
-  overflow-x: hidden;
+  overflow-x: scroll;
   overflow-y: hidden;
-  &:hover {
-    overflow-x: scroll;
-  }
 }
 .weather-current {
-  padding-top: 1rem;
+  align-items: center;
   display: flex;
   align-items: center;
 }
@@ -379,6 +380,11 @@ button {
   &:focus {
     outline: none;
   }
+}
+
+.transit-container {
+  margin: 0 2rem;
+  font-size: 0.7rem;
 }
 
 @media (min-width: 600px) {
