@@ -22,7 +22,7 @@ const mapStateToProps = state => {
         ? state.session.user.homeAddress
         : "21456 Holly Oak Dr Cupertino, CA 95014",
       workAddress: state.session.user.workAddress
-        ? state.session.user.homeAddress
+        ? state.session.user.workAddress
         : "4855 Atherton Ave San Jose, CA 95130",
       arriveToWorkBy: arriveToWorkTime,
       departWorkBy: departWorkTime
