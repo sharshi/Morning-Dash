@@ -129,11 +129,8 @@ button {
 .weather-timeline {
   display: flex;
   list-style-type: none;
-  overflow-x: hidden;
+  overflow-x: scroll;
   overflow-y: hidden;
-  &:hover {
-    overflow-x: scroll;
-  }
 }
 .weather-current {
   padding-top: 1rem;
