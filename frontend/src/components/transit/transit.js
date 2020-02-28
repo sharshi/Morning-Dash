@@ -58,7 +58,6 @@ class Transit extends React.Component {
     let res; 
     directionsService.route(request, (response, status) => {
       if (status === "OK") {
-        debugger
         res = response.routes[0].legs[0].steps.map((step, idx) => {
           const { travel_mode, duration, transit } = step;
           const departure_time = transit ? transit.departure_time.text : 'whenever you want';
@@ -69,7 +68,6 @@ class Transit extends React.Component {
           };
         });
         let departureTime;
-        debugger
         if (response.routes[0].legs[0].departure_time) {
           departureTime = response.routes[0].legs[0].departure_time.text;
         }
@@ -81,9 +79,7 @@ class Transit extends React.Component {
   render() {
     const { transitInfo } = this.props;
     let result = [];
-    debugger;
     if (transitInfo.morning) {
-      debugger
       if (
         transitInfo.morning.response.request.origin.query ===
         transitInfo.morning.response.request.destination.query
