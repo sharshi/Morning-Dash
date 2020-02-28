@@ -4,8 +4,11 @@ const router = express.Router();
 const keys = require("../../config/keys")
 const fetch = require("node-fetch");
 
-router.post('/', (req, res) => {
 
+/*  Making request to Dark Sky API.
+    Using node-fetch dependency to make external call.
+    req.body contains latitude at index 0, and longtitude at index 1. */
+router.post('/', (req, res) => {
     fetch(`https://api.darksky.net/forecast/${keys.darkSkyAPI}/${req.body[0]},${req.body[1]}`)
     .then(res => res.json())
     .then(data => {
