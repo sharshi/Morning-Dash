@@ -33,11 +33,15 @@ Live: [themorningdash.herokuapp.com](https://themorningdash.herokuapp.com/)
  - Display the next few hours of appointments listed in Google Calendar
 
 ### Responsive mobile-friendly design
+ - Utilizes 1000px width as a breakpoint to dynamically change from mobile to desktop view and vice versa.
+ - Designed for mobile first and then scaled up to desktop to ensure good mobile experience.
 
 
-### Front end: React / Redux
+### Front end: React/Redux
+ - Designed to be a single page app to show users information as quickly as possible.
+ - React Portal/Context APIs used to create compound modal for reusability
 
-### Backend: MongoDB / Express / Node
+### Backend: MongoDB / Express /Node
 
 ## Technologies and Technical Challenges
 
