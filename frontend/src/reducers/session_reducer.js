@@ -6,7 +6,27 @@ import {
 
 const initialState = {
   isAuthenticated: false,
-  user: {}
+  user: {
+    id: '5e68fd2a70173272a1ee9946',
+    handle: 'Demo User',
+    email: 'demouser@gmail.com',
+    homeAddress: '285 Douglass St, Brooklyn, NY 11217, USA',
+    workAddress: '90 5th',
+    arriveToWorkBy: [
+      9,
+      0
+    ],
+    departWorkBy: [
+      17,
+      0
+    ],
+    coords: [
+      40.70108,
+      -73.906666
+    ],
+    iat: 1583939509,
+    exp: 1583943109
+  }
 };
 
 export default function(state = initialState, action) {
@@ -20,7 +40,7 @@ export default function(state = initialState, action) {
     case RECEIVE_USER_LOGOUT:
       return {
         isAuthenticated: false,
-        user: undefined
+        user: initialState.user
       };
     case RECEIVE_USER_SIGN_IN:
       return {
