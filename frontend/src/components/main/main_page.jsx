@@ -49,13 +49,7 @@ class MainPage extends React.Component {
           )}
         </div>
         <div className="main-page-glance">
-          {/* {loggedIn ? ( */}
             <h1 className="welcome-message">Welcome {user.handle}</h1>
-          {/* ) : (
-            <Fragment>
-              <h1 className="welcome-message">Welcome. This is a demo!</h1>
-            </Fragment>
-          )} */}
 
           {loggedIn ? null : (
             <Link
@@ -65,100 +59,10 @@ class MainPage extends React.Component {
               Sign Up
             </Link>
           )}
-
-          {/* {loggedIn ? ( */}
           <SummaryContainer loggedIn={this.props.loggedIn} />
-          {/* ) : (
-            <Fragment>
-              <div className="glance-summary">
-                <div className="glance-summary-item">
-                  Mostly sunny. No rain today.
-                </div>
-                <div className="glance-summary-item">
-                  Leave at 8:22 AM for work.
-                </div>
-                <div className="glance-summary-item"> 3 events today.</div>
-              </div>
-            </Fragment>
-          )} */}
         </div>
-        {/* {loggedIn ? ( */}
           <WeatherContainer />
-        {/* ) : (
-          <Fragment>
-            <img
-              className="weather-logo"
-              src="https://peter.build/weather-underground-icons/dist/icons/white/svg/mostlysunny.svg"
-            />
-            <div className="weather-slider">
-              <ul className="weather-timeline">
-                <li className="weather-timeblock">
-                  <div className="weather-cloudy"></div>
-                  <div className="weather-time-text">Now</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-cloudy"></div>
-                  <div className="weather-time-text">9am</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-rain"></div>
-                  <div className="weather-time-text">11am</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-rain"></div>
-                  <div className="weather-time-text">1pm</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-cloudy"></div>
-                  <div className="weather-time-text">3pm</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-cloudy"></div>
-                  <div className="weather-time-text">5pm</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-cloudy"></div>
-                  <div className="weather-time-text">7pm</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-cloudy"></div>
-                  <div className="weather-time-text">9pm</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-cloudy">x</div>
-                  <div className="weather-time-text">11pm</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-cloudy"></div>
-                  <div className="weather-time-text">1am</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-cloudy"></div>
-                  <div className="weather-time-text">3am</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-cloudy"></div>
-                  <div className="weather-time-text">5am</div>
-                </li>
-                <li className="weather-timeblock">
-                  <div className="weather-cloudy"></div>
-                  <div className="weather-time-text">7am</div>
-                </li>
-              </ul>
-            </div>
-          </Fragment> */}
-        {/* )} */}
-        {/* {loggedIn ? ( */}
           <Transit />
-        {/* ) : (
-          <div className="commute-summary">
-            <div className="commute-summary-item">
-              Leave at 8:22 AM for work.
-            </div>
-            <div className="commute-summary-item">commute summary item</div>
-          </div>
-        )} */}
-
         {loggedIn ? (
           <CalendarContainer className="link-to-button-styling" />
         ) : (
