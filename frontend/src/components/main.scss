@@ -1,6 +1,7 @@
 // colors //
-// main background-color: #1e2023
+// main background-color: black;
 // font-color: white;
+// font-family: Helvetica, Arial, sans-serif;
 // on button hover: gray;
 // default font-size: 1rem;
 
@@ -21,7 +22,7 @@ p,
 .weather-current-temp {
   color: white;
   outline: none;
-  font-family: Whitney, Helvetica Neue, Helvetica, Arial;
+  font-family: Helvetica, Arial, sans-serif;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -29,24 +30,39 @@ p,
 }
 
 html {
-  background-color: #1e2023;
+  background-color: black;
   max-width: 100vw;
   min-height: 100vh;
 }
+
+body {
+  margin: 0;
+}
+
 .main-page-container {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 100vw;
   min-height: 100vh;
   min-width: 100vw;
   margin: auto;
+}
+
+.root {
+  max-width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 100vw;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
 .api-container {
@@ -111,7 +127,7 @@ button {
 .welcome-message {
   color: white;
   font-size: 1.2rem;
-  font-family: Whitney, Helvetica Neue, Helvetica, Arial;
+  font-family: Helvetica, Arial, sans-serif;
   margin: 0.8rem 0;
   text-align: center;
 }
@@ -262,9 +278,6 @@ button {
   margin-top: 5px;
 }
 
-///////////////////////////////////////////
-// signup form
-
 .session-form-page {
   align-items: center;
   background-image: url("https://images.unsplash.com/photo-1527766833261-b09c3163a791?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80");
@@ -362,8 +375,9 @@ button {
 .modal-content {
   align-items: center;
   justify-content: center;
-  background-color: white;
+  max-height: 100vh;
   min-width: 80%;
+  overflow: scroll;
 }
 
 .time-input-container {
@@ -378,7 +392,7 @@ button {
   display: inline;
   font-size: 1rem;
   font-weight: 500;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   text-shadow: 0.07em 0 black, 0 0.07em black, -0.07em 0 black, 0 -0.07em black;
 }
 
@@ -393,8 +407,34 @@ button {
 }
 
 .transit-container {
-  margin: 0 2rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
   font-size: 0.9rem;
+  width: 100vw;
+  ul {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    li {
+      background-color: #181818;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 0.5rem;
+      width: 80%;
+      ul {
+        max-width: 20rem;
+        li {
+          max-width: 20rem;
+          width: 100%;
+          p {
+            max-width: 20rem;
+          }
+        }
+      }
+    }
+  }
 }
 
 .transit-icon {
@@ -411,7 +451,95 @@ button {
 }
 
 .step-instructions-and-duration {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+  min-width: 12rem;
+  div {
+    font-size: 1rem;
+    color: white;
+  }
+  a {
+    filter: brightness(80%);
+    font-size: 3rem;
+    &:hover {
+      color: white;
+      filter: brightness(100%);
+    }
+  }
+}
+.about {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  filter: brightness(80%);
+  transition: 0.3s;
+  &:hover {
+    filter: brightness(100%);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+}
+.about-us-container {
+  background-color: #181818;
+  border-radius: 10px;
+  height: 28rem;
+  padding: 1rem;
+  overflow: scroll;
+  div {
+    align-items: center;
+    background-color: #181818;
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    justify-content: center;
+    margin: 0.5rem 0;
+    .about-member {
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0;
+      img {
+        border-radius: 10rem;
+        max-height: 10rem;
+      }
+      a {
+        margin-bottom: 0.5rem;
+        img {
+          border-radius: 0;
+          max-height: 2rem;
+          filter: brightness(80%);
+          transition: 0.3s;
+          &:hover {
+            filter: brightness(100%);
+            transition: 0.3s;
+          }
+        }
+      }
+      i {
+        font-size: 2rem;
+        filter: brightness(80%);
+        transition: 0.3s;
+        &:hover {
+          filter: brightness(100%);
+          transition: 0.3s;
+        }
+      }
+      .pro-links {
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 10rem;
+        margin: 0.5rem 0;
+      }
+    }
+  }
 }
 
 @media (min-width: 600px) {
@@ -443,11 +571,121 @@ button {
     font-size: 3rem;
   }
 
+  .main-page-nav-bar {
+    font-size: 1.5rem;
+  }
+
+  .link-to-button-styling {
+    font-size: 1.5rem;
+  }
+
+  .main-signup-button {
+    font-size: 2rem;
+  }
+
   .transit-container {
     font-size: 1.5rem;
+    ul {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 90%;
+      li {
+        min-width: 15rem;
+        max-width: 45rem;
+        margin: 0 1rem;
+        ul {
+          display: flex;
+          flex-direction: column;
+          max-width: 45rem;
+          li {
+            margin: 0;
+            max-width: 45rem;
+            padding: 0;
+            p {
+              max-width: 45rem;
+              div {
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .transit-icon-and-description {
     justify-content: start;
+  }
+
+  .weather-timeblock {
+    min-width: 6rem;
+  }
+
+  .about-us-container {
+    background-color: #181818;
+    border-radius: 10px;
+    height: 40rem;
+    padding: 1rem;
+    overflow: scroll;
+    div {
+      align-items: center;
+      background-color: #181818;
+      display: flex;
+      flex-direction: column;
+      font-size: 2rem;
+      justify-content: center;
+      text-align: start;
+      .about-member {
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0.5rem;
+        width: 100%;
+        img {
+          border-radius: 10rem;
+          max-height: 10rem;
+        }
+        a {
+          img {
+            border-radius: 0;
+            max-height: 2rem;
+            filter: brightness(80%);
+            transition: 0.3s;
+            &:hover {
+              filter: brightness(100%);
+              transition: 0.3s;
+            }
+          }
+        }
+        i {
+          font-size: 2rem;
+          filter: brightness(80%);
+          transition: 0.3s;
+          &:hover {
+            filter: brightness(100%);
+            transition: 0.3s;
+          }
+        }
+        .pro-links {
+          flex-direction: row;
+          justify-content: space-between;
+          width: 10rem;
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  .footer {
+    .about {
+      font-size: 2rem;
+    }
+    width: 20rem;
+    a {
+      font-size: 5rem;
+    }
   }
 }
