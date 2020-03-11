@@ -2,7 +2,7 @@ import { RECEIVE_EVENTS, RECEIVE_EVENTS_ERRORS } from '../actions/events_actions
 
 const initialState = [
   {
-  "htmlLink": "https://www.google.com/calendar/event?eid=NmljcTZxaWw0NWg1cHZsOWtzMGpiOTl0MDYgcmF6ZWZyb24wMUBt",
+  "htmlLink": "#",
   "summary": "Conference Call",
   "start": {
     "dateTime": "2020-03-11T12:00:00-04:00"
@@ -12,7 +12,7 @@ const initialState = [
   }
 },
 {
-    "htmlLink": "https://www.google.com/calendar/event?eid=NjQzb3ZkaWQ1amphNGd0c2xjN2Njc2JwazggcmF6ZWZyb24wMUBt",
+    "htmlLink": "#",
     "summary": "Lunch Meeting",
     "start": {
       "dateTime": "2020-03-11T14:30:00-04:00"
@@ -22,7 +22,7 @@ const initialState = [
     }
   },
 {
-    "htmlLink": "https://www.google.com/calendar/event?eid=NWQ1cjJrZGI5aDJsaG4xM250ZWYwdThlZXQgcmF6ZWZyb24wMUBt",
+    "htmlLink": "#",
     "summary": "Lecture",
     "start": {
       "dateTime": "2020-03-11T16:00:00-04:00"
@@ -33,7 +33,7 @@ const initialState = [
   }
 ]
 
-const eventsReducer = (state = initialState, action) => {
+const eventsReducer = (state = [], action) => {
    
   Object.freeze(state);
   switch (action.type) {

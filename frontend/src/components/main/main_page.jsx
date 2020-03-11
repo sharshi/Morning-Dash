@@ -67,7 +67,7 @@ class MainPage extends React.Component {
           )}
 
           {/* {loggedIn ? ( */}
-            <SummaryContainer />
+          <SummaryContainer loggedIn={this.props.loggedIn} />
           {/* ) : (
             <Fragment>
               <div className="glance-summary">
@@ -164,6 +164,7 @@ class MainPage extends React.Component {
         ) : (
           <div className="calendar-events-summary">
             <ul className="calendar-event-items">
+              <h1>Calendar</h1>
               <li>9:00 AM - Check in</li>
               <li>1:30 PM - Check in</li>
               <li>5:00 PM - Check in</li>
@@ -174,5 +175,7 @@ class MainPage extends React.Component {
     );
   }
 }
+
+
 
 export default MainPage;

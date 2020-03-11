@@ -1,14 +1,21 @@
 import React from "react";
 
 
-const Summary = ({weather, transit, events }) => {
+const Summary = ({weather, transit, events, loggedIn }) => {
     debugger
+    let weatherSummary
     if (!weather.data) {
-        return null
+        weatherSummary = null
+    } else {
+        weatherSummary = weather.data.data.daily.summary
     }
 
+    let transitSummary
+    debugger
     if (!transit.morning) {
-        return null
+        transitSummary = ""
+    } else {
+        transitSummary = `Leave at ${ transit.morning.departureTime } for work`
     }
 
     let eventsSummary;
@@ -25,13 +32,13 @@ const Summary = ({weather, transit, events }) => {
         <>
             <ul className="glance-summary">
                 <li className="glance-summary-item">
-                    {weather.data.data.daily.summary}
+                    {weatherSummary}
                 </li>
                 <li className="glance-summary-item">
-                    Leave at {transit.morning.departureTime} for work.
+                    {transitSummary}
                 </li>
                 <li className="glance-summary-item">
-                   {eventsSummary}
+                    {loggedIn ? eventsSummary : "3 events today"}
                 </li>
             </ul>
         </>

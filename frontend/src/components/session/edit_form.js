@@ -57,6 +57,12 @@ class EditForm extends React.Component {
   handleLogout(e) {
     e.preventDefault();
     this.props.logout();
+    if (window.gapi) {
+      const auth2 = window.gapi.auth2.getAuthInstance();
+      auth2.signOut().then(() => {
+        auth2.disconnect();
+      })
+    }
   }
 
   renderErrors() {
