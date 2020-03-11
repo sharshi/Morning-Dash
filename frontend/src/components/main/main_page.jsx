@@ -49,13 +49,13 @@ class MainPage extends React.Component {
           )}
         </div>
         <div className="main-page-glance">
-          {loggedIn ? (
+          {/* {loggedIn ? ( */}
             <h1 className="welcome-message">Welcome {user.handle}</h1>
-          ) : (
+          {/* ) : (
             <Fragment>
               <h1 className="welcome-message">Welcome. This is a demo!</h1>
             </Fragment>
-          )}
+          )} */}
 
           {loggedIn ? null : (
             <Link
@@ -66,9 +66,9 @@ class MainPage extends React.Component {
             </Link>
           )}
 
-          {loggedIn ? (
+          {/* {loggedIn ? ( */}
             <SummaryContainer />
-          ) : (
+          {/* ) : (
             <Fragment>
               <div className="glance-summary">
                 <div className="glance-summary-item">
@@ -80,11 +80,11 @@ class MainPage extends React.Component {
                 <div className="glance-summary-item"> 3 events today.</div>
               </div>
             </Fragment>
-          )}
+          )} */}
         </div>
-        {loggedIn ? (
+        {/* {loggedIn ? ( */}
           <WeatherContainer />
-        ) : (
+        {/* ) : (
           <Fragment>
             <img
               className="weather-logo"
@@ -146,18 +146,18 @@ class MainPage extends React.Component {
                 </li>
               </ul>
             </div>
-          </Fragment>
-        )}
-        {loggedIn ? (
+          </Fragment> */}
+        {/* )} */}
+        {/* {loggedIn ? ( */}
           <Transit />
-        ) : (
+        {/* ) : (
           <div className="commute-summary">
             <div className="commute-summary-item">
               Leave at 8:22 AM for work.
             </div>
             <div className="commute-summary-item">commute summary item</div>
           </div>
-        )}
+        )} */}
 
         {loggedIn ? (
           <CalendarContainer className="link-to-button-styling" />

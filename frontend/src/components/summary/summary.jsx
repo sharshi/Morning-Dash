@@ -2,7 +2,7 @@ import React from "react";
 
 
 const Summary = ({weather, transit, events }) => {
-
+    debugger
     if (!weather.data) {
         return null
     }
