@@ -2,7 +2,6 @@ import React from "react";
 
 
 const Summary = ({weather, transit, events, loggedIn }) => {
-    debugger
     let weatherSummary
     if (!weather.data) {
         weatherSummary = null
@@ -11,7 +10,6 @@ const Summary = ({weather, transit, events, loggedIn }) => {
     }
 
     let transitSummary
-    debugger
     if (!transit.morning) {
         transitSummary = ""
     } else {

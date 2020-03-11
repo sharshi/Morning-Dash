@@ -50,7 +50,7 @@ class MainPage extends React.Component {
           )}
         </div>
         <div className="main-page-glance">
-            <h1 className="welcome-message">Welcome {user.handle}</h1>
+          <h1 className="welcome-message">Welcome {user.handle}</h1>
 
           {loggedIn ? null : (
             <Link
@@ -62,8 +62,8 @@ class MainPage extends React.Component {
           )}
           <SummaryContainer loggedIn={this.props.loggedIn} />
         </div>
-          <WeatherContainer />
-          <Transit />
+        <WeatherContainer />
+        <Transit />
         {loggedIn ? (
           <CalendarContainer className="link-to-button-styling" />
         ) : (
@@ -76,7 +76,7 @@ class MainPage extends React.Component {
             </ul>
           </div>
         )}
-        <footer class="footer">
+        <footer className="footer">
           <div>
             <Modal>
               <Modal.Content>
@@ -93,7 +93,5 @@ class MainPage extends React.Component {
     );
   }
 }
-
-
 
 export default MainPage;
