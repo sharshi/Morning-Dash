@@ -1,4 +1,7 @@
 # Morning Dash
+
+![logo](/frontend/public/sun.png)
+
 Morning Dash is your day at a glance. See local weather, your commute, and calendar events all in one place.
 
 Every morning many of us check the same things: the weather, the commute to work, and important calendar events. Why go to 3 places instead of 1.
