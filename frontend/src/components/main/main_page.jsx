@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Transit from "../transit/transit_container";
 import Modal, { ModalContext } from "../modal/modal";
 import EditFormContainer from "../session/edit_form_container";
+import AboutUs from "../about/about_us";
 import { Fragment } from "react";
 import CalendarContainer from "../calendar/calendar_container";
 import WeatherContainer from "../weather/weather_container";
@@ -75,6 +76,19 @@ class MainPage extends React.Component {
             </ul>
           </div>
         )}
+        <footer class="footer">
+          <div>
+            <Modal>
+              <Modal.Content>
+                <AboutUs />
+              </Modal.Content>
+              <Modal.OpenButton class="about">About Us</Modal.OpenButton>
+            </Modal>
+          </div>
+          <a href="https://github.com/sharshi/Morning-Dash">
+            <i class="devicon-github-plain-wordmark"></i>
+          </a>
+        </footer>
       </div>
     );
   }
