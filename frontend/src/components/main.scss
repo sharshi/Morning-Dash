@@ -269,7 +269,6 @@ button {
   flex-direction: column;
   margin: 0;
   padding: 0;
-  margin-top: 25px;
 }
 
 .calendar-event-items > a {
@@ -404,6 +403,7 @@ button {
   &:focus {
     outline: none;
   }
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .transit-container {
@@ -567,6 +567,7 @@ button {
 }
 
 @media (min-width: 1000px) {
+
   .welcome-message {
     font-size: 3rem;
   }
@@ -689,3 +690,25 @@ button {
     }
   }
 }
+
+.calendar-events-summary {
+    background-color: #181818;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    ul {
+      max-width: 20rem;
+      text-align: left;
+      h1 {
+        font-size: 36px;
+      }
+      li {
+        max-width: 20rem;
+        width: 100%;
+        p {
+          max-width: 20rem;
+        }
+      }
+    }
+  }

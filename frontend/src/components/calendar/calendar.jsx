@@ -100,7 +100,14 @@ class Calendar extends React.Component {
   createEvent() {
     if (this.props.events.length > 0) {
       return this.props.events.map(event => (
-        <a key={event.htmlLink} target='_blank' href={event.htmlLink}>{`${event.start.dateTime ? event.start.dateTime.slice(11, 16) : `All Day`} - ${event.summary}`}</a>
+        <li>
+          <p className="transit-icon-and-description">
+            <img class="transit-icon" src="https://findicons.com/files/icons/2711/free_icons_for_windows8_metro/256/walking.png"></img>
+            <div className="step-instructions-and-duration">
+              <a key={event.htmlLink} target='_blank' href={event.htmlLink}>{`${event.start.dateTime ? event.start.dateTime.slice(11, 16) : `All Day`} - ${event.summary}`}</a>
+            </div>
+          </p>
+        </li>
       ));
     } else {
       return <div>No events today</div>;
