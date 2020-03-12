@@ -178,6 +178,7 @@ class SignupForm extends React.Component {
               />
               <br />
               <div className="time-input-container">
+                <div className="time-input-label">Time of arrival to work</div>
                 <input
                   type="time"
                   className="time-input"
@@ -185,9 +186,9 @@ class SignupForm extends React.Component {
                   value={this.state.arriveToWorkBy}
                   onChange={this.update("arriveToWorkBy")}
                 />
-                <div className="time-input-label">Time of arrival to work</div>
               </div>
               <div className="time-input-container">
+                <div className="time-input-label">When to leave work</div>
                 <input
                   type="time"
                   className="time-input"
@@ -195,7 +196,6 @@ class SignupForm extends React.Component {
                   value={this.state.departWorkBy}
                   onChange={this.update("departWorkBy")}
                 />
-                <div className="time-input-label">When to leave work</div>
               </div>
               <br />
               <input

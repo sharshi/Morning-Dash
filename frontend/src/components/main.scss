@@ -568,28 +568,6 @@ button {
 
 @media (min-width: 1000px) {
 
-  .calendar-events-summary {
-    background-color: #181818;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 0.5rem;
-    margin-top: 1.5rem;
-    width: 45%;
-    ul {
-      max-width: 20rem;
-      text-align: left;
-      h1 {
-        font-size: 36px;
-      }
-      li {
-        max-width: 20rem;
-        width: 100%;
-        p {
-          max-width: 20rem;
-        }
-      }
-    }
-  }
   .welcome-message {
     font-size: 3rem;
   }
@@ -716,10 +694,9 @@ button {
 .calendar-events-summary {
     background-color: #181818;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 0.5rem;
     margin-top: 1.5rem;
-    width: 35%;
     ul {
       max-width: 20rem;
       text-align: left;

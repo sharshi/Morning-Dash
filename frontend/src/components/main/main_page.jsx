@@ -53,12 +53,15 @@ class MainPage extends React.Component {
           <h1 className="welcome-message">Welcome {user.handle}</h1>
 
           {loggedIn ? null : (
+          <>
+          <h2>Everything you need for you Morning Dash in one place</h2>
             <Link
               className="link-to-button-styling main-signup-button"
               to={`/signup`}
             >
               Sign Up
             </Link>
+          </>
           )}
           <SummaryContainer loggedIn={this.props.loggedIn} />
         </div>
