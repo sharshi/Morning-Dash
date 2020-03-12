@@ -14,9 +14,9 @@ Live: [themorningdash.herokuapp.com](https://themorningdash.herokuapp.com/)
  - User can sign up, sign in, and sign out
  - User can save personal settings for each other MVP.
 
-### User onboarding (first login) settings (from home screen)
- - user logs in with google + link their google calendar
- - onboarding allows them to set up their home and work location
+### User Signup (first login) settings (from home screen)
+ - user signs up then can link their google calendar
+ - Sign up form allows them to set up their home and work location
  - set up their daily commute (home, work, work-arrival, work-leave)
 
 ### Transit:
@@ -24,9 +24,13 @@ Live: [themorningdash.herokuapp.com](https://themorningdash.herokuapp.com/)
  - Bonus: Set preferred routes/method of travel for every commute
  - Indicate if will rain during commute
 
+![Transit](/frontend/public/commute_screen_shot.png)
+
 ### Weather:
  - Use DarkSky API to obtain weather
- - Display local weather in 3 hour increments
+ - Display local weather in 2 hour increments
+
+![Weather](/frontend/public/weather_screen_shot.png)
 
 ### Calendar:
  - Use Google Calendar API to obtain user appointments
@@ -41,19 +45,13 @@ Live: [themorningdash.herokuapp.com](https://themorningdash.herokuapp.com/)
  - Designed to be a single page app to show users information as quickly as possible.
  - React Portal/Context APIs used to create compound modal for reusability
 
-### Backend: MongoDB / Express /Node
+## Technologies 
 
-## Technologies and Technical Challenges
-
-
-### APIs
-
-#### Google Transit API
- - The Google Directions API we have a global limit of unlimited and a limit per minute of 5000
-
-#### Weather
- - The DarkSkyAPI has 1000 calls per day for free.
-
-#### Google Calendar
- - The Google Calendar API is similar to the Directions API.
+ - Backend: MongoDB / Express /Node
+ - Google Transit API
+     - The Google Directions API we have a global limit of unlimited and a limit per minute of 5000
+ - Weather
+     - The DarkSkyAPI has 1000 calls per day for free.
+ - Google Calendar
+    - The Google Calendar API is similar to the Directions API.
 
