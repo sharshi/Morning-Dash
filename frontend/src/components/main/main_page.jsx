@@ -70,9 +70,30 @@ class MainPage extends React.Component {
           <div className="calendar-events-summary">
             <ul className="calendar-event-items">
               <h1>Calendar</h1>
-              <li>9:00 AM - Check in</li>
-              <li>1:30 PM - Check in</li>
-              <li>5:00 PM - Check in</li>
+                <li>
+                  <p className="transit-icon-and-description">
+                    <img class="transit-icon" src="./google-calendar.svg"></img>
+                    <div className="step-instructions-and-duration">
+                      9:00 AM - Check in
+                    </div>
+                  </p>
+                </li>
+                <li>
+                  <p className="transit-icon-and-description">
+                    <img class="transit-icon" src="./google-calendar.svg"></img>
+                    <div className="step-instructions-and-duration">
+                      1:30 AM - Check in
+                    </div>
+                  </p>
+                </li>
+                <li>
+                  <p className="transit-icon-and-description">
+                    <img class="transit-icon" src="./google-calendar.svg"></img>
+                    <div className="step-instructions-and-duration">
+                      5:00 AM - Check in
+                    </div>
+                  </p>
+                </li>
             </ul>
           </div>
         )}
