@@ -54,7 +54,7 @@ class MainPage extends React.Component {
 
           {loggedIn ? null : (
           <>
-          <h2>Everything you need for you Morning Dash in one place</h2>
+          <h2>Everything you need for your Morning Dash in one place</h2>
             <Link
               className="link-to-button-styling main-signup-button"
               to={`/signup`}
