@@ -59,7 +59,7 @@ class AboutUs extends React.Component {
             </div>
           </div>
           <div className="about-member">
-            <img src="https://avatars3.githubusercontent.com/u/4740525?s=460&v=4"></img>
+            <img src="https://avatars2.githubusercontent.com/u/56134478?s=400&v=4"></img>
             <div>Neev Granite</div>
             <div>Flex Engineer </div>
             <div className="pro-links">
