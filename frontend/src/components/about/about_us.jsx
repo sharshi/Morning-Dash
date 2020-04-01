@@ -69,7 +69,7 @@ class AboutUs extends React.Component {
               <a href="https://angel.co/neevgranite">
                 <img src="https://diskord-pro.s3.amazonaws.com/angellist.png" />
               </a>
-              <a href="https://linkedin.com/in/neevgranite">
+              <a href="https://www.linkedin.com/in/neev-granite-b5b47137/">
                 <img src="https://diskord-pro.s3.amazonaws.com/linkedin.svg" />
               </a>
             </div>
