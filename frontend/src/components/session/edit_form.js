@@ -95,8 +95,11 @@ class EditForm extends React.Component {
   handleScriptLoad() {
     /* global google */
 
-    let inputHome = document.getElementById("autocompleteHome");
-    let inputWork = document.getElementById("autocompleteWork");
+    // let inputHome = document.getElementById("autocompleteHome");
+    // let inputWork = document.getElementById("autocompleteWork");
+
+    let inputHome = this.refs.inputHome;
+    let inputWork = this.refs.inputWork;
 
     let ac = new google.maps.places.Autocomplete(inputHome, {
       types: ["geocode"]
@@ -130,12 +133,12 @@ class EditForm extends React.Component {
       <div className="session-form-page">
         <div className="main-page-nav-bar">
           <Link to={`/`}>Morning Dash</Link>
-          <Link
+          <a
             className="link-to-button-styling logout-button"
             onClick={this.handleLogout}
           >
             Logout
-          </Link>
+          </a>
         </div>
         <div className="signup-form-container">
           <form onSubmit={this.handleSubmit}>
@@ -161,6 +164,7 @@ class EditForm extends React.Component {
                 id="autocompleteHome"
                 onChange={this.update("homeAddress")}
                 placeholder="Home Address"
+                ref="inputHome"
               />
               <br />
               <input
@@ -169,6 +173,7 @@ class EditForm extends React.Component {
                 value={this.state.workAddress}
                 onChange={this.update("workAddress")}
                 placeholder="Work Address"
+                ref="inputWork"
               />
               <br />
               <div className="time-input-container">
