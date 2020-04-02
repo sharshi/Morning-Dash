@@ -7,7 +7,7 @@ import {
 const initialState = {
   isAuthenticated: false,
   user: {
-    id: '5e68fd2a70173272a1ee9946',
+    _id: '5e68fd2a70173272a1ee9946',
     handle: 'Demo User',
     email: 'demouser@gmail.com',
     homeAddress: '285 Douglass St, Brooklyn, NY 11217, USA',

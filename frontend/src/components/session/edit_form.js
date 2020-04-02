@@ -41,7 +41,7 @@ class EditForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let user = {
-      id: this.state.id,
+      _id: this.state.id,
       email: this.state.email,
       handle: this.state.handle,
       homeAddress: this.state.homeAddress,
@@ -51,7 +51,7 @@ class EditForm extends React.Component {
       departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10))
     };
 
-    // this.props.update(user); 
+    this.props.update(user); 
   }
 
   handleLogout(e) {
@@ -130,7 +130,10 @@ class EditForm extends React.Component {
       <div className="session-form-page">
         <div className="main-page-nav-bar">
           <Link to={`/`}>Morning Dash</Link>
-          <Link className="link-to-button-styling logout-button" onClick={this.handleLogout}>
+          <Link
+            className="link-to-button-styling logout-button"
+            onClick={this.handleLogout}
+          >
             Logout
           </Link>
         </div>
@@ -139,7 +142,7 @@ class EditForm extends React.Component {
             <div className="session-form">
               <br />
               <input
-                type="text"
+                type="hidden"
                 value={this.state.email}
                 onChange={this.update("email")}
                 placeholder="Email"

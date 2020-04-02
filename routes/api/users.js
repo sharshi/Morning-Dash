@@ -43,7 +43,7 @@ router.post('/register', (req, res) => {
           newUser
             .save()
             .then(user => {
-              const payload = { id: user.id, handle: user.handle };
+              const payload = { _id: user._id, handle: user.handle };
               jwt.sign(
                 payload,
                 keys.secretOrKey,
@@ -53,7 +53,7 @@ router.post('/register', (req, res) => {
                     success: true,
                     token: "Bearer " + token,
                     user: {
-                      id: user._id,
+                      _id: user._id,
                       handle: user.handle,
                       email: user.email,
                       homeAddress: user.homeAddress,
@@ -94,7 +94,7 @@ router.post('/login', (req, res) => {
         .then(isMatch => {
           if (isMatch) {
             const payload = {
-              id: user._id,
+              _id: user._id,
               handle: user.handle,
               email: user.email,
               homeAddress: user.homeAddress,
@@ -126,93 +126,30 @@ router.post('/login', (req, res) => {
 // You may want to start commenting in information about your routes so that you can find the appropriate ones quickly.
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({
-    id: req.user.id,
+    _id: req.user._id,
     handle: req.user.handle,
     email: req.user.email,
     homeAddress: req.user.homeAddress,
     workAddress: req.user.workAddress,
     arriveToWorkBy: req.user.arriveToWorkBy,
-    departWorkBy: req.user.departWorkBy
+    departWorkBy: req.user.departWorkBy,
+    coords: req.user.coords
   });
-})
-
-// router.put(
-//   "/:id",
-//   // passport.authenticate("jwt", { session: false }),
-//   (req, res) => {
-//     User.find(req.params.id),
-//       {
-//         handle: req.body.handle,
-//         email: req.body.email,
-//         password: req.body.password,
-//         homeAddress: req.body.homeAddress,
-//         workAddress: req.body.workAddress,
-//         arriveToWorkBy: req.body.arriveToWorkBy,
-//         departWorkBy: req.body.departWorkBy
-//       },
-//       function(err) {
-//         if (err) {
-//           return res.send(err);
-//         }
-//         console.log({ message: "movie updated" });
-//       }
-//     );
-//   }
-// );
-
-router.route("/edit").post((req, res) => {
-  User.findByIdAndUpdate(
-    { _id: req.body.id },
-    {
-      handle: req.body.handle,
-      email: req.body.email,
-      homeAddress: req.body.homeAddress,
-      workAddress: req.body.workAddress,
-      coords: req.body.coords,
-      arriveToWorkBy: req.body.arriveToWorkBy,
-      departWorkBy: req.body.departWorkBy
-    },
-    { new: true, projection: {password: 0}},
-    function(err, result) {
-      
-      if (err) {
-        res.send(err);
-      } else {
-        res.send(result);
-      }
-    }
-  );
 });
 
-// router.put("/movies/:id", function(req, res) {
-//   Movie.findOneAndUpdate(
-//     req.params.id,
-//     {
-//       title: "the gift4",
-//       releaseYear: "2012",
-//       director: "stefan",
-//       genre: "horror"
-//     },
-//     function(err) {
-//       if (err) {
-//         return res.send(err);
-//       }
-//       console.log({ message: "movie updated" });
-//     }
-//   );
-// });
-// router.patch("/:id", function(req, res, next) {
-//   Comment.update(
-//     { comment: req.body.comment },
-//     { where: { id: req.params.id } }
-//   )
-//     .then(result => {
-//       res.json(result);
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       next(err);
-//     });
-// });
+router.post("/edit", (req, res) => {
+  User.findOne({ email: req.body.email }).then(doc => {
+    doc.handle = req.body.handle;
+    doc.homeAddress = req.body.homeAddress;
+    doc.workAddress = req.body.workAddress;
+    doc.coords = req.body.coords;
+    doc.arriveToWorkBy = req.body.arriveToWorkBy;
+    doc.departWorkBy = req.body.departWorkBy;
+    doc
+      .save()
+      .then(result => res.send(result))
+      .catch(err => res.send(err));
+  });
+});
 
 module.exports = router;

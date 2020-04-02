@@ -16,7 +16,7 @@ class AboutUs extends React.Component {
             <div>Project Creator</div>
             <div className="pro-links">
               <a href="https://github.com/sharshi">
-                <i class="devicon-github-plain"></i>
+                <i className="devicon-github-plain"></i>
               </a>
               <a href="https://angel.co/sharshi">
                 <img src="https://diskord-pro.s3.amazonaws.com/angellist.png" />
@@ -32,7 +32,7 @@ class AboutUs extends React.Component {
             <div>Frontend Engineer</div>
             <div className="pro-links">
               <a href="https://github.com/al6">
-                <i class="devicon-github-plain"></i>
+                <i className="devicon-github-plain"></i>
               </a>
               <a href="https://angel.co/albertlee">
                 <img src="https://diskord-pro.s3.amazonaws.com/angellist.png" />
@@ -48,7 +48,7 @@ class AboutUs extends React.Component {
             <div>Backend Engineer</div>
             <div className="pro-links">
               <a href="https://github.com/RazEfron">
-                <i class="devicon-github-plain"></i>
+                <i className="devicon-github-plain"></i>
               </a>
               <a href="https://angel.co/raz-efron">
                 <img src="https://diskord-pro.s3.amazonaws.com/angellist.png" />
@@ -64,7 +64,7 @@ class AboutUs extends React.Component {
             <div>Flex Engineer </div>
             <div className="pro-links">
               <a href="https://github.com/lifesscholar">
-                <i class="devicon-github-plain"></i>
+                <i className="devicon-github-plain"></i>
               </a>
               <a href="https://angel.co/neevgranite">
                 <img src="https://diskord-pro.s3.amazonaws.com/angellist.png" />
