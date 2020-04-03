@@ -12,11 +12,11 @@ const User = require('../../models/User');
 
 router.post('/register', (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
-  console.log(req.body);
+
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  // console.log(req.body);
+
   User.findOne({ email: req.body.email })
   .then(user => {
     if (user) {
@@ -24,7 +24,7 @@ router.post('/register', (req, res) => {
       errors.email = 'Email already exists';
       return res.status(400).json(errors);
     } else {
-      // console.log(req.body)
+
       const newUser = new User({
         handle: req.body.handle,
         email: req.body.email,
@@ -122,9 +122,7 @@ router.post('/login', (req, res) => {
     })
 })
 
-
-// You may want to start commenting in information about your routes so that you can find the appropriate ones quickly.
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
   res.json({
     _id: req.user._id,
     handle: req.user.handle,
@@ -137,8 +135,10 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
   });
 });
 
-router.post("/edit", (req, res) => {
-  User.findOne({ email: req.body.email }).then(doc => {
+router.post("/edit", passport.authenticate("jwt", { session: false }), (req, res) => {
+  const { email } = req.body;
+  User.findOne({ email })
+  .then(doc => {
     doc.handle = req.body.handle;
     doc.homeAddress = req.body.homeAddress;
     doc.workAddress = req.body.workAddress;
@@ -147,9 +147,14 @@ router.post("/edit", (req, res) => {
     doc.departWorkBy = req.body.departWorkBy;
     doc
       .save()
-      .then(result => res.send(result))
+      .then(result => res.json(result))
       .catch(err => res.send(err));
-  });
+    });
+  }
+);
+
+router.get("/test", (req, res) => {
+  res.json('hello');
 });
 
 module.exports = router;
