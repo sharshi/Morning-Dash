@@ -41,7 +41,7 @@ class EditForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let user = {
-      _id: this.state.id,
+      id: this.state.id,
       email: this.state.email,
       handle: this.state.handle,
       homeAddress: this.state.homeAddress,
@@ -51,7 +51,7 @@ class EditForm extends React.Component {
       departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10))
     };
 
-    this.props.update(user); 
+    this.props.update(user, this.props.history); 
   }
 
   handleLogout(e) {

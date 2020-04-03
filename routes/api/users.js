@@ -43,7 +43,7 @@ router.post('/register', (req, res) => {
           newUser
             .save()
             .then(user => {
-              const payload = { _id: user._id, handle: user.handle };
+              const payload = { id: user.id, handle: user.handle };
               jwt.sign(
                 payload,
                 keys.secretOrKey,
@@ -53,7 +53,7 @@ router.post('/register', (req, res) => {
                     success: true,
                     token: "Bearer " + token,
                     user: {
-                      _id: user._id,
+                      id: user._id,
                       handle: user.handle,
                       email: user.email,
                       homeAddress: user.homeAddress,
@@ -94,7 +94,7 @@ router.post('/login', (req, res) => {
         .then(isMatch => {
           if (isMatch) {
             const payload = {
-              _id: user._id,
+              id: user._id,
               handle: user.handle,
               email: user.email,
               homeAddress: user.homeAddress,
@@ -122,33 +122,80 @@ router.post('/login', (req, res) => {
     })
 })
 
-router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
-  res.json({
-    _id: req.user._id,
-    handle: req.user.handle,
-    email: req.user.email,
-    homeAddress: req.user.homeAddress,
-    workAddress: req.user.workAddress,
-    arriveToWorkBy: req.user.arriveToWorkBy,
-    departWorkBy: req.user.departWorkBy,
-    coords: req.user.coords
-  });
-});
+router.get(
+  "/current",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.json({
+      id: req.user.id,
+      handle: req.user.handle,
+      email: req.user.email,
+      homeAddress: req.user.homeAddress,
+      workAddress: req.user.workAddress,
+      arriveToWorkBy: req.user.arriveToWorkBy,
+      departWorkBy: req.user.departWorkBy,
+      coords: req.user.coords
+    });
+  }
+);
 
-router.post("/edit", passport.authenticate("jwt", { session: false }), (req, res) => {
-  const { email } = req.body;
-  User.findOne({ email })
-  .then(doc => {
-    doc.handle = req.body.handle;
-    doc.homeAddress = req.body.homeAddress;
-    doc.workAddress = req.body.workAddress;
-    doc.coords = req.body.coords;
-    doc.arriveToWorkBy = req.body.arriveToWorkBy;
-    doc.departWorkBy = req.body.departWorkBy;
-    doc
-      .save()
-      .then(result => res.json(result))
-      .catch(err => res.send(err));
+router.post(
+  "/edit",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { email } = req.user;
+    User.findOne({ email }).then(doc => {
+      const {
+        handle,
+        homeAddress,
+        workAddress,
+        coords,
+        arriveToWorkBy,
+        departWorkBy
+      } = req.body;
+
+      handle ?
+        doc.handle = handle : null;
+      homeAddress ?
+        doc.homeAddress = homeAddress : null;
+      workAddress ?
+        doc.workAddress = workAddress : null;
+      coords ?
+        doc.coords = coords : null;
+      arriveToWorkBy ? 
+        doc.arriveToWorkBy = arriveToWorkBy : null;
+      departWorkBy ?
+        doc.departWorkBy = departWorkBy : null;
+      doc
+        .save()
+        .then(result => {
+          const user = {
+            id: result._id,
+            handle: result.handle,
+            email: result.email,
+            homeAddress: result.homeAddress,
+            workAddress: result.workAddress,
+            arriveToWorkBy: result.arriveToWorkBy,
+            departWorkBy: result.departWorkBy,
+            coords: result.coords
+          };
+          console.log(jwt.sign);
+          jwt.sign(
+            payload,
+            keys.secretOrKey,
+            { expiresIn: 3600 },
+            (err, token) => {
+
+              console.log(payload)
+              res.json({
+                ...payload,
+                success: true,
+                token: "Bearer " + token
+              });
+            }
+          );
+        })
+        .catch(err => res.send(err));
     });
   }
 );
