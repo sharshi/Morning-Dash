@@ -50,7 +50,7 @@ module.exports = function validateRegisterInput(data) {
   if (Validator.isEmpty(data.workAddress)) {
     errors.workAddress = "Work address field is required";
   }
-console.log(data);
+
   if (Validator.isEmpty(data.arriveToWorkBy.toString())) {
     errors.arriveToWorkBy = "Arrive to work by field is required";
   }

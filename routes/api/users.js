@@ -179,14 +179,12 @@ router.post(
             departWorkBy: result.departWorkBy,
             coords: result.coords
           };
-          console.log(jwt.sign);
+
           jwt.sign(
             payload,
             keys.secretOrKey,
             { expiresIn: 3600 },
             (err, token) => {
-
-              console.log(payload)
               res.json({
                 ...payload,
                 success: true,
