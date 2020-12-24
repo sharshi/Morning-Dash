@@ -95,9 +95,6 @@ class EditForm extends React.Component {
   handleScriptLoad() {
     /* global google */
 
-    // let inputHome = document.getElementById("autocompleteHome");
-    // let inputWork = document.getElementById("autocompleteWork");
-
     let inputHome = this.refs.inputHome;
     let inputWork = this.refs.inputWork;
 

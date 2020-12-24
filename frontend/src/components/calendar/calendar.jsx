@@ -83,7 +83,6 @@ class Calendar extends React.Component {
         .getAuthInstance()
         .signIn()
         .then(() => {
-          // console.log("User signed in.");
           return this.updateSigninStatus(
             window.gapi.auth2.getAuthInstance().isSignedIn.get()
           );
