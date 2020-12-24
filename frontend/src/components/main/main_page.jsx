@@ -75,7 +75,7 @@ class MainPage extends React.Component {
               <h1>Calendar</h1>
                 <li>
                   <p className="transit-icon-and-description">
-                    <img class="transit-icon" src="./google-calendar.svg"></img>
+                    <img className="transit-icon" src="./google-calendar.svg"></img>
                     <div className="step-instructions-and-duration">
                       9:00 AM - Check in
                     </div>
@@ -83,7 +83,7 @@ class MainPage extends React.Component {
                 </li>
                 <li>
                   <p className="transit-icon-and-description">
-                    <img class="transit-icon" src="./google-calendar.svg"></img>
+                    <img className="transit-icon" src="./google-calendar.svg"></img>
                     <div className="step-instructions-and-duration">
                       1:30 AM - Check in
                     </div>
@@ -91,7 +91,7 @@ class MainPage extends React.Component {
                 </li>
                 <li>
                   <p className="transit-icon-and-description">
-                    <img class="transit-icon" src="./google-calendar.svg"></img>
+                    <img className="transit-icon" src="./google-calendar.svg"></img>
                     <div className="step-instructions-and-duration">
                       5:00 AM - Check in
                     </div>
@@ -106,11 +106,11 @@ class MainPage extends React.Component {
               <Modal.Content>
                 <AboutUs />
               </Modal.Content>
-              <Modal.OpenButton class="about">About Us</Modal.OpenButton>
+              <Modal.OpenButton className="about">About Us</Modal.OpenButton>
             </Modal>
           </div>
           <a href="https://github.com/sharshi/Morning-Dash">
-            <i class="devicon-github-plain-wordmark"></i>
+            <i className="devicon-github-plain-wordmark"></i>
           </a>
         </footer>
       </div>
