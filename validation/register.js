@@ -52,7 +52,6 @@ module.exports = function validateRegisterInput(data) {
   }
 
   if (Validator.isEmpty(data.arriveToWorkBy.toString())) {
-    // console.log(data)
     errors.arriveToWorkBy = "Arrive to work by field is required";
   }
 
