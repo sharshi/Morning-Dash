@@ -51,7 +51,7 @@ class EditForm extends React.Component {
       departWorkBy: this.state.departWorkBy.split(":").map(num => parseInt(num, 10))
     };
 
-    // this.props.update(user); 
+    this.props.update(user, this.props.history); 
   }
 
   handleLogout(e) {
@@ -95,8 +95,8 @@ class EditForm extends React.Component {
   handleScriptLoad() {
     /* global google */
 
-    let inputHome = document.getElementById("autocompleteHome");
-    let inputWork = document.getElementById("autocompleteWork");
+    let inputHome = this.refs.inputHome;
+    let inputWork = this.refs.inputWork;
 
     let ac = new google.maps.places.Autocomplete(inputHome, {
       types: ["geocode"]
@@ -130,16 +130,19 @@ class EditForm extends React.Component {
       <div className="session-form-page">
         <div className="main-page-nav-bar">
           <Link to={`/`}>Morning Dash</Link>
-          <Link className="link-to-button-styling logout-button" onClick={this.handleLogout}>
+          <a
+            className="link-to-button-styling logout-button"
+            onClick={this.handleLogout}
+          >
             Logout
-          </Link>
+          </a>
         </div>
         <div className="signup-form-container">
           <form onSubmit={this.handleSubmit}>
             <div className="session-form">
               <br />
               <input
-                type="text"
+                type="hidden"
                 value={this.state.email}
                 onChange={this.update("email")}
                 placeholder="Email"
@@ -158,6 +161,7 @@ class EditForm extends React.Component {
                 id="autocompleteHome"
                 onChange={this.update("homeAddress")}
                 placeholder="Home Address"
+                ref="inputHome"
               />
               <br />
               <input
@@ -166,6 +170,7 @@ class EditForm extends React.Component {
                 value={this.state.workAddress}
                 onChange={this.update("workAddress")}
                 placeholder="Work Address"
+                ref="inputWork"
               />
               <br />
               <div className="time-input-container">

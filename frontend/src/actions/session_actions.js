@@ -50,13 +50,16 @@ export const logout = () => dispatch => {
   dispatch(logoutUser());
 };
 
-// export const update = user => dispatch => {
-//   return APIUtil.update(user).then(res)
-// }
-
 export const update = user => dispatch => {
-  return APIUtil.update(user).then(
-    res => dispatch(receiveCurrentUser(res.data)),
-    err => dispatch(receiveErrors(err.response.data))
-  );
+  return APIUtil.update(user)
+    .then(res => {
+      const { token } = res.data;
+      localStorage.getItem("jwtToken", token);
+      APIUtil.setAuthToken(token);
+      const decoded = jwt_decode(token);
+      dispatch(receiveCurrentUser(decoded));
+    })
+    .catch(err => {
+      dispatch(receiveErrors(err.response.data));
+    })
 };

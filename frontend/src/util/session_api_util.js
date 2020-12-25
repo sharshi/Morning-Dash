@@ -18,4 +18,8 @@ export const login = userData => {
 
 export const update = userData => {
   return axios.post("api/users/edit", userData);
-}
+};
+
+export const current = () => {
+  return axios.get("api/users/current");
+};
