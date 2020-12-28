@@ -81,8 +81,8 @@ class Transit extends React.Component {
     const transitSummary = transitKeys.map(key => {
       const route = transitInfo[key].response.routes[0].legs[0];
       const distance = route.distance.text;
-      const departure_time = route.departure_time.text;
-      const arrival_time = route.arrival_time.text;
+      const departure_time = route.departure_time ? route.departure_time.text : '';
+      const arrival_time = route.arrival_time ? route.arrival_time.text : '';
       const duration = route.duration.text;
 
       const steps = route.steps.map(step => {
@@ -131,8 +131,9 @@ class Transit extends React.Component {
       return (
         <li key={arrival_time}>
           <h1>{key}</h1>
-          {distance} depart: {departure_time} arrive:{" "}
-          {arrival_time}  ({duration})
+          {departure_time && arrival_time
+            ? `${distance} depart: ${departure_time} arrive: ${arrival_time} ${duration}`
+            : `${distance}.`}
           <ul>{steps}</ul>
         </li>
       );
